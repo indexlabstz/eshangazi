@@ -14,19 +14,24 @@
         "browser-sync": "^2.26.3",
         "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.1",
+        "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.5",
-        "tailwindcss": "^0.7.2"
+        "popper.js": "^1.12",
+        "tailwindcss": "^0.7.2",
+        "vue": "^2.5.7",
+        "webpack-livereload-plugin": "^1.2.0"
     },
     "dependencies": {
         "at.js": "^1.5.4",
         "botman-tinker": "^0.0.1",
         "jquery.caret": "^0.3.1",
-        "moment": "^2.22.2",
-        "node-sass": "^4.8.3",
+        "moment": "^2.23.0",
+        "node-sass": "^4.11.0",
         "rebuild": "^0.1.2",
         "trix": "^0.11.3",
-        "vue": "^2.5.19",
-        "vue-instantsearch": "^1.7.0"
+        "vue": "^2.5.21",
+        "vue-instantsearch": "^1.7.0",
+        "vue-template-compiler": "^2.5.21"
     }
 }
