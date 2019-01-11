@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <div id="app">
+        <div id="eshangazi">
             @include('layouts.nav')
 
             <div class="container-fluid">
