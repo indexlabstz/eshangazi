@@ -1,0 +1,73 @@
+//@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+textarea { resize: vertical; }
+
+img { max-width: 100%; }
+
+svg { fill: currentColor; }
+
+button, [role=button] {
+  @apply .font-sans;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  @apply text-eshangazi;
+}
+
+.button-colored {
+  background: linear-gradient(135deg, #0266A3 0%, #1B9DFF 100%);
+  border: 0;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.fill-btn {
+  @apply .bg-transparent
+  .text-xs
+  .text-eshangazi
+  .font-semibold
+  .py-2 px-6 border
+  .border-eshangazi
+  .rounded-full;
+}
+
+.fill-btn:hover {
+  @apply .bg-eshangazi .text-white .border-transparent;
+}
+
+@media only screen and (max-width: 576px) {
+  .visibility-none {
+    display: none !important;
+  }
+
+  .pad-l {
+    @apply .pl-3;
+  }
+}
+
+.input-floating-icon-group {
+  position: relative;
+
+  i {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: 15px;
+    pointer-events: none;
+    color: #182359;
+    font-weight: bold;
+    font-size: 19px;
+  }
+
+  input {
+    padding-left: 55px;
+  }
+}

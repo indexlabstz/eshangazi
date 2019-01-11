@@ -1,0 +1,25 @@
+.top-nav-item {
+  @apply .text-grey-darker .text-xs .mr-4 .font-bold .pb-3 .border-b-2 .border-solid .border-transparent;
+
+  &:hover {
+    text-decoration: none;
+    @apply .text-eshangazi .border-eshangazi;
+  }
+}
+
+//Dashboard
+.header-nav {
+  border-bottom-width: 1px;
+  border-color: rgba(93,100,148,.1);
+}
+
+.header-item {
+  @apply .text-grey-dark;
+  border-color: transparent;
+}
+
+.header-item-active {
+  @apply .text-eshangazi;
+  border-style: solid;
+  border-color: #446dc9;
+}

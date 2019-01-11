@@ -1,70 +1,102 @@
 @extends('layouts.auth')
 
+@section('auth-link')
+    Not yet registered?
+
+    <a href="#"
+       class="font-normal text-blue-light hover:text-blue-dark hover:no-underline">
+        Register Now
+        <i class="fa fa-arrow-right"></i>
+    </a>
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card card-default">
-                <div class="card-body">
-                    <form class="form-signin" method="POST" action="{{ route('login') }}">
-                        @csrf
+    <div class="mt-10">
+        <h1 class="text-center text-white font-thin mb-4">
+            Login Now
+        </h1>
 
-                        <div class="text-center mb-4">
-                            <img class="mb-4" src="{{ asset('img/logo.png') }}" alt="{{ config('app.name') }}" height="100">
+        <p class="text-center text-grey-dark text-sm font-normal">
+            {{ \Illuminate\Foundation\Inspiring::quote() }}
+        </p>
+    </div>
 
-                            <h1 class="h3 mb-3 font-weight-normal">
-                                {{ config('app.name') }}
-                            </h1>
+    <div class="mt-5 sm:mt-3 flex justify-content-center">
+        <div class="sm:appearance-none lg:w-1/3"></div>
 
-                            <p>
-                                {{ \Illuminate\Foundation\Inspiring::quote() }}
-                            </p>
-                        </div>
+        <div class="w-full lg:w-2/5 bg-white shadow-md rounded p-10">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-                        <div class="form-label-group">
-                            <input type="email" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
-                                name="email" value="{{ old('email') }}" placeholder="E-Mail Address" required autofocus>
-                            
-                            <label for="email">E-Mail Address</label>
+                <div class="mb-3">
+                    <div class="input-floating-icon-group">
+                        <i class="fa fa-envelope"></i>
 
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                        </div>
+                        <input class="border text-grey-dark font-thin font-sm rounded w-full p-3{{ $errors->has('email') ? ' border border-red' : '' }}"
+                               name="email"
+                               type="text"
+                               placeholder="{{ __('Email Address') }}"
+                               value="{{ old('email') }}"
+                               required
+                               autofocus>
+                    </div>
 
-                        <div class="form-label-group">
-                            <input type="password" id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" 
-                                name="password" placeholder="Password" required>
-                            
-                            <label for="password">Password</label>
-
-                            @if ($errors->has('password'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="checkbox mb-3">
-                            <label>
-                                <input type="checkbox" value="remember-me" {{ old('remember') ? 'checked' : '' }}> Remember me
-                            </label>
-                        </div>
-
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">
-                            Sign in
-                        </button>
-
-                        <p class="mt-5 mb-3 text-muted text-center">&copy; Index Labs</p>
-                    </form>
+                    @if ($errors->has('email'))
+                        <p class="text-red text-xs italic mt-2">
+                            {{ $errors->first('email') }}.
+                        </p>
+                    @endif
                 </div>
-            </div>
+
+                <div class="mb-6">
+                    <div class="input-floating-icon-group">
+                        <i class="fa fa-lock"></i>
+
+                        <input class="border rounded text-grey-dark font-thin font-sm rounded w-full p-3{{ $errors->has('password') ? ' border border-red' : '' }}"
+                               name="password"
+                               type="password"
+                               placeholder="Password (at least 8 chars)"
+                               required>
+                    </div>
+
+                    @if ($errors->has('password'))
+                        <p class="text-red text-xs italic mt-2">
+                            {{ $errors->first('password') }}.
+                        </p>
+                    @endif
+                </div>
+
+                <div class="flex justify-between form-check form-check-policies mb-5">
+                    <label class="font-thin text-sm form-check-label" for="remember">
+                        <input class="boolean required form-check-input"
+                               data-title="Remember me"
+                               data-placement="left"
+                               data-trigger="manual"
+                               data-offset="0, 55"
+                               type="checkbox"
+                               value="{{ old('remember') ? 'checked' : '' }}"
+                               name="remember"
+                               id="remember">
+
+                        Remember me
+                    </label>
+
+                    <a href="{{ route('password.request') }}"
+                       class="font-normal text-sm text-blue-light hover:text-blue-dark hover:no-underline">
+                        Forgot Password?
+                    </a>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="button-colored rounded-full shadow w-1/2 p-4 text-sm text-white font-medium tracking-wider">
+                        {{ __('Login') }}
+
+                        <i class="fa fa-arrow-right w-5"></i>
+                    </button>
+                </div>
+            </form>
         </div>
 
-
-        
+        <div class="sm:appearance-none lg:w-1/3"></div>
     </div>
-</div>
 @endsection

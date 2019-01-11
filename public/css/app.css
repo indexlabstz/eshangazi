@@ -507,12 +507,150 @@ table {
  * override them.
  */
 
+.onboarding {
+  min-height: 100vh;
+  font-weight: 300;
+  background: linear-gradient(302deg, #060f2c, #1e50a8);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+textarea {
+  resize: vertical;
+}
+
+img {
+  max-width: 100%;
+}
+
+svg {
+  fill: currentColor;
+}
+
+button,
+[role=button] {
+  font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #446dc9;
+}
+
+.button-colored {
+  background: linear-gradient(135deg, #0266a3 0%, #1b9dff 100%);
+  border: 0;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.fill-btn {
+  background-color: transparent;
+  font-size: .75rem;
+  color: #446dc9;
+  font-weight: 600;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-width: 1px;
+  border-color: #446dc9;
+  border-radius: 9999px;
+}
+
+.fill-btn:hover {
+  background-color: #446dc9;
+  color: #fff;
+  border-color: transparent;
+}
+
+@media only screen and (max-width: 576px) {
+  .visibility-none {
+    display: none !important;
+  }
+
+  .pad-l {
+    padding-left: .75rem;
+  }
+}
+
+.input-floating-icon-group {
+  position: relative;
+}
+
+.input-floating-icon-group i {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 15px;
+  pointer-events: none;
+  color: #182359;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.input-floating-icon-group input {
+  padding-left: 55px;
+}
+
+.top-nav-item {
+  color: #606f7b;
+  font-size: .75rem;
+  margin-right: 1rem;
+  font-weight: 700;
+  padding-bottom: .75rem;
+  border-bottom-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.top-nav-item:hover {
+  text-decoration: none;
+  color: #446dc9;
+  border-color: #446dc9;
+}
+
+.header-nav {
+  border-bottom-width: 1px;
+  border-color: rgba(93, 100, 148, .1);
+}
+
+.header-item {
+  color: #8795a1;
+  border-color: transparent;
+}
+
+.header-item-active {
+  color: #446dc9;
+  border-style: solid;
+  border-color: #446dc9;
+}
+
+.hero {
+  background: url("/img/bg.jpg");
+}
+
+.bg-x-gradient-moon-grey-proton-grey-80 {
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(80%, #f5f5fa), to(#ebebf0));
+  background-image: linear-gradient(90deg, #f5f5fa 80%, #ebebf0);
+}
+
 /**
  * Injects Tailwinds components
  */
 
 .container {
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media (min-width: 576px) {
@@ -859,6 +997,26 @@ table {
   background-color: #ffebef;
 }
 
+.bg-eshangazi {
+  background-color: #446dc9;
+}
+
+.bg-moon-grey {
+  background-color: #f5f5fa;
+}
+
+.bg-telluric-blue-opacity-10 {
+  background-color: rgba(93, 100, 148, .1);
+}
+
+.bg-telluric-blue {
+  background-color: #5d6494;
+}
+
+.bg-solstice-blue {
+  background-color: #3a416f;
+}
+
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
@@ -1151,6 +1309,26 @@ table {
   background-color: #ffebef;
 }
 
+.hover\:bg-eshangazi:hover {
+  background-color: #446dc9;
+}
+
+.hover\:bg-moon-grey:hover {
+  background-color: #f5f5fa;
+}
+
+.hover\:bg-telluric-blue-opacity-10:hover {
+  background-color: rgba(93, 100, 148, .1);
+}
+
+.hover\:bg-telluric-blue:hover {
+  background-color: #5d6494;
+}
+
+.hover\:bg-solstice-blue:hover {
+  background-color: #3a416f;
+}
+
 .focus\:bg-transparent:focus {
   background-color: transparent;
 }
@@ -1441,6 +1619,26 @@ table {
 
 .focus\:bg-pink-lightest:focus {
   background-color: #ffebef;
+}
+
+.focus\:bg-eshangazi:focus {
+  background-color: #446dc9;
+}
+
+.focus\:bg-moon-grey:focus {
+  background-color: #f5f5fa;
+}
+
+.focus\:bg-telluric-blue-opacity-10:focus {
+  background-color: rgba(93, 100, 148, .1);
+}
+
+.focus\:bg-telluric-blue:focus {
+  background-color: #5d6494;
+}
+
+.focus\:bg-solstice-blue:focus {
+  background-color: #3a416f;
 }
 
 .bg-bottom {
@@ -1807,6 +2005,26 @@ table {
   border-color: #ffebef;
 }
 
+.border-eshangazi {
+  border-color: #446dc9;
+}
+
+.border-moon-grey {
+  border-color: #f5f5fa;
+}
+
+.border-telluric-blue-opacity-10 {
+  border-color: rgba(93, 100, 148, .1);
+}
+
+.border-telluric-blue {
+  border-color: #5d6494;
+}
+
+.border-solstice-blue {
+  border-color: #3a416f;
+}
+
 .hover\:border-transparent:hover {
   border-color: transparent;
 }
@@ -2099,6 +2317,26 @@ table {
   border-color: #ffebef;
 }
 
+.hover\:border-eshangazi:hover {
+  border-color: #446dc9;
+}
+
+.hover\:border-moon-grey:hover {
+  border-color: #f5f5fa;
+}
+
+.hover\:border-telluric-blue-opacity-10:hover {
+  border-color: rgba(93, 100, 148, .1);
+}
+
+.hover\:border-telluric-blue:hover {
+  border-color: #5d6494;
+}
+
+.hover\:border-solstice-blue:hover {
+  border-color: #3a416f;
+}
+
 .focus\:border-transparent:focus {
   border-color: transparent;
 }
@@ -2389,6 +2627,26 @@ table {
 
 .focus\:border-pink-lightest:focus {
   border-color: #ffebef;
+}
+
+.focus\:border-eshangazi:focus {
+  border-color: #446dc9;
+}
+
+.focus\:border-moon-grey:focus {
+  border-color: #f5f5fa;
+}
+
+.focus\:border-telluric-blue-opacity-10:focus {
+  border-color: rgba(93, 100, 148, .1);
+}
+
+.focus\:border-telluric-blue:focus {
+  border-color: #5d6494;
+}
+
+.focus\:border-solstice-blue:focus {
+  border-color: #3a416f;
 }
 
 .rounded-none {
@@ -5226,6 +5484,26 @@ table {
   color: #ffebef;
 }
 
+.text-eshangazi {
+  color: #446dc9;
+}
+
+.text-moon-grey {
+  color: #f5f5fa;
+}
+
+.text-telluric-blue-opacity-10 {
+  color: rgba(93, 100, 148, .1);
+}
+
+.text-telluric-blue {
+  color: #5d6494;
+}
+
+.text-solstice-blue {
+  color: #3a416f;
+}
+
 .hover\:text-transparent:hover {
   color: transparent;
 }
@@ -5518,6 +5796,26 @@ table {
   color: #ffebef;
 }
 
+.hover\:text-eshangazi:hover {
+  color: #446dc9;
+}
+
+.hover\:text-moon-grey:hover {
+  color: #f5f5fa;
+}
+
+.hover\:text-telluric-blue-opacity-10:hover {
+  color: rgba(93, 100, 148, .1);
+}
+
+.hover\:text-telluric-blue:hover {
+  color: #5d6494;
+}
+
+.hover\:text-solstice-blue:hover {
+  color: #3a416f;
+}
+
 .focus\:text-transparent:focus {
   color: transparent;
 }
@@ -5808,6 +6106,26 @@ table {
 
 .focus\:text-pink-lightest:focus {
   color: #ffebef;
+}
+
+.focus\:text-eshangazi:focus {
+  color: #446dc9;
+}
+
+.focus\:text-moon-grey:focus {
+  color: #f5f5fa;
+}
+
+.focus\:text-telluric-blue-opacity-10:focus {
+  color: rgba(93, 100, 148, .1);
+}
+
+.focus\:text-telluric-blue:focus {
+  color: #5d6494;
+}
+
+.focus\:text-solstice-blue:focus {
+  color: #3a416f;
 }
 
 .text-xs {
@@ -6536,6 +6854,26 @@ table {
     background-color: #ffebef;
   }
 
+  .sm\:bg-eshangazi {
+    background-color: #446dc9;
+  }
+
+  .sm\:bg-moon-grey {
+    background-color: #f5f5fa;
+  }
+
+  .sm\:bg-telluric-blue-opacity-10 {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:bg-telluric-blue {
+    background-color: #5d6494;
+  }
+
+  .sm\:bg-solstice-blue {
+    background-color: #3a416f;
+  }
+
   .sm\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -6828,6 +7166,26 @@ table {
     background-color: #ffebef;
   }
 
+  .sm\:hover\:bg-eshangazi:hover {
+    background-color: #446dc9;
+  }
+
+  .sm\:hover\:bg-moon-grey:hover {
+    background-color: #f5f5fa;
+  }
+
+  .sm\:hover\:bg-telluric-blue-opacity-10:hover {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:hover\:bg-telluric-blue:hover {
+    background-color: #5d6494;
+  }
+
+  .sm\:hover\:bg-solstice-blue:hover {
+    background-color: #3a416f;
+  }
+
   .sm\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -7118,6 +7476,26 @@ table {
 
   .sm\:focus\:bg-pink-lightest:focus {
     background-color: #ffebef;
+  }
+
+  .sm\:focus\:bg-eshangazi:focus {
+    background-color: #446dc9;
+  }
+
+  .sm\:focus\:bg-moon-grey:focus {
+    background-color: #f5f5fa;
+  }
+
+  .sm\:focus\:bg-telluric-blue-opacity-10:focus {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:focus\:bg-telluric-blue:focus {
+    background-color: #5d6494;
+  }
+
+  .sm\:focus\:bg-solstice-blue:focus {
+    background-color: #3a416f;
   }
 
   .sm\:bg-bottom {
@@ -7476,6 +7854,26 @@ table {
     border-color: #ffebef;
   }
 
+  .sm\:border-eshangazi {
+    border-color: #446dc9;
+  }
+
+  .sm\:border-moon-grey {
+    border-color: #f5f5fa;
+  }
+
+  .sm\:border-telluric-blue-opacity-10 {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:border-telluric-blue {
+    border-color: #5d6494;
+  }
+
+  .sm\:border-solstice-blue {
+    border-color: #3a416f;
+  }
+
   .sm\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -7768,6 +8166,26 @@ table {
     border-color: #ffebef;
   }
 
+  .sm\:hover\:border-eshangazi:hover {
+    border-color: #446dc9;
+  }
+
+  .sm\:hover\:border-moon-grey:hover {
+    border-color: #f5f5fa;
+  }
+
+  .sm\:hover\:border-telluric-blue-opacity-10:hover {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:hover\:border-telluric-blue:hover {
+    border-color: #5d6494;
+  }
+
+  .sm\:hover\:border-solstice-blue:hover {
+    border-color: #3a416f;
+  }
+
   .sm\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -8058,6 +8476,26 @@ table {
 
   .sm\:focus\:border-pink-lightest:focus {
     border-color: #ffebef;
+  }
+
+  .sm\:focus\:border-eshangazi:focus {
+    border-color: #446dc9;
+  }
+
+  .sm\:focus\:border-moon-grey:focus {
+    border-color: #f5f5fa;
+  }
+
+  .sm\:focus\:border-telluric-blue-opacity-10:focus {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:focus\:border-telluric-blue:focus {
+    border-color: #5d6494;
+  }
+
+  .sm\:focus\:border-solstice-blue:focus {
+    border-color: #3a416f;
   }
 
   .sm\:rounded-none {
@@ -10879,6 +11317,26 @@ table {
     color: #ffebef;
   }
 
+  .sm\:text-eshangazi {
+    color: #446dc9;
+  }
+
+  .sm\:text-moon-grey {
+    color: #f5f5fa;
+  }
+
+  .sm\:text-telluric-blue-opacity-10 {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:text-telluric-blue {
+    color: #5d6494;
+  }
+
+  .sm\:text-solstice-blue {
+    color: #3a416f;
+  }
+
   .sm\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -11171,6 +11629,26 @@ table {
     color: #ffebef;
   }
 
+  .sm\:hover\:text-eshangazi:hover {
+    color: #446dc9;
+  }
+
+  .sm\:hover\:text-moon-grey:hover {
+    color: #f5f5fa;
+  }
+
+  .sm\:hover\:text-telluric-blue-opacity-10:hover {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:hover\:text-telluric-blue:hover {
+    color: #5d6494;
+  }
+
+  .sm\:hover\:text-solstice-blue:hover {
+    color: #3a416f;
+  }
+
   .sm\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -11461,6 +11939,26 @@ table {
 
   .sm\:focus\:text-pink-lightest:focus {
     color: #ffebef;
+  }
+
+  .sm\:focus\:text-eshangazi:focus {
+    color: #446dc9;
+  }
+
+  .sm\:focus\:text-moon-grey:focus {
+    color: #f5f5fa;
+  }
+
+  .sm\:focus\:text-telluric-blue-opacity-10:focus {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .sm\:focus\:text-telluric-blue:focus {
+    color: #5d6494;
+  }
+
+  .sm\:focus\:text-solstice-blue:focus {
+    color: #3a416f;
   }
 
   .sm\:text-xs {
@@ -12190,6 +12688,26 @@ table {
     background-color: #ffebef;
   }
 
+  .md\:bg-eshangazi {
+    background-color: #446dc9;
+  }
+
+  .md\:bg-moon-grey {
+    background-color: #f5f5fa;
+  }
+
+  .md\:bg-telluric-blue-opacity-10 {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:bg-telluric-blue {
+    background-color: #5d6494;
+  }
+
+  .md\:bg-solstice-blue {
+    background-color: #3a416f;
+  }
+
   .md\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -12482,6 +13000,26 @@ table {
     background-color: #ffebef;
   }
 
+  .md\:hover\:bg-eshangazi:hover {
+    background-color: #446dc9;
+  }
+
+  .md\:hover\:bg-moon-grey:hover {
+    background-color: #f5f5fa;
+  }
+
+  .md\:hover\:bg-telluric-blue-opacity-10:hover {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:hover\:bg-telluric-blue:hover {
+    background-color: #5d6494;
+  }
+
+  .md\:hover\:bg-solstice-blue:hover {
+    background-color: #3a416f;
+  }
+
   .md\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -12772,6 +13310,26 @@ table {
 
   .md\:focus\:bg-pink-lightest:focus {
     background-color: #ffebef;
+  }
+
+  .md\:focus\:bg-eshangazi:focus {
+    background-color: #446dc9;
+  }
+
+  .md\:focus\:bg-moon-grey:focus {
+    background-color: #f5f5fa;
+  }
+
+  .md\:focus\:bg-telluric-blue-opacity-10:focus {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:focus\:bg-telluric-blue:focus {
+    background-color: #5d6494;
+  }
+
+  .md\:focus\:bg-solstice-blue:focus {
+    background-color: #3a416f;
   }
 
   .md\:bg-bottom {
@@ -13130,6 +13688,26 @@ table {
     border-color: #ffebef;
   }
 
+  .md\:border-eshangazi {
+    border-color: #446dc9;
+  }
+
+  .md\:border-moon-grey {
+    border-color: #f5f5fa;
+  }
+
+  .md\:border-telluric-blue-opacity-10 {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:border-telluric-blue {
+    border-color: #5d6494;
+  }
+
+  .md\:border-solstice-blue {
+    border-color: #3a416f;
+  }
+
   .md\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -13422,6 +14000,26 @@ table {
     border-color: #ffebef;
   }
 
+  .md\:hover\:border-eshangazi:hover {
+    border-color: #446dc9;
+  }
+
+  .md\:hover\:border-moon-grey:hover {
+    border-color: #f5f5fa;
+  }
+
+  .md\:hover\:border-telluric-blue-opacity-10:hover {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:hover\:border-telluric-blue:hover {
+    border-color: #5d6494;
+  }
+
+  .md\:hover\:border-solstice-blue:hover {
+    border-color: #3a416f;
+  }
+
   .md\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -13712,6 +14310,26 @@ table {
 
   .md\:focus\:border-pink-lightest:focus {
     border-color: #ffebef;
+  }
+
+  .md\:focus\:border-eshangazi:focus {
+    border-color: #446dc9;
+  }
+
+  .md\:focus\:border-moon-grey:focus {
+    border-color: #f5f5fa;
+  }
+
+  .md\:focus\:border-telluric-blue-opacity-10:focus {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:focus\:border-telluric-blue:focus {
+    border-color: #5d6494;
+  }
+
+  .md\:focus\:border-solstice-blue:focus {
+    border-color: #3a416f;
   }
 
   .md\:rounded-none {
@@ -16533,6 +17151,26 @@ table {
     color: #ffebef;
   }
 
+  .md\:text-eshangazi {
+    color: #446dc9;
+  }
+
+  .md\:text-moon-grey {
+    color: #f5f5fa;
+  }
+
+  .md\:text-telluric-blue-opacity-10 {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:text-telluric-blue {
+    color: #5d6494;
+  }
+
+  .md\:text-solstice-blue {
+    color: #3a416f;
+  }
+
   .md\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -16825,6 +17463,26 @@ table {
     color: #ffebef;
   }
 
+  .md\:hover\:text-eshangazi:hover {
+    color: #446dc9;
+  }
+
+  .md\:hover\:text-moon-grey:hover {
+    color: #f5f5fa;
+  }
+
+  .md\:hover\:text-telluric-blue-opacity-10:hover {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:hover\:text-telluric-blue:hover {
+    color: #5d6494;
+  }
+
+  .md\:hover\:text-solstice-blue:hover {
+    color: #3a416f;
+  }
+
   .md\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -17115,6 +17773,26 @@ table {
 
   .md\:focus\:text-pink-lightest:focus {
     color: #ffebef;
+  }
+
+  .md\:focus\:text-eshangazi:focus {
+    color: #446dc9;
+  }
+
+  .md\:focus\:text-moon-grey:focus {
+    color: #f5f5fa;
+  }
+
+  .md\:focus\:text-telluric-blue-opacity-10:focus {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .md\:focus\:text-telluric-blue:focus {
+    color: #5d6494;
+  }
+
+  .md\:focus\:text-solstice-blue:focus {
+    color: #3a416f;
   }
 
   .md\:text-xs {
@@ -17844,6 +18522,26 @@ table {
     background-color: #ffebef;
   }
 
+  .lg\:bg-eshangazi {
+    background-color: #446dc9;
+  }
+
+  .lg\:bg-moon-grey {
+    background-color: #f5f5fa;
+  }
+
+  .lg\:bg-telluric-blue-opacity-10 {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:bg-telluric-blue {
+    background-color: #5d6494;
+  }
+
+  .lg\:bg-solstice-blue {
+    background-color: #3a416f;
+  }
+
   .lg\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -18136,6 +18834,26 @@ table {
     background-color: #ffebef;
   }
 
+  .lg\:hover\:bg-eshangazi:hover {
+    background-color: #446dc9;
+  }
+
+  .lg\:hover\:bg-moon-grey:hover {
+    background-color: #f5f5fa;
+  }
+
+  .lg\:hover\:bg-telluric-blue-opacity-10:hover {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:hover\:bg-telluric-blue:hover {
+    background-color: #5d6494;
+  }
+
+  .lg\:hover\:bg-solstice-blue:hover {
+    background-color: #3a416f;
+  }
+
   .lg\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -18426,6 +19144,26 @@ table {
 
   .lg\:focus\:bg-pink-lightest:focus {
     background-color: #ffebef;
+  }
+
+  .lg\:focus\:bg-eshangazi:focus {
+    background-color: #446dc9;
+  }
+
+  .lg\:focus\:bg-moon-grey:focus {
+    background-color: #f5f5fa;
+  }
+
+  .lg\:focus\:bg-telluric-blue-opacity-10:focus {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:focus\:bg-telluric-blue:focus {
+    background-color: #5d6494;
+  }
+
+  .lg\:focus\:bg-solstice-blue:focus {
+    background-color: #3a416f;
   }
 
   .lg\:bg-bottom {
@@ -18784,6 +19522,26 @@ table {
     border-color: #ffebef;
   }
 
+  .lg\:border-eshangazi {
+    border-color: #446dc9;
+  }
+
+  .lg\:border-moon-grey {
+    border-color: #f5f5fa;
+  }
+
+  .lg\:border-telluric-blue-opacity-10 {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:border-telluric-blue {
+    border-color: #5d6494;
+  }
+
+  .lg\:border-solstice-blue {
+    border-color: #3a416f;
+  }
+
   .lg\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -19076,6 +19834,26 @@ table {
     border-color: #ffebef;
   }
 
+  .lg\:hover\:border-eshangazi:hover {
+    border-color: #446dc9;
+  }
+
+  .lg\:hover\:border-moon-grey:hover {
+    border-color: #f5f5fa;
+  }
+
+  .lg\:hover\:border-telluric-blue-opacity-10:hover {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:hover\:border-telluric-blue:hover {
+    border-color: #5d6494;
+  }
+
+  .lg\:hover\:border-solstice-blue:hover {
+    border-color: #3a416f;
+  }
+
   .lg\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -19366,6 +20144,26 @@ table {
 
   .lg\:focus\:border-pink-lightest:focus {
     border-color: #ffebef;
+  }
+
+  .lg\:focus\:border-eshangazi:focus {
+    border-color: #446dc9;
+  }
+
+  .lg\:focus\:border-moon-grey:focus {
+    border-color: #f5f5fa;
+  }
+
+  .lg\:focus\:border-telluric-blue-opacity-10:focus {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:focus\:border-telluric-blue:focus {
+    border-color: #5d6494;
+  }
+
+  .lg\:focus\:border-solstice-blue:focus {
+    border-color: #3a416f;
   }
 
   .lg\:rounded-none {
@@ -22187,6 +22985,26 @@ table {
     color: #ffebef;
   }
 
+  .lg\:text-eshangazi {
+    color: #446dc9;
+  }
+
+  .lg\:text-moon-grey {
+    color: #f5f5fa;
+  }
+
+  .lg\:text-telluric-blue-opacity-10 {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:text-telluric-blue {
+    color: #5d6494;
+  }
+
+  .lg\:text-solstice-blue {
+    color: #3a416f;
+  }
+
   .lg\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -22479,6 +23297,26 @@ table {
     color: #ffebef;
   }
 
+  .lg\:hover\:text-eshangazi:hover {
+    color: #446dc9;
+  }
+
+  .lg\:hover\:text-moon-grey:hover {
+    color: #f5f5fa;
+  }
+
+  .lg\:hover\:text-telluric-blue-opacity-10:hover {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:hover\:text-telluric-blue:hover {
+    color: #5d6494;
+  }
+
+  .lg\:hover\:text-solstice-blue:hover {
+    color: #3a416f;
+  }
+
   .lg\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -22769,6 +23607,26 @@ table {
 
   .lg\:focus\:text-pink-lightest:focus {
     color: #ffebef;
+  }
+
+  .lg\:focus\:text-eshangazi:focus {
+    color: #446dc9;
+  }
+
+  .lg\:focus\:text-moon-grey:focus {
+    color: #f5f5fa;
+  }
+
+  .lg\:focus\:text-telluric-blue-opacity-10:focus {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .lg\:focus\:text-telluric-blue:focus {
+    color: #5d6494;
+  }
+
+  .lg\:focus\:text-solstice-blue:focus {
+    color: #3a416f;
   }
 
   .lg\:text-xs {
@@ -23498,6 +24356,26 @@ table {
     background-color: #ffebef;
   }
 
+  .xl\:bg-eshangazi {
+    background-color: #446dc9;
+  }
+
+  .xl\:bg-moon-grey {
+    background-color: #f5f5fa;
+  }
+
+  .xl\:bg-telluric-blue-opacity-10 {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:bg-telluric-blue {
+    background-color: #5d6494;
+  }
+
+  .xl\:bg-solstice-blue {
+    background-color: #3a416f;
+  }
+
   .xl\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -23790,6 +24668,26 @@ table {
     background-color: #ffebef;
   }
 
+  .xl\:hover\:bg-eshangazi:hover {
+    background-color: #446dc9;
+  }
+
+  .xl\:hover\:bg-moon-grey:hover {
+    background-color: #f5f5fa;
+  }
+
+  .xl\:hover\:bg-telluric-blue-opacity-10:hover {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:hover\:bg-telluric-blue:hover {
+    background-color: #5d6494;
+  }
+
+  .xl\:hover\:bg-solstice-blue:hover {
+    background-color: #3a416f;
+  }
+
   .xl\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -24080,6 +24978,26 @@ table {
 
   .xl\:focus\:bg-pink-lightest:focus {
     background-color: #ffebef;
+  }
+
+  .xl\:focus\:bg-eshangazi:focus {
+    background-color: #446dc9;
+  }
+
+  .xl\:focus\:bg-moon-grey:focus {
+    background-color: #f5f5fa;
+  }
+
+  .xl\:focus\:bg-telluric-blue-opacity-10:focus {
+    background-color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:focus\:bg-telluric-blue:focus {
+    background-color: #5d6494;
+  }
+
+  .xl\:focus\:bg-solstice-blue:focus {
+    background-color: #3a416f;
   }
 
   .xl\:bg-bottom {
@@ -24438,6 +25356,26 @@ table {
     border-color: #ffebef;
   }
 
+  .xl\:border-eshangazi {
+    border-color: #446dc9;
+  }
+
+  .xl\:border-moon-grey {
+    border-color: #f5f5fa;
+  }
+
+  .xl\:border-telluric-blue-opacity-10 {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:border-telluric-blue {
+    border-color: #5d6494;
+  }
+
+  .xl\:border-solstice-blue {
+    border-color: #3a416f;
+  }
+
   .xl\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -24730,6 +25668,26 @@ table {
     border-color: #ffebef;
   }
 
+  .xl\:hover\:border-eshangazi:hover {
+    border-color: #446dc9;
+  }
+
+  .xl\:hover\:border-moon-grey:hover {
+    border-color: #f5f5fa;
+  }
+
+  .xl\:hover\:border-telluric-blue-opacity-10:hover {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:hover\:border-telluric-blue:hover {
+    border-color: #5d6494;
+  }
+
+  .xl\:hover\:border-solstice-blue:hover {
+    border-color: #3a416f;
+  }
+
   .xl\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -25020,6 +25978,26 @@ table {
 
   .xl\:focus\:border-pink-lightest:focus {
     border-color: #ffebef;
+  }
+
+  .xl\:focus\:border-eshangazi:focus {
+    border-color: #446dc9;
+  }
+
+  .xl\:focus\:border-moon-grey:focus {
+    border-color: #f5f5fa;
+  }
+
+  .xl\:focus\:border-telluric-blue-opacity-10:focus {
+    border-color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:focus\:border-telluric-blue:focus {
+    border-color: #5d6494;
+  }
+
+  .xl\:focus\:border-solstice-blue:focus {
+    border-color: #3a416f;
   }
 
   .xl\:rounded-none {
@@ -27841,6 +28819,26 @@ table {
     color: #ffebef;
   }
 
+  .xl\:text-eshangazi {
+    color: #446dc9;
+  }
+
+  .xl\:text-moon-grey {
+    color: #f5f5fa;
+  }
+
+  .xl\:text-telluric-blue-opacity-10 {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:text-telluric-blue {
+    color: #5d6494;
+  }
+
+  .xl\:text-solstice-blue {
+    color: #3a416f;
+  }
+
   .xl\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -28133,6 +29131,26 @@ table {
     color: #ffebef;
   }
 
+  .xl\:hover\:text-eshangazi:hover {
+    color: #446dc9;
+  }
+
+  .xl\:hover\:text-moon-grey:hover {
+    color: #f5f5fa;
+  }
+
+  .xl\:hover\:text-telluric-blue-opacity-10:hover {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:hover\:text-telluric-blue:hover {
+    color: #5d6494;
+  }
+
+  .xl\:hover\:text-solstice-blue:hover {
+    color: #3a416f;
+  }
+
   .xl\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -28423,6 +29441,26 @@ table {
 
   .xl\:focus\:text-pink-lightest:focus {
     color: #ffebef;
+  }
+
+  .xl\:focus\:text-eshangazi:focus {
+    color: #446dc9;
+  }
+
+  .xl\:focus\:text-moon-grey:focus {
+    color: #f5f5fa;
+  }
+
+  .xl\:focus\:text-telluric-blue-opacity-10:focus {
+    color: rgba(93, 100, 148, .1);
+  }
+
+  .xl\:focus\:text-telluric-blue:focus {
+    color: #5d6494;
+  }
+
+  .xl\:focus\:text-solstice-blue:focus {
+    color: #3a416f;
   }
 
   .xl\:text-xs {

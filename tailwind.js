@@ -127,6 +127,12 @@ let colors = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
+
+  'eshangazi': '#446DC9',
+  'moon-grey': '#f5f5fa',
+  'telluric-blue-opacity-10': 'rgba(93,100,148,.1)',
+  'telluric-blue': '#5d6494',
+  'solstice-blue': '#3a416f',
 }
 
 module.exports = {
@@ -930,7 +936,7 @@ module.exports = {
 
   plugins: [
     require('tailwindcss/plugins/container')({
-      // center: true,
+      center: true,
       // padding: '1rem',
     }),
   ],
