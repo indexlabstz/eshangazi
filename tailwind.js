@@ -133,6 +133,8 @@ let colors = {
     'telluric-blue-opacity-10': 'rgba(93,100,148,.1)',
     'telluric-blue': '#5d6494',
     'solstice-blue': '#3a416f',
+    'solstice-blue-opacity-60': 'rgba(58,65,111,.6)',
+    'eshangazi-grey': '#848ab8',
 }
 
 module.exports = {
@@ -506,8 +508,12 @@ module.exports = {
         '7/8': '87.5%',
         'full': '100%',
         'screen': '100vw',
+        '288': '18rem',
+        '296': '18.5rem',
         '376': '23.5rem',
         '448': '28rem',
+        '728': '45.5rem',
+        'three-five-px': '3.5rem',
     },
 
 
@@ -548,6 +554,8 @@ module.exports = {
         '112': '28rem',
         'full': '100%',
         'screen': '100vh',
+        'three-five-px': '3.5rem',
+        '104': '6.5rem',
     },
 
 
@@ -568,6 +576,7 @@ module.exports = {
     minWidth: {
         '0': '0',
         'full': '100%',
+        '216': '13.5rem',
     },
 
 
@@ -618,7 +627,9 @@ module.exports = {
         '4xl': '90rem',
         '5xl': '100rem',
         'full': '100%',
+        '336': '21rem',
         '448': '28rem',
+        '728': '45.5rem',
     },
 
 
@@ -639,6 +650,7 @@ module.exports = {
     maxHeight: {
         'full': '100%',
         'screen': '100vh',
+        '12': '3rem',
     },
 
 
@@ -660,6 +672,7 @@ module.exports = {
     padding: {
         'px': '1px',
         '0': '0',
+        'two-px': '0.125rem',
         '1': '0.25rem',
         '2': '0.5rem',
         '3': '0.75rem',
@@ -673,6 +686,9 @@ module.exports = {
         '20': '5rem',
         '24': '6rem',
         '32': '8rem',
+        'three-px': '3.73rem',
+        'five-px': '5.5rem',
+        'three-five-px': '3.5rem',
     },
 
 
@@ -709,6 +725,8 @@ module.exports = {
         '20': '5rem',
         '24': '6rem',
         '32': '8rem',
+        '176': '11rem',
+        '376': '23.5rem',
     },
 
 
@@ -743,6 +761,7 @@ module.exports = {
         '20': '5rem',
         '24': '6rem',
         '32': '8rem',
+        '176': '11rem',
     },
 
 

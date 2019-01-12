@@ -1,3 +1,28 @@
 .hero {
   background: url("/img/bg.jpg");
 }
+
+.bg-gradient-white-moon-grey {
+  background-image: linear-gradient(180deg,#fff,#f5f5fa);
+}
+
+.btn-skeuomorphic {
+  background-image: linear-gradient(180deg,#fff,#f5f5fa);
+  border-radius: 9999px;
+  font-family: Hind,system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  color: #3a416f;
+  font-weight: 600;
+  box-shadow: 0 4px 11px 0 rgba(37,44,97,.15), 0 1px 3px 0 rgba(93,100,148,.2);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .2s ease-out;
+}
+
+.btn-skeuomorphic-blue {
+  background-image: linear-gradient(180deg,#869aff,#5468ff);
+  color: #fff;
+}
+
+.bg-height-fit {
+  background-size: auto 100%;
+}
