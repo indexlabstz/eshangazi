@@ -3586,6 +3586,10 @@ a:hover {
   height: 28rem;
 }
 
+.h-184 {
+  height: 11.5rem;
+}
+
 .h-auto {
   height: auto;
 }
@@ -9823,6 +9827,10 @@ a:hover {
     height: 28rem;
   }
 
+  .sm\:h-184 {
+    height: 11.5rem;
+  }
+
   .sm\:h-auto {
     height: auto;
   }
@@ -16043,6 +16051,10 @@ a:hover {
 
   .md\:h-112 {
     height: 28rem;
+  }
+
+  .md\:h-184 {
+    height: 11.5rem;
   }
 
   .md\:h-auto {
@@ -22267,6 +22279,10 @@ a:hover {
     height: 28rem;
   }
 
+  .lg\:h-184 {
+    height: 11.5rem;
+  }
+
   .lg\:h-auto {
     height: auto;
   }
@@ -28487,6 +28503,10 @@ a:hover {
 
   .xl\:h-112 {
     height: 28rem;
+  }
+
+  .xl\:h-184 {
+    height: 11.5rem;
   }
 
   .xl\:h-auto {

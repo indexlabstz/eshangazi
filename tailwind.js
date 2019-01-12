@@ -556,6 +556,7 @@ module.exports = {
         'screen': '100vh',
         'three-five-px': '3.5rem',
         '104': '6.5rem',
+        '184': '11.5rem',
     },
 
 
