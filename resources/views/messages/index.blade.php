@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="w-full lg:ml-376 {{--overflow-x-hidden--}}">
+    <div class="w-full lg:ml-376">
         <div class="pt-16 bg-gradient-white-moon-grey">
             <div class="relative px-three-five-px pt-8 pb-five-px sm:pb-three-five-px md:pb-five-px">
                 <div class="absolute pin bg-no-repeat bg-right-bottom bg-height-fit sm:opacity-100 opacity-50 z-0"
@@ -183,7 +183,7 @@
                                 </a>
                             </span>
 
-                            <a href="#">
+                            <a href="{{ route('create-message') }}">
                                 <span class="inline-block mx-1 leading-loose cursor-pointer text-eshangazi-grey">
                                     Create New
                                 </span>
