@@ -32,7 +32,7 @@
                     <div class="input-floating-icon-group">
                         <i class="fa fa-envelope"></i>
 
-                        <input class="border text-grey-dark font-thin font-sm rounded w-full p-3{{ $errors->has('email') ? ' border border-red' : '' }}"
+                        <input class="border text-black font-thin font-sm rounded w-full p-3{{ $errors->has('email') ? ' border border-red' : '' }}"
                                name="email"
                                type="text"
                                placeholder="{{ __('Email Address') }}"
@@ -52,7 +52,7 @@
                     <div class="input-floating-icon-group">
                         <i class="fa fa-lock"></i>
 
-                        <input class="border rounded text-grey-dark font-thin font-sm rounded w-full p-3{{ $errors->has('password') ? ' border border-red' : '' }}"
+                        <input class="border rounded text-black font-thin font-sm rounded w-full p-3{{ $errors->has('password') ? ' border border-red' : '' }}"
                                name="password"
                                type="password"
                                placeholder="Password (at least 8 chars)"

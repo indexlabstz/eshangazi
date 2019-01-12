@@ -111,6 +111,8 @@
             <div class="flex-1 font-sans">
                 <div class="flex h-full">
                     <sidebar v-cloak></sidebar>
+
+                    @yield('content')
                 </div>
             </div>
         </div>
