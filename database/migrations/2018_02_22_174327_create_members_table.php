@@ -20,7 +20,7 @@ class CreateMembersTable extends Migration
             $table->string('name');
             $table->text('avatar')->nullable();
             $table->boolean('subscribe')->default(true);
-            $table->integer('born_year');
+            $table->integer('born_year')->unsigned()->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
             
             $table->integer('platform_id')->unsigned()->nullable();

@@ -79,6 +79,7 @@ class MemberController extends Controller
      */
     public function reject(BotMan $bot)
     {
+        $user = $bot->getUser();
         $driver = $bot->getDriver()->getName();
         $extras = $bot->getMessage()->getExtras();
 
@@ -86,8 +87,23 @@ class MemberController extends Controller
 
         $bot->typesAndWaits(1);
 
-        $bot->reply($apiReply);
-        $bot->reply($this->features($apiReply, $driver));
+        if (!$this->check($user)) {
+            $incomplete = $extras['apiActionIncomplete'];
+
+            if ($incomplete) {
+                $bot->reply($apiReply);
+            } else {
+                $this->subscribeWithNoData($user, $extras, $driver);
+
+                if ($driver === 'Facebook') {
+                    $bot->reply($apiReply);
+                }
+
+                $bot->reply($this->features($apiReply, $driver));
+            }
+        } else {
+            $bot->reply($this->features($apiReply, $driver));
+        }
     }
 
     /**
@@ -164,6 +180,43 @@ class MemberController extends Controller
         } else {
             $district_id = null;
         }
+
+        $member = Member::create([
+            'user_platform_id' => $user->getId(),
+            'name' => $user->getFirstName() . ' ' . $user->getLastName(),
+            'avatar' => $profile_pic,
+            'born_year' => $born_year,
+            'gender' => $gender,
+            'platform_id' => $platform_id,
+            'district_id' => $district_id,
+        ]);
+
+        if ($member) {
+            Conversation::create([
+                'intent' => 'Subscribe',
+                'member_id' => $member->id
+            ]);
+        }
+    }
+
+    /**
+     * Subscribe who didi not provide age and destrict details new Member
+     *
+     * @param $user
+     * @param $extras
+     * @param $driver
+     *
+     * @return void
+     */
+    public function subscribeWithNoData($user, $extras, $driver)
+    {
+        $age = null;
+        $district_id = null;
+        $born_year = null;
+        $platform_id = $this->getPlatformId($driver);
+        $profile_pic = $this->getUserProfilePic($user, $driver);
+        $gender = $this->getUserGender($user, $driver);
+
 
         $member = Member::create([
             'user_platform_id' => $user->getId(),
