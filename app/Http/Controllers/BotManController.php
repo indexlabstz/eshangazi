@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Member;
 use App\Conversation;
+use BotMan\BotMan\BotMan;
 use App\Http\Conversations\FeedbackConversation;
 use App\Http\Conversations\QuizConversation;
 use App\Http\Conversations\SmsQuizConversation;
-use App\Member;
-use BotMan\BotMan\BotMan;
 
 class BotManController extends Controller
 {

@@ -6,8 +6,8 @@ use App\Member;
 use App\Message;
 use App\Conversation;
 use BotMan\BotMan\BotMan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\CreateMessageRequest;
 use BotMan\Drivers\Facebook\FacebookDriver;
 use BotMan\Drivers\Facebook\Extensions\Element;
 use BotMan\Drivers\Facebook\Extensions\ElementButton;
@@ -16,11 +16,18 @@ use BotMan\Drivers\Facebook\Extensions\GenericTemplate;
 class MessageController extends Controller
 {
     /**
+     * The user repository instance.
+     */
+    protected $message;
+
+    /**
      * Message Controller constructor.
      */
-    public function __construct()
+    public function __construct(Message $message)
     {
         $this->middleware('auth');
+
+        $this->message = $message;
     }
 
     /**
@@ -52,26 +59,11 @@ class MessageController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMessageRequest $request)
     {
-        $thumbnail_path = null;
+        $response = $this->message->persist($request);
 
-        if ($request->hasFile('thumbnail'))
-        {
-            $thumbnail_path = Storage::disk('s3')
-                ->putFile('public/message-thumbnails', $request->file('thumbnail'), 'public');
-        }
-
-        Message::create([
-            'title'         => $request->title,
-            'description'   => $request->description,
-            'thumbnail'     => $thumbnail_path,
-            'gender'        => $request->gender,
-            'minimum_age'   => $request->minimum_age ? $request->minimum_age : 13,
-            'created_by'    => auth()->id()
-        ]);
-
-        return back(); 
+        return redirect()->route('show-message', $response); 
     }
 
     /**

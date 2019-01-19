@@ -51,4 +51,20 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'updated_by');
     }
+
+    /**
+     * Message saved to the database.
+     * 
+     * @return \App\Message
+     */
+    public function persist($message)
+    {
+        return $this->create([
+            'title'         => $message->title,
+            'description'   => $message->description,
+            'gender'        => $message->gender,
+            'minimum_age'   => $message->minimum_age ? $message->minimum_age : 13,
+            'created_by'    => auth()->id()
+        ]);
+    }
 }

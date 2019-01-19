@@ -5,7 +5,7 @@
         <div class="pt-16 bg-gradient-white-moon-grey">
             <div class="relative px-three-five-px pt-8 pb-five-px sm:pb-three-five-px md:pb-five-px">
                 <div class="absolute pin bg-no-repeat bg-right-bottom bg-height-fit sm:opacity-100 opacity-50 z-0"
-                     style="background-image:url(svg/intro-bg.svg)"></div>
+                     style="background-image:url(/svg/intro-bg.svg)"></div>
 
                 <div class="relative z-10 flex justify-between max-w-728 w-full">
                     <div class="max-w-336 w-full mr-8">
