@@ -49,7 +49,7 @@
 			},
 
 			publish() {
-				axios.post('/api/messages/publish' + this.message.id)
+				axios.post('/api/messages/publish/' + this.message.id)
 				.catch(error => {
                     console.log(error.response.data);
                 }).then(({data}) => {
