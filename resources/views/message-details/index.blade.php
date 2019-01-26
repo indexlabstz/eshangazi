@@ -77,7 +77,7 @@
                 </tbody>
             </table>
 
-            {{ $message_details->links() }}
+            {{-- {{ $message_details->links() }} --}}
         @endif
     </div>
 </div>

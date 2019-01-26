@@ -19,7 +19,8 @@
 
         methods: {
             fetch() {
-                axios.get('/api//messages/details/' + this.message.id).catch(error => {
+                axios.get('/api/messages/details/' + this.message.id)
+                .catch(error => {
                     console.log(error.response.data);
                 }).then(({data}) => {
                     this.messages = data;
