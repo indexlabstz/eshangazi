@@ -167,6 +167,8 @@ class MemberController extends Controller
      */
     public function subscribe($user, $extras, $driver)
     {
+        $district_id = 188;
+
         $age = $extras['apiParameters']['age'];
         $district = $extras['apiParameters']['district'];
         $born_year = date('Y') - $age;
@@ -174,29 +176,33 @@ class MemberController extends Controller
         $profile_pic = $this->getUserProfilePic($user, $driver);
         $gender = $this->getUserGender($user, $driver);
 
-        $district = District::where('name', '=', $district)->first();
+        $district = District::where('name', $district)->first();
+
         if ($district) {
             $district_id = $district->id;
-        } else {
-            $district_id = null;
-        }
+        } 
 
-        $member = Member::create([
-            'user_platform_id' => $user->getId(),
-            'name' => $user->getFirstName() . ' ' . $user->getLastName(),
-            'avatar' => $profile_pic,
-            'born_year' => $born_year,
-            'gender' => $gender,
-            'platform_id' => $platform_id,
-            'district_id' => $district_id,
-        ]);
+        //Check if users exists
+        $member = Member::where('platform_id', $platform_id)->first();
 
-        if ($member) {
-            Conversation::create([
-                'intent' => 'Subscribe',
-                'member_id' => $member->id
+        if (!member) {
+            $member = Member::create([
+                'user_platform_id' => $user->getId(),
+                'name' => $user->getFirstName() . ' ' . $user->getLastName(),
+                'avatar' => $profile_pic,
+                'born_year' => $born_year,
+                'gender' => $gender,
+                'platform_id' => $platform_id,
+                'district_id' => $district_id,
             ]);
-        }
+
+            if ($member) {
+                Conversation::create([
+                    'intent' => 'Subscribe',
+                    'member_id' => $member->id
+                ]);
+            }
+        } 
     }
 
     /**
@@ -211,7 +217,7 @@ class MemberController extends Controller
     public function subscribeWithNoData($user, $extras, $driver)
     {
         $age = null;
-        $district_id = null;
+        $district_id = 188;
         $born_year = null;
         $platform_id = $this->getPlatformId($driver);
         $profile_pic = $this->getUserProfilePic($user, $driver);
