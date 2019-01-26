@@ -18,7 +18,7 @@ class MessageDetailController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -26,11 +26,15 @@ class MessageDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($message)
     {
-        $message_detail = MessageDetail::paginate(10);
+        $details = MessageDetail::where('message_id', $message)->orderBy('id', 'DESC')->get();
 
-        return view('message-details.index', ['message_details' => $message_detail]);
+        if (request()->wantsJson()) {
+            return $details;
+        }
+
+        return view('message-details.index', ['message_details' => $details]);
     }
 
     /**
@@ -54,21 +58,24 @@ class MessageDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $thumbnail_path = null;
+        // $thumbnail_path = null;
 
-        if ($request->hasFile('thumbnail'))
-        {
-            $thumbnail_path = Storage::disk('s3')
-                ->putFile('public/message-detail-thumbnails', $request->file('thumbnail'), 'public');
-        }
+        // if ($request->hasFile('thumbnail'))
+        // {
+        //     $thumbnail_path = Storage::disk('s3')
+        //         ->putFile('public/message-detail-thumbnails', $request->file('thumbnail'), 'public');
+        // }
 
-        MessageDetail::create([
+        $detail = MessageDetail::create([
             'title'         => $request->title,
             'description'   => $request->description,
-            'thumbnail'     => $thumbnail_path,
             'message_id'    => $request->message_id,
-            'created_by'    => auth()->id()
+            'created_by'    => $request->created_by ?: auth()->id()
         ]);
+
+        if (request()->wantsJson()) {
+            return $detail;
+        }
 
         return back();
     }

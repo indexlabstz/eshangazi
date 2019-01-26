@@ -17,7 +17,8 @@ import {TinkerComponent} from 'botman-tinker';
 
 Vue.component('botman-tinker', TinkerComponent);
 
-Vue.component('sidebar', require('./components/Sidebar.vue'));
+Vue.component('sidebar', require('./components/Sidebar.vue').default);
+Vue.component('message-view', require('./components/MessageView.vue').default);
 
 const app = new Vue({
     el: '#eshangazi'

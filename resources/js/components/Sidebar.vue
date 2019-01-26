@@ -301,7 +301,7 @@
                 conversation: true,
                 business: true,
                 location: true,
-                setting: true,
+                setting: true, 
             };
         },
 

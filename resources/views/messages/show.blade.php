@@ -1,309 +1,237 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="w-full lg:ml-376">
-        <div class="px-three-five-px pt-8 sm:pb-three-five-px flex justify-between"> 
-            <div class="text-xs leading-tight"> 
-                <div class="font-sans-alt uppercase font-semibold tracking-wide"> 
-                    Status <span class="text-eshangazi">Unpublished</span> 
+    <message-view inline-template :message="{{ $message }}" :user={{ auth()->id() }}>
+        <div class="w-full lg:ml-376">
+            <div class="px-three-five-px pt-8 sm:pb-three-five-px flex justify-between"> 
+                <div class="text-xs leading-tight"> 
+                    <div class="font-sans-alt uppercase font-semibold tracking-wide"> 
+                        Status <span class="text-eshangazi">Unpublished</span> 
+                    </div> 
                 </div> 
-            </div> 
 
-            <div class="flex items-center uppercase font-semibold tracking-wide text-cosmos-black-opacity-30 text-xs leading-tight whitespace-no-wrap font-sans-alt"> 
-                <span class="block mr-1 w-4 h-4 fill-current"> 
-                    <span class="block p-2"> 
-                        <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-                            <path d="M11,22A11,11,0,1,1,22,11,11,11,0,0,1,11,22ZM11,2a9,9,0,1,0,9,9A9,9,0,0,0,11,2Z"></path><path d="M15,14a.93.93,0,0,1-.45-.11l-4-2A1,1,0,0,1,10,11V5a1,1,0,0,1,2,0v5.38l3.45,1.73a1,1,0,0,1,.44,1.34A1,1,0,0,1,15,14Z"></path>
-                        </svg> 
+                <div class="flex items-center uppercase font-semibold tracking-wide text-cosmos-black-opacity-30 text-xs leading-tight whitespace-no-wrap font-sans-alt"> 
+                    <span class="block mr-1 w-4 h-4 fill-current"> 
+                        <span class="block p-2"> 
+                            <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+                                <path d="M11,22A11,11,0,1,1,22,11,11,11,0,0,1,11,22ZM11,2a9,9,0,1,0,9,9A9,9,0,0,0,11,2Z"></path>
+                                <path d="M15,14a.93.93,0,0,1-.45-.11l-4-2A1,1,0,0,1,10,11V5a1,1,0,0,1,2,0v5.38l3.45,1.73a1,1,0,0,1,.44,1.34A1,1,0,0,1,15,14Z"></path>
+                            </svg> 
+                            <img src="{{ asset('img/demo.jpg') }}" class="h-auto max-h-12 w-auto">
+                        </span> 
                     </span> 
-                </span> 
-                Jan. 14, 2019 
-            </div> 
-        </div>
+                    Jan. 14, 2019 
+                </div> 
+            </div>
 
-        <div class="bg-gradient-white-moon-grey">
-            <div class="relative px-three-five-px pb-five-px sm:pb-three-five-px md:pb-five-px">
-                <div class="absolute pin bg-no-repeat bg-right-bottom bg-height-fit sm:opacity-100 opacity-50 z-0"
-                     style="background-image:url(/svg/intro-bg.svg)"></div>
+            <div class="bg-gradient-white-moon-grey">
+                <div class="relative px-three-five-px pb-five-px sm:pb-three-five-px md:pb-five-px">
+                    <div class="absolute pin bg-no-repeat bg-right-bottom bg-height-fit sm:opacity-100 opacity-50 z-0"
+                         style="background-image:url(/svg/intro-bg.svg)"></div>
 
-                <div class="relative z-10 flex justify-between max-w-728 w-full">
-                    <div class="max-w-336 w-full mr-8">
+                    <div class="relative z-10 flex justify-between max-w-728 w-full">
+                        <div class="max-w-336 w-full mr-8">
 
-                        <h2 class="text-3xl sm:text-xl md:text-2xl font-semibold mb-2">
-                            {{ $message->title }}
-                        </h2>
+                            <h2 class="text-3xl sm:text-xl md:text-2xl font-semibold mb-2">
+                                {{ $message->title }}
+                            </h2>
 
-                        <p class="text-solstice-blue-opacity-60 mb-6 leading-normal">
-                            {{ $message->description }}
-                        </p>
+                            <p class="text-solstice-blue-opacity-60 mb-6 leading-normal">
+                                {{ $message->description }}
+                            </p>
 
-                        <div class="flex -m-1 xl:flex-row flex-col">
-                            <a class="inline-block btn-skeuomorphic btn-skeuomorphic-blue hover:no-underline  sm:py-2 py-4 px-6 m-1 text-center text-sm whitespace-no-wrap"
-                               href="https://dialogflow.com" target="_blank">
-                                <div class="flex items-center justify-center">
-                                    <span class="flex items-center h-4 w-auto mr-2 py-two-px flex-no-grow flex-no-shrink fill-current">
-                                        <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 12">
-                                            <path d="M5.83,5.29A.23.23,0,0,1,6,5.6s0,0,0,.05L2.3,11.88a.25.25,0,0,1-.47-.16l.54-4.24L.17,6.72A.26.26,0,0,1,0,6.4s0,0,0-.05L3.7.13a.25.25,0,0,1,.47.15L3.63,4.52Z"></path>
-                                        </svg>
-                                    </span>
+                            <div class="flex -m-1 xl:flex-row flex-col">
+                                <a class="inline-block btn-skeuomorphic btn-skeuomorphic-blue hover:no-underline  sm:py-2 py-4 px-6 m-1 text-center text-sm whitespace-no-wrap" 
+                                    @click="publish">
+                                    <div class="flex items-center justify-center">
+                                        <span class="flex items-center h-4 w-auto mr-2 py-two-px flex-no-grow flex-no-shrink fill-current">
+                                            <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 12">
+                                                <path d="M5.83,5.29A.23.23,0,0,1,6,5.6s0,0,0,.05L2.3,11.88a.25.25,0,0,1-.47-.16l.54-4.24L.17,6.72A.26.26,0,0,1,0,6.4s0,0,0-.05L3.7.13a.25.25,0,0,1,.47.15L3.63,4.52Z"></path>
+                                            </svg>
+                                        </span>
 
-                                    <span class="inline-block pt-1 pb-two-px"> Publish </span>
-                                </div>
-                            </a>
+                                        <span class="inline-block pt-1 pb-two-px"> Publish </span>
+                                    </div>
+                                </a>
 
-                            <a class="inline-block btn-skeuomorphic hover:no-underline sm:py-2 py-4 px-6 m-1 text-center whitespace-no-wrap text-sm"
-                               href="m.me/eshangazibot" target="_blank"
-                               rel="nofollow"
-                               target="_blank">
-                                <div class="flex items-center justify-center">
-                                    <span class="flex items-center h-4 w-auto mr-2 py-two-px flex-no-grow flex-no-shrink fill-current">
-                                        <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 10">
-                                            <polygon points="0 0 0 10 8 5 0 0"></polygon>
-                                        </svg>
-                                    </span>
+                                <a class="inline-block btn-skeuomorphic hover:no-underline sm:py-2 py-4 px-6 m-1 text-center whitespace-no-wrap text-sm"
+                                   href="m.me/eshangazibot" target="_blank"
+                                   rel="nofollow"
+                                   target="_blank">
+                                    <div class="flex items-center justify-center">
+                                        <span class="flex items-center h-4 w-auto mr-2 py-two-px flex-no-grow flex-no-shrink fill-current">
+                                            <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 10">
+                                                <polygon points="0 0 0 10 8 5 0 0"></polygon>
+                                            </svg>
+                                        </span>
 
-                                    <span class="inline-block pt-1 pb-two-px"> Attach Image </span>
-                                </div>
-                            </a>
+                                        <span class="inline-block pt-1 pb-two-px"> Attach Image </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex-no-grow flex-no-shrink sm:w-288 w-296 -mb-176 sm:block hidden">
+                            <img src="{{ asset('img/demo.jpg') }}" class="w-auto">
                         </div>
                     </div>
-
-                    <div class="flex-no-grow flex-no-shrink sm:w-288 w-296 -mb-176 sm:block hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 306 414">
-                            <defs>
-                                <linearGradient id="c" x1="50%" x2="50%" y1="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#F5F5FA"></stop>
-
-                                    <stop offset="100%" stop-color="#FFF"></stop>
-                                </linearGradient>
-
-                                <rect id="b" width="134" height="180" rx="4"></rect>
-                                <filter id="a" width="127.6%" height="120.6%" x="-13.8%" y="-8.1%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.145098039 0 0 0 0 0.17254902 0 0 0 0 0.380392157 0 0 0 0.15 0"></feColorMatrix>
-                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix>
-                                    <feMerge>
-                                        <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                                        <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
-                                    </feMerge>
-                                </filter>
-
-                                <linearGradient id="e" x1="50%" x2="50%" y1="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#F5F5FA"></stop>
-                                    <stop offset="100%" stop-color="#FFF"></stop>
-                                </linearGradient>
-
-                                <filter id="d" width="136.8%" height="126.2%" x="-18.4%" y="-13.1%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.11372549 0 0 0 0 0.133333333 0 0 0 0 0.274509804 0 0 0 0.16 0"></feColorMatrix>
-                                    <feMerge>
-                                        <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                                        <feMergeNode in="SourceGraphic"></feMergeNode>
-                                    </feMerge>
-                                </filter>
-
-                                <path id="g" d="M0 131h134v45a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-45z"></path>
-
-                                <filter id="f" width="107.5%" height="120.4%" x="-3.7%" y="-8.2%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix>
-                                </filter>
-
-                                <rect id="i" width="134" height="180" rx="4"></rect>
-
-                                <filter id="h" width="127.6%" height="120.6%" x="-13.8%" y="-8.1%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.145098039 0 0 0 0 0.17254902 0 0 0 0 0.380392157 0 0 0 0.15 0"></feColorMatrix>
-                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix>
-                                    <feMerge>
-                                        <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                                        <feMergeNode in="shadowMatrixOuter2"></feMergeNode> </feMerge>
-                                </filter>
-
-                                <filter id="j" width="146.8%" height="127.3%" x="-22.3%" y="-13.6%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.11372549 0 0 0 0 0.133333333 0 0 0 0 0.274509804 0 0 0 0.19 0"></feColorMatrix>
-                                    <feMerge> <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                                        <feMergeNode in="SourceGraphic"></feMergeNode>
-                                    </feMerge>
-                                </filter>
-
-                                <linearGradient id="k" x1="50%" x2="50%" y1="0%" y2="152.605%">
-                                    <stop offset="0%" stop-color="#F5F5FA"></stop>
-                                    <stop offset="100%" stop-color="#FFF"></stop>
-                                </linearGradient>
-                                <filter id="l" width="128%" height="205%" x="-14%" y="-52.5%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.11372549 0 0 0 0 0.133333333 0 0 0 0 0.274509804 0 0 0 0.1 0"></feColorMatrix>
-                                    <feMerge> <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                                        <feMergeNode in="SourceGraphic"></feMergeNode>
-                                    </feMerge>
-                                </filter>
-
-                                <path id="n" d="M0 131h134v45a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-45z"></path>
-
-                                <filter id="m" width="107.5%" height="120.4%" x="-3.7%" y="-8.2%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix>
-                                </filter>
-
-                                <rect id="p" width="134" height="180" y="2" rx="4"></rect>
-
-                                <filter id="o" width="127.6%" height="120.6%" x="-13.8%" y="-8.1%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.145098039 0 0 0 0 0.17254902 0 0 0 0 0.380392157 0 0 0 0.15 0"></feColorMatrix>
-                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
-                                    <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="1.5"></feGaussianBlur>
-                                    <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix>
-                                    <feMerge>
-                                        <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                                        <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
-                                    </feMerge>
-                                </filter>
-
-                                <filter id="q" height="123.2%" y="-11.6%" filterUnits="objectBoundingBox">
-                                    <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset> <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur> <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.11372549 0 0 0 0 0.133333333 0 0 0 0 0.274509804 0 0 0 0.16 0"></feColorMatrix> <feMerge> <feMergeNode in="shadowMatrixOuter1"></feMergeNode> <feMergeNode in="SourceGraphic"></feMergeNode> </feMerge> </filter> <path id="s" d="M0 133h134v45a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-45z"></path> <filter id="r" width="107.5%" height="120.4%" x="-3.7%" y="-8.2%" filterUnits="objectBoundingBox"> <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset> <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur> <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix> </filter> <rect id="u" width="134" height="180" rx="4"></rect> <filter id="t" width="127.6%" height="120.6%" x="-13.8%" y="-8.1%" filterUnits="objectBoundingBox"> <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset> <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5.5"></feGaussianBlur> <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.145098039 0 0 0 0 0.17254902 0 0 0 0 0.380392157 0 0 0 0.15 0"></feColorMatrix> <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset> <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="1.5"></feGaussianBlur> <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix> <feMerge> <feMergeNode in="shadowMatrixOuter1"></feMergeNode> <feMergeNode in="shadowMatrixOuter2"></feMergeNode> </feMerge> </filter> <filter id="v" width="135.4%" height="130.7%" x="-17.7%" y="-16.7%" filterUnits="objectBoundingBox"> <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset> <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur> <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.11372549 0 0 0 0 0.133333333 0 0 0 0 0.274509804 0 0 0 0.16 0"></feColorMatrix> <feMerge> <feMergeNode in="shadowMatrixOuter1"></feMergeNode> <feMergeNode in="SourceGraphic"></feMergeNode> </feMerge> </filter> <rect id="x" width="81.138" height="18.452" x=".165" y=".205" rx="9.226"></rect> <filter id="w" width="117.3%" height="175.9%" x="-8.6%" y="-27.1%" filterUnits="objectBoundingBox"> <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset> <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur> <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></feColorMatrix> </filter> <path id="z" d="M0 131h134v45a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-45z"></path> <filter id="y" width="107.5%" height="120.4%" x="-3.7%" y="-8.2%" filterUnits="objectBoundingBox"> <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset> <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"></feGaussianBlur> <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.364705882 0 0 0 0 0.392156863 0 0 0 0 0.580392157 0 0 0 0.2 0"></feColorMatrix> </filter> </defs> <g fill="none" fill-rule="evenodd"> <g transform="translate(11 7)"> <use fill="#000" filter="url(#a)" xlink:href="#b"></use> <use fill="url(#c)" xlink:href="#b"></use> </g> <g filter="url(#d)" transform="translate(50 32)"> <path fill="url(#e)" d="M.69 58.145V67.582c-.03 3.71 3.824 7.378 11.163 9.78 12.352 4.04 29.896 2.96 39.186-2.412 3.785-2.189 5.616-4.753 5.621-7.296v-9.438L.69 58.145"></path> <path fill="#E9EBFB" d="M45.496 48.628c12.351 4 14.833 11.551 5.543 16.868-9.29 5.317-26.834 6.385-39.186 2.386-12.35-4-14.832-11.551-5.542-16.868 9.29-5.316 26.834-6.385 39.185-2.386"></path> <path fill="url(#e)" d="M.69.052V9.49c-.03 3.71 3.824 7.378 11.163 9.78 12.352 4.04 29.896 2.96 39.186-2.412 3.785-2.189 5.616-4.753 5.621-7.297V.124L.69.052" transform="translate(0 44.388)"></path> <path fill="#E9EBFB" d="M45.496 34.482c12.351 3.999 14.833 11.55 5.543 16.867s-26.834 6.385-39.186 2.386c-12.35-3.999-14.832-11.55-5.542-16.867 9.29-5.317 26.834-6.385 39.185-2.386"></path> <path fill="url(#e)" d="M.69.403v9.438c-.03 3.71 3.824 7.378 11.163 9.779 12.352 4.04 29.896 2.961 39.186-2.41 3.785-2.19 5.616-4.754 5.621-7.298V.475L.69.403" transform="translate(0 29.67)"></path> <path fill="#E9EBFB" d="M45.496 20.357c12.351 4.036 14.833 11.657 5.543 17.023-9.29 5.365-26.834 6.443-39.186 2.408C-.497 35.752-2.979 28.13 6.311 22.765c9.29-5.365 26.834-6.443 39.185-2.408"></path> <path fill="#B0B8F5" d="M43.191 22.41c10.74 3.046 12.898 8.796 4.82 12.845-8.078 4.048-23.334 4.862-34.074 1.816-10.74-3.045-12.898-8.795-4.82-12.844 8.078-4.048 23.334-4.862 34.074-1.816"></path> <path fill="#F5F5FA" d="M15.512.232h26.327v34.924H15.512z"></path> <path fill="#E9EBFB" d="M12.856 2.884H44.27v32.272H12.856z"></path> <path fill="url(#e)" d="M.391.153h37.167v30.073c-4.373 2.203-10.548 3.304-18.525 3.304-7.978 0-14.191-1.101-18.642-3.304V.153z" transform="translate(9.59 5.384)"></path> <g fill="#C5C9E0" opacity=".5" transform="translate(12.955 9.695)"> <rect width="1.106" height="1.105" x=".124" y=".484" rx=".551"></rect> <rect width="1.106" height="1.105" x=".124" y="2.695" rx=".551"></rect> <rect width="9.956" height="1.105" x="9.415" y=".484" rx=".552"></rect> <rect width="2.876" height="1.105" x="20.255" y=".484" rx=".552"></rect> <rect width="1.991" height="1.105" x="4.991" y="2.695" rx=".552"></rect> <rect width="6.415" height="1.105" x="7.866" y="2.695" rx=".552"></rect> <rect width="11.946" height="1.105" x="14.945" y="2.695" rx=".552"></rect> <rect width="5.088" height="1.105" x="24.017" y=".484" rx=".552"></rect> <rect width="1.106" height="1.105" x=".124" y="5.126" rx=".551"></rect> <rect width="1.106" height="1.105" x=".124" y="7.337" rx=".551"></rect> <rect width="4.425" height="1.105" x="4.991" y="5.126" rx=".552"></rect> <rect width="6.415" height="1.105" x="10.3" y="5.126" rx=".552"></rect> <rect width="9.734" height="1.105" x="17.6" y="5.126" rx=".552"></rect> <rect width="5.752" height="1.105" x="2.557" y="7.337" rx=".552"></rect> <rect width="9.956" height="1.105" x="9.415" y="7.337" rx=".552"></rect> <rect width="2.876" height="1.105" x="20.255" y="7.337" rx=".552"></rect> <rect width="5.088" height="1.105" x="24.017" y="7.337" rx=".552"></rect> <rect width="1.106" height="1.105" x=".124" y="9.547" rx=".551"></rect> <rect width="1.106" height="1.105" x=".124" y="11.979" rx=".551"></rect> <rect width="1.106" height="1.105" x=".124" y="14.189" rx=".551"></rect> <rect width="1.106" height="1.105" x=".124" y="16.4" rx=".551"></rect> <rect width="1.106" height="1.105" x=".124" y="18.61" rx=".551"></rect> <rect width="1.991" height="1.105" x="4.991" y="9.547" rx=".552"></rect> <rect width="6.415" height="1.105" x="7.866" y="9.547" rx=".552"></rect> <rect width="6.415" height="1.105" x="4.991" y="11.979" rx=".552"></rect> <rect width="9.07" height="1.105" x="12.07" y="11.979" rx=".552"></rect> <rect width="7.743" height="1.105" x="22.025" y="11.979" rx=".552"></rect> <rect width="11.946" height="1.105" x="14.945" y="9.547" rx=".552"></rect> <rect width="4.425" height="1.105" x="4.991" y="16.4" rx=".552"></rect> <rect width="6.415" height="1.105" x="10.3" y="16.4" rx=".552"></rect> <rect width="9.734" height="1.105" x="17.6" y="16.4" rx=".552"></rect> <rect width="3.097" height="1.105" x="27.998" y="14.189" rx=".552"></rect> <rect width="9.292" height="1.105" x="16.937" y="14.189" rx=".552"></rect> <rect width="5.752" height="1.105" x="2.557" y="18.61" rx=".552"></rect> <rect width="9.956" height="1.105" x="9.415" y="18.61" rx=".552"></rect> <rect width="2.876" height="1.105" x="20.255" y="18.61" rx=".552"></rect> <rect width="5.088" height="1.105" x="24.017" y="18.61" rx=".552"></rect> <rect width="5.752" height="1.105" x="2.557" y=".484" rx=".552"></rect> </g> </g> <path fill="#848AB8" d="M79 98c-6.627 0-12 5.372-12 12 0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.628-5.373-12-12-12z"></path> <path fill="#FFF" fill-rule="nonzero" d="M84.84 109.603a.575.575 0 0 0-.565.585c0 2.713-2.152 4.893-4.813 4.893a4.821 4.821 0 0 1-4.113-2.312h1.175a.575.575 0 1 0 0-1.15h-2.296a.575.575 0 0 0-.574.575v2.302a.575.575 0 1 0 1.148 0v-.517a5.955 5.955 0 0 0 4.66 2.254c3.29 0 5.96-2.717 5.96-6.045a.575.575 0 0 0-.582-.585m-5.513-5.469c-3.289 0-5.96 2.717-5.96 6.045a.575.575 0 0 0 1.13.15c.013-.05.019-.1.018-.15 0-2.713 2.152-4.893 4.812-4.893a4.82 4.82 0 0 1 4.104 2.302h-1.166a.575.575 0 1 0 0 1.152h2.297a.575.575 0 0 0 .574-.576v-2.295a.574.574 0 1 0-1.148 0v-.008.526a5.959 5.959 0 0 0-4.66-2.253"></path> <text fill="#FFF" font-family="Hind-Bold, Hind" font-size="72" font-weight="bold" opacity=".16" transform="translate(11 7)"> <tspan x="20.82" y="80">1</tspan> </text> <g transform="translate(11 7)"> <use fill="#000" filter="url(#f)" xlink:href="#g"></use> <use fill="url(#c)" xlink:href="#g"></use> </g> <path fill="#5D6494" d="M38.761 159v-6.425h1.363V159H38.76zm7.273 0h-1.34v-2.87c0-.354-.06-.62-.178-.797-.119-.177-.306-.266-.56-.266-.343 0-.592.126-.748.378-.155.252-.232.666-.232 1.243V159h-1.34v-4.913h1.023l.18.628h.075c.132-.225.322-.402.571-.53.25-.127.535-.19.857-.19.736 0 1.234.24 1.494.72h.12c.13-.228.325-.405.581-.531.257-.126.546-.19.868-.19.557 0 .978.143 1.264.43.285.285.428.743.428 1.372V159h-1.345v-2.87c0-.354-.059-.62-.178-.797-.118-.177-.305-.266-.56-.266-.328 0-.573.117-.736.351-.163.235-.244.607-.244 1.117V159zm7.137.088c-.577 0-1.03-.21-1.358-.629h-.07c.047.41.07.648.07.712v1.991h-1.34v-7.075h1.09l.188.637h.062c.313-.486.778-.73 1.393-.73.58 0 1.034.225 1.362.673.328.448.493 1.07.493 1.868 0 .524-.077.98-.231 1.366-.154.387-.373.682-.657.884a1.684 1.684 0 0 1-1.002.303zm-.396-4.021c-.33 0-.572.102-.725.305-.152.204-.231.54-.237 1.009v.145c0 .527.078.905.235 1.134.157.228.405.342.745.342.6 0 .9-.495.9-1.485 0-.483-.073-.846-.221-1.088-.148-.241-.38-.362-.697-.362zm6.135-1.072c.182 0 .333.013.453.04l-.101 1.256a1.535 1.535 0 0 0-.396-.044c-.428 0-.76.11-1 .33-.238.22-.358.527-.358.923v2.5h-1.34v-4.913h1.015l.198.826h.066c.152-.275.358-.497.617-.666.26-.168.541-.252.846-.252zm2.413 2.54c0 .486.08.854.24 1.103.159.249.419.373.78.373.357 0 .614-.124.77-.371.157-.248.236-.616.236-1.105 0-.487-.08-.851-.238-1.095-.158-.243-.417-.364-.778-.364-.357 0-.615.12-.773.362-.158.242-.237.607-.237 1.097zm3.397 0c0 .8-.211 1.425-.633 1.876-.422.451-1.01.677-1.762.677-.472 0-.888-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.29-.838-.29-1.353 0-.803.209-1.427.627-1.872.42-.446 1.008-.668 1.767-.668.472 0 .888.102 1.248.307.36.205.637.5.83.884.194.383.29.833.29 1.349zM66.996 159l-1.872-4.913h1.402l.95 2.8c.105.354.17.69.197 1.006h.026c.015-.282.08-.617.198-1.007l.945-2.8h1.402L68.372 159h-1.376zm5.985-4.052c-.284 0-.506.09-.668.27-.16.18-.253.436-.276.767h1.88c-.005-.33-.092-.586-.259-.766-.167-.18-.392-.27-.677-.27zm.19 4.14c-.792 0-1.41-.218-1.855-.655-.445-.436-.668-1.055-.668-1.854 0-.824.206-1.46.617-1.91.412-.45.981-.674 1.708-.674.694 0 1.235.197 1.621.593.387.395.58.942.58 1.64v.65h-3.168c.015.38.127.678.338.892.211.213.507.32.888.32.296 0 .576-.03.84-.092a4.2 4.2 0 0 0 .825-.294v1.037a3.147 3.147 0 0 1-.751.261 4.738 4.738 0 0 1-.976.086zM84.648 159h-1.657l-.505-.497c-.56.39-1.193.585-1.899.585-.714 0-1.281-.164-1.7-.492-.42-.328-.629-.772-.629-1.332 0-.401.089-.743.266-1.026.177-.283.481-.547.912-.793a2.85 2.85 0 0 1-.479-.723c-.1-.23-.15-.481-.15-.754 0-.445.171-.804.513-1.076.34-.273.797-.41 1.368-.41.545 0 .981.128 1.308.381.326.253.49.593.49 1.017 0 .349-.101.668-.303.956-.203.289-.53.563-.98.824l1.248 1.217c.208-.342.388-.783.54-1.322h1.398c-.106.395-.25.781-.435 1.158-.185.376-.394.71-.629 1L84.65 159zm-4.98-1.863c0 .252.095.452.284.602.19.15.432.224.728.224.369 0 .701-.09.997-.268l-1.459-1.45c-.17.129-.304.263-.402.404a.831.831 0 0 0-.147.488zm1.579-3.116a.455.455 0 0 0-.159-.367.61.61 0 0 0-.408-.134c-.197 0-.351.047-.464.14a.49.49 0 0 0-.17.4c0 .258.14.543.418.853.252-.14.446-.279.58-.415a.657.657 0 0 0 .203-.477zM91.17 159l-.18-.628h-.07a1.414 1.414 0 0 1-.61.53 2.085 2.085 0 0 1-.902.186c-.577 0-1.012-.155-1.305-.464-.293-.309-.44-.753-.44-1.333v-3.204h1.34v2.87c0 .354.064.62.19.797.126.177.327.266.602.266.375 0 .646-.125.813-.376.167-.25.25-.665.25-1.246v-2.311h1.34V159H91.17zm5.133.088c-.577 0-1.03-.21-1.358-.629h-.07c.047.41.07.648.07.712v1.991h-1.34v-7.075h1.09l.189.637h.061c.314-.486.778-.73 1.393-.73.58 0 1.035.225 1.363.673.328.448.492 1.07.492 1.868 0 .524-.077.98-.23 1.366-.155.387-.374.682-.658.884a1.684 1.684 0 0 1-1.002.303zm-.395-4.021c-.331 0-.573.102-.725.305-.153.204-.232.54-.238 1.009v.145c0 .527.079.905.235 1.134.157.228.405.342.745.342.6 0 .901-.495.901-1.485 0-.483-.074-.846-.222-1.088-.148-.241-.38-.362-.696-.362zM100.64 159H99.3v-6.838h1.34V159zm2.474-2.465c0 .486.08.854.24 1.103.159.249.419.373.78.373.357 0 .614-.124.77-.371.157-.248.236-.616.236-1.105 0-.487-.08-.851-.238-1.095-.158-.243-.417-.364-.778-.364-.357 0-.615.12-.773.362-.158.242-.237.607-.237 1.097zm3.397 0c0 .8-.211 1.425-.633 1.876-.422.451-1.01.677-1.762.677-.472 0-.888-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.291-.838-.291-1.353 0-.803.21-1.427.628-1.872.42-.446 1.008-.668 1.767-.668.472 0 .888.102 1.248.307.36.205.637.5.83.884.194.383.29.833.29 1.349zm4.227 2.465l-.259-.668h-.035c-.226.284-.458.481-.697.591-.238.11-.55.165-.934.165-.471 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.765-.747-.392 0-.854.119-1.384.356l-.444-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.352.288.527.724.527 1.31V159h-.936zm-.395-2.276l-.519.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.746-.268.186-.179.279-.416.279-.712v-.404zm4.267 2.364c-.577 0-1.03-.224-1.36-.672-.33-.449-.495-1.07-.495-1.864 0-.805.168-1.433.504-1.883.335-.45.797-.674 1.386-.674.618 0 1.09.24 1.415.72h.044a5.48 5.48 0 0 1-.101-.98v-1.573h1.345V159h-1.029l-.259-.637h-.057c-.305.483-.77.725-1.393.725zm.47-1.068c.343 0 .594-.1.754-.299.16-.199.247-.537.261-1.015v-.145c0-.527-.081-.905-.244-1.134-.162-.228-.427-.343-.793-.343a.787.787 0 0 0-.696.38c-.166.254-.249.622-.249 1.106 0 .483.084.846.25 1.087.168.242.407.363.717.363zm-67.408 13.068c-.577 0-1.03-.224-1.36-.672-.33-.449-.494-1.07-.494-1.864 0-.805.168-1.433.503-1.883.335-.45.798-.674 1.386-.674.619 0 1.09.24 1.416.72h.043a5.48 5.48 0 0 1-.1-.98v-1.573h1.344V171h-1.028l-.26-.637h-.057c-.304.483-.769.725-1.393.725zm.47-1.068c.343 0 .595-.1.754-.299.16-.199.247-.537.262-1.015v-.145c0-.527-.082-.905-.244-1.134-.163-.228-.427-.343-.793-.343a.787.787 0 0 0-.697.38c-.165.254-.248.622-.248 1.106 0 .483.083.846.25 1.087.167.242.406.363.717.363zm6.79.98l-.26-.668h-.034c-.226.284-.458.481-.697.591-.239.11-.55.165-.934.165-.471 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.765-.747-.393 0-.854.119-1.384.356l-.444-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.351.288.527.724.527 1.31V171h-.936zm-.395-2.276l-.519.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.746-.268.186-.179.279-.416.279-.712v-.404zm4.78 1.296c.235 0 .516-.051.845-.154v.998c-.334.15-.745.224-1.23.224-.537 0-.927-.136-1.172-.407-.245-.27-.367-.677-.367-1.22v-2.368h-.642v-.567l.739-.448.386-1.037h.857v1.046h1.376v1.006h-1.376v2.369c0 .19.054.331.16.422.108.09.25.136.425.136zm4.958.98l-.26-.668h-.035c-.225.284-.457.481-.696.591-.239.11-.55.165-.934.165-.472 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.364-.248.914-.385 1.65-.411l.852-.027v-.215c0-.498-.255-.747-.764-.747-.393 0-.854.119-1.385.356l-.443-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.351.288.527.724.527 1.31V171h-.936zm-.396-2.276l-.518.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.745-.268.186-.179.28-.416.28-.712v-.404zM71 170.02c.234 0 .515-.051.843-.154v.998c-.334.15-.744.224-1.23.224-.536 0-.927-.136-1.171-.407-.245-.27-.367-.677-.367-1.22v-2.368h-.642v-.567l.738-.448.387-1.037h.857v1.046h1.376v1.006h-1.376v2.369c0 .19.054.331.16.422.107.09.249.136.425.136zm2.904-1.485c0 .486.08.854.24 1.103.16.249.42.373.78.373.357 0 .614-.124.771-.371.157-.248.235-.616.235-1.105 0-.487-.079-.851-.237-1.095-.158-.243-.418-.364-.778-.364-.357 0-.615.12-.773.362-.159.242-.238.607-.238 1.097zm3.397 0c0 .8-.21 1.425-.633 1.876-.421.451-1.009.677-1.762.677-.471 0-.887-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.29-.838-.29-1.353 0-.803.21-1.427.628-1.872.419-.446 1.008-.668 1.767-.668.471 0 .887.102 1.248.307.36.205.637.5.83.884.194.383.29.833.29 1.349zM84.785 171l-.466-1.53h-2.342l-.466 1.53h-1.468l2.268-6.451h1.666L86.253 171h-1.468zm-.79-2.672a452.37 452.37 0 0 1-.728-2.35 6.637 6.637 0 0 1-.117-.432c-.096.375-.373 1.303-.83 2.782h1.674zM88.295 171h-1.34v-6.838h1.34V171zm1.817-.37a.898.898 0 0 1-.358-.287.684.684 0 0 1-.153-.424c0-.188.054-.344.162-.468a1.88 1.88 0 0 1 .47-.367 1.319 1.319 0 0 1-.613-.536 1.632 1.632 0 0 1-.226-.87c0-.536.174-.95.523-1.244.349-.293.847-.44 1.494-.44.138 0 .301.013.49.038.19.025.31.043.363.055h1.714v.681l-.77.198c.141.22.211.466.211.738 0 .527-.183.938-.551 1.233-.368.294-.878.441-1.532.441l-.241-.013-.198-.022c-.138.106-.207.223-.207.352 0 .193.246.29.739.29h.835c.539 0 .95.116 1.232.347.283.231.424.571.424 1.02 0 .574-.24 1.02-.718 1.335-.48.317-1.167.475-2.063.475-.686 0-1.21-.12-1.571-.358a1.137 1.137 0 0 1-.543-1.004c0-.296.092-.544.277-.743.184-.2.455-.341.813-.426l-.003-.001zm.073 1.064c0 .185.089.33.266.435.177.106.425.159.745.159.48 0 .857-.066 1.13-.198.272-.132.408-.312.408-.54 0-.185-.08-.313-.242-.383-.161-.07-.41-.105-.747-.105h-.694c-.246 0-.452.057-.618.173a.535.535 0 0 0-.248.46zm.488-3.999c0 .267.06.478.182.633.122.155.307.233.556.233.252 0 .437-.078.554-.233.117-.155.176-.366.176-.633 0-.591-.244-.887-.73-.887-.492 0-.738.296-.738.887zm5.181.84c0 .486.08.854.24 1.103.16.249.42.373.78.373.357 0 .614-.124.77-.371.157-.248.236-.616.236-1.105 0-.487-.08-.851-.237-1.095-.159-.243-.418-.364-.778-.364-.358 0-.616.12-.774.362-.158.242-.237.607-.237 1.097zm3.397 0c0 .8-.211 1.425-.633 1.876-.422.451-1.01.677-1.762.677-.472 0-.888-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.29-.838-.29-1.353 0-.803.209-1.427.628-1.872.419-.446 1.008-.668 1.766-.668.472 0 .888.102 1.248.307.36.205.638.5.83.884.194.383.291.833.291 1.349zM101.7 171h-1.34v-6.838h1.34V171zm1.349-6.183c0-.437.243-.655.73-.655.486 0 .729.218.729.655 0 .208-.061.37-.183.485-.121.116-.304.174-.547.174-.486 0-.73-.22-.73-.66zm1.397 6.183h-1.34v-4.913h1.34V171zm4.527 0l-.26-.668h-.035c-.225.284-.458.481-.696.591-.24.11-.55.165-.934.165-.472 0-.843-.135-1.114-.404-.271-.27-.407-.654-.407-1.152 0-.521.183-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.765-.747-.392 0-.854.119-1.384.356l-.444-.905a3.994 3.994 0 0 1 1.881-.444c.66 0 1.165.143 1.516.43.352.288.528.724.528 1.31V171h-.936zm-.396-2.276l-.518.017c-.39.012-.68.082-.87.211-.191.13-.286.325-.286.589 0 .378.217.567.65.567.31 0 .56-.09.745-.268.186-.179.28-.416.28-.712v-.404z"></path> <g> <g transform="translate(161 23)"> <use fill="#000" filter="url(#h)" xlink:href="#i"></use> <use fill="url(#c)" xlink:href="#i"></use> </g> <g transform="translate(190 53)"> <g filter="url(#j)" transform="translate(14)"> <path fill="url(#e)" d="M4.866 0H41.37a4.871 4.871 0 0 1 4.866 4.877v66.539a4.871 4.871 0 0 1-4.866 4.877H4.866A4.871 4.871 0 0 1 0 71.416V4.877A4.871 4.871 0 0 1 4.866 0z" transform="translate(.128)"></path> <path fill="url(#k)" stroke="#C5C9E0" stroke-opacity=".65" stroke-width=".5" d="M2.629 6.322a.636.636 0 0 0-.635.636v61.74c0 .352.284.637.635.637h40.813c.351 0 .635-.285.635-.637V6.958a.636.636 0 0 0-.635-.636H2.63z"></path> </g> <rect width="73.893" height="19.073" x=".194" y=".018" fill="url(#e)" filter="url(#l)" rx="9.521" transform="translate(0 14.817)"></rect> <ellipse cx="23.207" cy="26.808" fill="#5468FF" rx="1.266" ry="1.166"></ellipse> <ellipse cx="27.852" cy="26.808" fill="#5468FF" rx="1.266" ry="1.166"></ellipse> <ellipse cx="32.496" cy="26.808" fill="#5468FF" rx="1.266" ry="1.166"></ellipse> <rect width="1" height="7.629" x="36.507" y="20.557" fill="#5468FF" opacity=".5" rx=".271"></rect> <path fill="#C5C9E0" fill-rule="nonzero" d="M12.332 25.535a2.53 2.53 0 0 1-3.585 0 2.554 2.554 0 0 1 0-3.599 2.53 2.53 0 0 1 3.585 0 2.554 2.554 0 0 1 0 3.599m.79-4.487a3.665 3.665 0 0 0-5.288 0c-1.46 1.502-1.46 3.938 0 5.44a3.661 3.661 0 0 0 4.818.409l1.486 1.528a.6.6 0 0 0 .867 0 .643.643 0 0 0 0-.892l-1.486-1.528c1.047-1.503.915-3.607-.397-4.957"></path> <rect width="3.167" height="2.67" x="31.154" y="74.364" fill="#3A416F" rx=".444"></rect> <rect width="2.027" height="1.144" x="31.788" y="75.128" fill="#FFF" rx=".38"></rect> <rect width="3.167" height="2.67" x="35.588" y="77.035" fill="#3A416F" rx=".444"></rect> <rect width="2.027" height="1.144" x="36.222" y="77.798" fill="#FFF" rx=".38"></rect> <rect width="3.167" height="2.67" x="39.768" y="73.348" fill="#3A416F" rx=".444"></rect> <rect width="2.027" height="1.144" x="40.402" y="74.11" fill="#FFF" rx=".38"></rect> </g> <path fill="#848AB8" d="M227 114c-6.627 0-12 5.372-12 12 0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.628-5.373-12-12-12z"></path> <g fill="#FFF" fill-rule="nonzero"> <path d="M221.03 121.638c0-.433.345-.784.769-.784.424 0 .768.351.768.784v9.225a.776.776 0 0 1-.768.784.776.776 0 0 1-.768-.784v-9.225zm5.33 0a.784.784 0 1 1 1.568 0v9.225a.784.784 0 1 1-1.568 0v-9.225zm5.042 0a.784.784 0 1 1 1.568 0v9.225a.784.784 0 1 1-1.568 0v-9.225z"></path> <path stroke="#848AB8" d="M219.5 123.5h5v2h-5zM224.5 127.5h5v2h-5zM229.5 123.5h5v2h-5z"></path> </g> <text fill="#FFF" font-family="Hind-Bold, Hind" font-size="72" font-weight="bold" opacity=".16" transform="translate(161 23)"> <tspan x="16.464" y="80">2</tspan> </text> <g transform="translate(161 23)"> <use fill="#000" filter="url(#m)" xlink:href="#n"></use> <use fill="url(#c)" xlink:href="#n"></use> </g> <path fill="#5D6494" d="M209.611 169.617c-.513 0-.91.192-1.19.578-.282.385-.423.922-.423 1.61 0 1.433.538 2.15 1.613 2.15.451 0 .998-.114 1.64-.34v1.143c-.528.22-1.117.33-1.767.33-.935 0-1.65-.284-2.145-.85-.495-.567-.743-1.381-.743-2.442 0-.668.122-1.253.365-1.755a2.636 2.636 0 0 1 1.048-1.156c.456-.268.99-.402 1.602-.402.624 0 1.251.15 1.88.453l-.439 1.107a7.274 7.274 0 0 0-.725-.299 2.163 2.163 0 0 0-.716-.127zm3.968 2.918c0 .486.08.854.24 1.103.16.249.42.373.78.373.357 0 .614-.124.771-.371.157-.248.235-.616.235-1.105 0-.487-.079-.851-.237-1.095-.158-.243-.418-.364-.778-.364-.357 0-.615.12-.773.362-.159.242-.238.607-.238 1.097zm3.397 0c0 .8-.21 1.425-.632 1.876-.422.451-1.01.677-1.763.677-.471 0-.887-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.29-.838-.29-1.353 0-.803.21-1.427.628-1.872.419-.446 1.008-.668 1.767-.668.471 0 .887.102 1.248.307.36.205.637.5.83.884.194.383.29.833.29 1.349zM222.62 175h-1.34v-2.87c0-.354-.063-.62-.19-.797-.125-.177-.326-.266-.601-.266-.375 0-.646.125-.813.376-.167.25-.25.665-.25 1.245V175h-1.341v-4.913h1.024l.18.628h.075c.149-.237.355-.416.617-.538.262-.122.56-.182.894-.182.572 0 1.005.154 1.301.463.296.31.444.755.444 1.338V175zm4.096-3.907h-1.16V175h-1.34v-3.907h-.74v-.646l.74-.36v-.36c0-.56.137-.969.412-1.227.276-.257.717-.386 1.323-.386.463 0 .874.069 1.235.206l-.343.985a2.498 2.498 0 0 0-.747-.128c-.19 0-.328.057-.413.17a.7.7 0 0 0-.128.432v.308h1.16v1.006zm.712-2.276c0-.437.243-.655.729-.655s.73.218.73.655c0 .208-.061.37-.183.485-.121.116-.304.174-.547.174-.486 0-.73-.22-.73-.66zm1.397 6.183h-1.34v-4.913h1.34V175zm1.812-.37a.898.898 0 0 1-.357-.287.684.684 0 0 1-.154-.424c0-.188.054-.344.162-.468a1.88 1.88 0 0 1 .47-.367 1.319 1.319 0 0 1-.612-.536 1.632 1.632 0 0 1-.227-.87c0-.536.175-.95.523-1.244.349-.293.847-.44 1.494-.44.138 0 .301.013.49.038.19.025.31.043.363.055h1.714v.681l-.77.198c.141.22.212.466.212.738 0 .527-.184.938-.552 1.233-.368.294-.878.441-1.531.441l-.242-.013-.198-.022c-.138.106-.206.223-.206.352 0 .193.246.29.738.29h.835c.539 0 .95.116 1.233.347.282.231.424.571.424 1.02 0 .574-.24 1.02-.719 1.335-.479.317-1.167.475-2.063.475-.686 0-1.21-.12-1.571-.358a1.137 1.137 0 0 1-.543-1.004c0-.296.092-.544.277-.743.184-.2.455-.341.813-.426l-.003-.001zm.073 1.064c0 .185.089.33.266.435.177.106.426.159.745.159.48 0 .857-.066 1.13-.198.272-.132.408-.312.408-.54 0-.185-.08-.313-.242-.383-.16-.07-.41-.105-.747-.105h-.694c-.246 0-.452.057-.617.173a.535.535 0 0 0-.249.46zm.488-3.999c0 .267.06.478.182.633.122.155.307.233.556.233.252 0 .437-.078.554-.233.117-.155.176-.366.176-.633 0-.591-.243-.887-.73-.887-.492 0-.738.296-.738.887zm7.594 3.305l-.18-.628h-.07a1.414 1.414 0 0 1-.612.53 2.085 2.085 0 0 1-.9.186c-.578 0-1.013-.155-1.306-.464-.293-.309-.44-.753-.44-1.333v-3.204h1.341v2.87c0 .354.063.62.19.797.125.177.326.266.601.266.375 0 .646-.125.813-.376.167-.25.25-.665.25-1.246v-2.311h1.341V175h-1.028zm5.177-5.005c.181 0 .332.013.452.04l-.1 1.256a1.535 1.535 0 0 0-.396-.044c-.428 0-.761.11-1 .33-.239.22-.358.527-.358.923v2.5h-1.34v-4.913h1.014l.198.826h.066c.152-.275.358-.497.618-.666.259-.168.54-.252.846-.252zm3.379.953c-.284 0-.507.09-.668.27-.161.18-.253.436-.277.767h1.881c-.006-.33-.092-.586-.26-.766-.166-.18-.392-.27-.676-.27zm.189 4.14c-.791 0-1.41-.218-1.855-.655-.445-.436-.668-1.055-.668-1.854 0-.824.206-1.46.618-1.91.411-.45.98-.674 1.707-.674.694 0 1.235.197 1.622.593.386.395.58.942.58 1.64v.65h-3.169c.015.38.128.678.339.892.21.213.507.32.887.32.296 0 .576-.03.84-.092a4.2 4.2 0 0 0 .826-.294v1.037a3.147 3.147 0 0 1-.752.261 4.738 4.738 0 0 1-.975.086zm-57.114 6.907c.182 0 .333.013.453.04l-.101 1.256a1.535 1.535 0 0 0-.396-.044c-.427 0-.76.11-1 .33-.238.22-.357.527-.357.923v2.5h-1.34v-4.913h1.014l.198.826h.066c.152-.275.358-.497.617-.666.26-.168.542-.252.846-.252zm3.38.953c-.284 0-.507.09-.668.27-.161.18-.254.436-.277.767h1.88c-.005-.33-.091-.586-.258-.766-.167-.18-.393-.27-.677-.27zm.189 4.14c-.791 0-1.41-.218-1.855-.655-.445-.436-.668-1.055-.668-1.854 0-.824.206-1.46.618-1.91.411-.45.98-.674 1.707-.674.694 0 1.235.197 1.622.593.386.395.58.942.58 1.64v.65h-3.169c.015.38.128.678.339.892.21.213.506.32.887.32.296 0 .576-.03.84-.092a4.2 4.2 0 0 0 .826-.294v1.037a3.147 3.147 0 0 1-.752.261 4.738 4.738 0 0 1-.975.086zm4.434-.088h-1.34v-6.838h1.34V187zm3.44-4.052c-.283 0-.506.09-.667.27-.161.18-.254.436-.277.767h1.88c-.005-.33-.092-.586-.259-.766-.167-.18-.392-.27-.676-.27zm.19 4.14c-.791 0-1.41-.218-1.855-.655-.445-.436-.668-1.055-.668-1.854 0-.824.206-1.46.618-1.91.411-.45.98-.674 1.707-.674.694 0 1.235.197 1.622.593.386.395.58.942.58 1.64v.65h-3.169c.015.38.128.678.339.892.21.213.506.32.887.32.296 0 .576-.03.84-.092a4.2 4.2 0 0 0 .826-.294v1.037a3.147 3.147 0 0 1-.752.261 4.738 4.738 0 0 1-.975.086zm4.262-.088l-1.872-4.913h1.402l.95 2.8c.105.354.17.69.197 1.006h.027c.014-.282.08-.617.197-1.007l.945-2.8h1.402L207.693 187h-1.376zm7.071 0l-.26-.668h-.034c-.226.284-.458.481-.697.591-.239.11-.55.165-.934.165-.471 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.765-.747-.393 0-.854.119-1.384.356l-.444-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.351.288.527.724.527 1.31V187h-.936zm-.395-2.276l-.519.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.746-.268.186-.179.279-.416.279-.712v-.404zm7.246 2.276h-1.34v-2.87c0-.354-.063-.62-.189-.797-.126-.177-.327-.266-.602-.266-.375 0-.646.125-.813.376-.167.25-.25.665-.25 1.245V187h-1.34v-4.913h1.023l.18.628h.075c.15-.237.355-.416.617-.538.263-.122.56-.182.895-.182.57 0 1.005.154 1.3.463.296.31.444.755.444 1.338V187zm3.375.088c-1.529 0-2.294-.84-2.294-2.518 0-.835.208-1.473.624-1.914.416-.44 1.013-.661 1.789-.661a3.41 3.41 0 0 1 1.53.334l-.396 1.037a6.764 6.764 0 0 0-.59-.209 1.897 1.897 0 0 0-.544-.081c-.697 0-1.046.495-1.046 1.485 0 .961.349 1.441 1.046 1.441.258 0 .496-.034.716-.103.22-.069.44-.176.66-.323v1.147a2.16 2.16 0 0 1-.658.286c-.22.053-.5.079-.837.079zm4.667-4.14c-.284 0-.507.09-.668.27-.16.18-.253.436-.277.767h1.881c-.006-.33-.092-.586-.259-.766-.167-.18-.393-.27-.677-.27zm.19 4.14c-.792 0-1.41-.218-1.855-.655-.446-.436-.668-1.055-.668-1.854 0-.824.206-1.46.617-1.91.412-.45.98-.674 1.707-.674.695 0 1.235.197 1.622.593.387.395.58.942.58 1.64v.65h-3.168c.014.38.127.678.338.892.211.213.507.32.888.32.296 0 .575-.03.84-.092a4.2 4.2 0 0 0 .825-.294v1.037a3.147 3.147 0 0 1-.751.261 4.738 4.738 0 0 1-.976.086zm8.859-1.547c0 .504-.175.888-.526 1.151-.35.264-.873.396-1.57.396-.358 0-.663-.024-.915-.073a3.457 3.457 0 0 1-.707-.213v-1.107c.249.117.53.215.841.294.312.08.587.119.824.119.487 0 .73-.14.73-.422a.352.352 0 0 0-.097-.257 1.402 1.402 0 0 0-.334-.224 8.435 8.435 0 0 0-.633-.292c-.378-.159-.655-.305-.832-.44a1.237 1.237 0 0 1-.387-.463 1.53 1.53 0 0 1-.121-.644c0-.437.17-.774.508-1.013.338-.239.818-.358 1.439-.358.592 0 1.167.129 1.727.386l-.404.967a7.437 7.437 0 0 0-.69-.26 2.167 2.167 0 0 0-.655-.1c-.396 0-.593.107-.593.32 0 .12.063.225.19.313.128.087.407.218.838.39.384.156.665.301.844.436.178.135.31.29.395.466.085.175.128.385.128.628zm3.08-2.593c-.284 0-.507.09-.668.27-.16.18-.253.436-.277.767h1.881c-.006-.33-.092-.586-.26-.766-.166-.18-.392-.27-.676-.27zm.19 4.14c-.792 0-1.41-.218-1.855-.655-.446-.436-.668-1.055-.668-1.854 0-.824.205-1.46.617-1.91.412-.45.98-.674 1.707-.674.695 0 1.235.197 1.622.593.387.395.58.942.58 1.64v.65h-3.168c.014.38.127.678.338.892.21.213.507.32.888.32.296 0 .575-.03.839-.092a4.2 4.2 0 0 0 .826-.294v1.037a3.147 3.147 0 0 1-.751.261 4.738 4.738 0 0 1-.976.086zm5.163-1.068c.234 0 .515-.051.843-.154v.998c-.334.15-.744.224-1.23.224-.536 0-.927-.136-1.171-.407-.245-.27-.367-.677-.367-1.22v-2.368h-.642v-.567l.739-.448.386-1.037h.857v1.046h1.376v1.006h-1.376v2.369c0 .19.054.331.16.422.108.09.249.136.425.136zm3.906 0c.235 0 .516-.051.844-.154v.998c-.334.15-.744.224-1.23.224-.536 0-.927-.136-1.171-.407-.245-.27-.367-.677-.367-1.22v-2.368h-.642v-.567l.738-.448.387-1.037h.857v1.046h1.375v1.006h-1.375v2.369c0 .19.053.331.16.422.107.09.249.136.424.136zm1.78-5.203c0-.437.243-.655.73-.655.486 0 .73.218.73.655 0 .208-.062.37-.183.485-.122.116-.304.174-.547.174-.487 0-.73-.22-.73-.66zm1.398 6.183h-1.34v-4.913h1.34V187zm5.941 0h-1.34v-2.87c0-.354-.063-.62-.19-.797-.125-.177-.326-.266-.601-.266-.375 0-.646.125-.813.376-.167.25-.25.665-.25 1.245V187h-1.341v-4.913h1.024l.18.628h.075c.15-.237.355-.416.617-.538.262-.122.56-.182.894-.182.572 0 1.005.154 1.301.463.296.31.444.755.444 1.338V187zm1.79-.37a.898.898 0 0 1-.357-.287.684.684 0 0 1-.154-.424c0-.188.054-.344.162-.468a1.88 1.88 0 0 1 .47-.367 1.319 1.319 0 0 1-.612-.536 1.632 1.632 0 0 1-.227-.87c0-.536.175-.95.523-1.244.349-.293.847-.44 1.494-.44.138 0 .301.013.49.038.19.025.31.043.363.055h1.714v.681l-.77.198c.141.22.212.466.212.738 0 .527-.184.938-.552 1.233-.367.294-.878.441-1.531.441l-.242-.013-.198-.022c-.137.106-.206.223-.206.352 0 .193.246.29.738.29h.835c.539 0 .95.116 1.233.347.282.231.424.571.424 1.02 0 .574-.24 1.02-.719 1.335-.479.317-1.167.475-2.063.475-.686 0-1.21-.12-1.571-.358a1.137 1.137 0 0 1-.543-1.004c0-.296.092-.544.277-.743.185-.2.456-.341.813-.426l-.003-.001zm.073 1.064c0 .185.089.33.266.435.177.106.426.159.745.159.48 0 .857-.066 1.13-.198.272-.132.408-.312.408-.54 0-.185-.08-.313-.242-.383-.16-.07-.41-.105-.747-.105h-.694c-.246 0-.452.057-.617.173a.535.535 0 0 0-.249.46zm.488-3.999c0 .267.061.478.183.633.121.155.306.233.555.233.252 0 .437-.078.554-.233.117-.155.176-.366.176-.633 0-.591-.243-.887-.73-.887-.492 0-.738.296-.738.887zm7.541 1.846c0 .504-.175.888-.525 1.151-.35.264-.874.396-1.571.396-.357 0-.662-.024-.914-.073a3.457 3.457 0 0 1-.708-.213v-1.107c.25.117.53.215.842.294.312.08.587.119.824.119.486 0 .73-.14.73-.422a.352.352 0 0 0-.097-.257 1.402 1.402 0 0 0-.334-.224 8.435 8.435 0 0 0-.633-.292c-.378-.159-.656-.305-.833-.44a1.237 1.237 0 0 1-.387-.463 1.53 1.53 0 0 1-.12-.644c0-.437.169-.774.507-1.013.339-.239.818-.358 1.44-.358.591 0 1.167.129 1.726.386l-.404.967a7.437 7.437 0 0 0-.69-.26 2.167 2.167 0 0 0-.655-.1c-.395 0-.593.107-.593.32 0 .12.064.225.191.313.128.087.407.218.837.39.384.156.666.301.844.436.179.135.31.29.396.466.085.175.127.385.127.628z"></path> </g> <g> <g transform="translate(11 201)"> <use fill="#000" filter="url(#o)" xlink:href="#p"></use> <use fill="url(#c)" xlink:href="#p"></use> </g> <g filter="url(#q)" transform="translate(38 238)"> <path fill="url(#e)" d="M.852 68.633c-.256 0-.464-.251-.464-.56V.56C.388.25.596 0 .852 0h78.386c.256 0 .465.25.465.56v67.513c0 .309-.209.56-.465.56"></path> <path fill="url(#e)" d="M79.238 68.823H.852c-.256 0-.464-.25-.464-.56V.751c0-.31.208-.56.464-.56h78.386c.256 0 .465.25.465.56v67.512c0 .31-.209.56-.465.56"></path> <path fill="#5468FF" d="M.603.19C.484.19.388.84.388 1.64v65.737c0 .8.096 1.447.215 1.447h10.006c.119 0 .215-.648.215-1.447V1.639c0-.8-.096-1.448-.215-1.448H.603z" opacity=".291"></path> <path fill="#5468FF" fill-rule="nonzero" d="M5.89 2.257v-.154c0-.109-.098-.197-.219-.197h-.51c-.121 0-.22.088-.22.197v.158c0 .018.02.03.039.026a1.806 1.806 0 0 1 .873-.004c.018.004.037-.008.037-.026m-1.336.182l-.087-.087a.217.217 0 0 0-.307 0l-.103.103a.22.22 0 0 0 0 .31l.085.086a.03.03 0 0 0 .045-.004 1.634 1.634 0 0 1 .363-.364.03.03 0 0 0 .004-.044m.957.639v.707c0 .02.024.034.045.025l.697-.326c.016-.007.022-.025.013-.038a.887.887 0 0 0-.724-.396c-.016 0-.031.012-.031.028m0 1.879c-.524 0-.949-.47-.949-1.049s.425-1.048.949-1.048.949.47.949 1.048c0 .58-.425 1.049-.95 1.049m-.094-2.479c-.785 0-1.423.64-1.423 1.43 0 .79.637 1.43 1.423 1.43s1.423-.64 1.423-1.43c0-.79-.637-1.43-1.423-1.43"></path> <path d="M43.65 45.41v1.833c0 .335.257.61.57.61.313 0 .569-.275.569-.61v-1.832c0-.335-.256-.61-.57-.61-.312 0-.569.275-.569.61"></path> <path d="M43.65 45.41v1.833c0 .335.257.61.57.61.313 0 .569-.275.569-.61v-1.832c0-.335-.256-.61-.57-.61-.312 0-.569.275-.569.61"></path> <path fill="#5468FF" fill-rule="nonzero" d="M76.445 3.59a.758.758 0 0 1-1.074 0 .766.766 0 0 1 0-1.08.758.758 0 0 1 1.074 0 .766.766 0 0 1 0 1.08m.188-1.362a1.088 1.088 0 0 0-1.544 0 1.101 1.101 0 0 0 0 1.552c.383.385.98.424 1.407.116l.434.436c.07.07.183.07.253 0a.18.18 0 0 0 0-.254l-.433-.436a1.101 1.101 0 0 0-.117-1.414"></path> <rect width="48.386" height="23.831" x="19.932" y="8.961" fill="#5468FF" opacity=".05" rx=".133"></rect> <rect width="34.724" height="1.144" x="19.932" y="35.46" fill="#C5C9E0" opacity=".5" rx=".57"></rect> <rect width="34.724" height="1.144" x="19.932" y="37.939" fill="#C5C9E0" opacity=".5" rx=".57"></rect> <rect width="34.724" height="1.144" x="19.932" y="40.417" fill="#C5C9E0" opacity=".5" rx=".57"></rect> <rect width="4.934" height="1.144" x="63.384" y="35.46" fill="#5468FF" opacity=".3" rx=".57"></rect> <rect width="4.934" height="1.144" x="63.384" y="37.939" fill="#5468FF" opacity=".3" rx=".57"></rect> <rect width="4.934" height="1.144" x="63.384" y="40.417" fill="#5468FF" opacity=".3" rx=".57"></rect> <rect width="34.724" height="1.144" x="19.932" y="43.086" fill="#C5C9E0" opacity=".5" rx=".57"></rect> <rect width="34.724" height="1.144" x="19.932" y="45.565" fill="#C5C9E0" opacity=".5" rx=".57"></rect> <rect width="34.724" height="1.144" x="19.932" y="48.043" fill="#C5C9E0" opacity=".5" rx=".57"></rect> <rect width="4.934" height="1.144" x="63.384" y="43.086" fill="#5468FF" opacity=".3" rx=".57"></rect> <rect width="4.934" height="1.144" x="63.384" y="45.565" fill="#5468FF" opacity=".3" rx=".57"></rect> <rect width="4.934" height="1.144" x="63.384" y="48.043" fill="#5468FF" opacity=".3" rx=".57"></rect> <rect width="4.934" height="1" x="3.044" y="8.579" fill="#5468FF" opacity=".5" rx=".38"></rect> <rect width="4.934" height="1" x="3.044" y="11.058" fill="#5468FF" opacity=".5" rx=".38"></rect> <rect width="4.934" height="1" x="3.044" y="13.727" fill="#5468FF" opacity=".5" rx=".38"></rect> <rect width="4.934" height="1" x="3.044" y="16.205" fill="#5468FF" opacity=".5" rx=".38"></rect> <rect width="4.934" height="1" x="3.044" y="18.683" fill="#5468FF" opacity=".5" rx=".38"></rect> <rect width="4.934" height="1" x="3.044" y="21.162" fill="#5468FF" opacity=".5" rx=".38"></rect> <path fill="#5468FF" fill-rule="nonzero" d="M22.968 32.6h11.574c-4.023-.053-1.131-12.582-5.484-12.582-4.256 0-2.248 12.305-6.09 12.583zm25.995 0H67.18c-11.543 0-6.083-9.15-9.891-9.15-3.825 0-.266 9.107-8.325 9.15zm-14.23 0h14.04c-6.522-.036-3.854-6.29-7.935-6.29-3.895 0-2.728 6.245-6.106 6.29zm14.04 0h.166-.165zm-14.04 0h.102-.103zm-11.955 0a.695.695 0 0 0 .19 0h-.19z"></path> </g> <path fill="#848AB8" d="M78 294c-6.628 0-12 5.373-12 12s5.372 12 12 12c6.627 0 12-5.373 12-12s-5.373-12-12-12z"></path> <path fill="#FFF" fill-rule="nonzero" d="M79.793 307.358a2.829 2.829 0 0 1-4.086 0 3.057 3.057 0 0 1 0-4.22 2.83 2.83 0 0 1 4.086 0 3.057 3.057 0 0 1 0 4.22m.997-5.249a4.204 4.204 0 0 0-6.08 0c-1.68 1.734-1.68 4.545 0 6.279a4.2 4.2 0 0 0 5.54.472l1.709 1.763a.69.69 0 0 0 .996 0 .745.745 0 0 0 0-1.029l-1.708-1.764c1.204-1.734 1.052-4.162-.457-5.72"></path> <text fill="#FFF" font-family="Hind-Bold, Hind" font-size="72" font-weight="bold" opacity=".16" transform="translate(11 201)"> <tspan x="12.112" y="76">3</tspan> </text> <g transform="translate(11 201)"> <use fill="#000" filter="url(#r)" xlink:href="#s"></use> <use fill="url(#c)" xlink:href="#s"></use> </g> <path fill="#5D6494" d="M45.076 354.575h2c.91 0 1.572.13 1.984.39.411.258.617.67.617 1.236 0 .384-.09.699-.27.945a1.08 1.08 0 0 1-.719.444v.044c.408.09.701.26.882.51.18.249.27.58.27.993 0 .586-.212 1.043-.635 1.37-.424.329-.998.493-1.725.493h-2.404v-6.425zm1.362 2.545h.791c.37 0 .637-.057.802-.172.166-.114.249-.303.249-.567 0-.246-.09-.422-.27-.53-.18-.106-.466-.16-.855-.16h-.717v1.429zm0 1.08v1.675h.888c.375 0 .652-.072.83-.215.18-.144.269-.364.269-.66 0-.533-.381-.8-1.143-.8h-.844zm8.06 2.8l-.18-.628h-.07a1.414 1.414 0 0 1-.611.53 2.085 2.085 0 0 1-.901.186c-.577 0-1.012-.155-1.305-.464-.293-.309-.44-.753-.44-1.333v-3.204h1.34v2.87c0 .354.064.62.19.797.125.177.326.266.602.266.375 0 .646-.125.813-.376.167-.25.25-.665.25-1.246v-2.311h1.34V361h-1.028zm2.377-6.183c0-.437.244-.655.73-.655s.73.218.73.655c0 .208-.061.37-.183.485-.121.116-.304.174-.547.174-.486 0-.73-.22-.73-.66zM58.273 361h-1.34v-4.913h1.34V361zm2.747 0h-1.34v-6.838h1.34V361zm2.961.088c-.577 0-1.03-.224-1.36-.672-.33-.449-.494-1.07-.494-1.864 0-.805.168-1.433.503-1.883.336-.45.798-.674 1.387-.674.618 0 1.09.24 1.415.72h.044a5.48 5.48 0 0 1-.101-.98v-1.573h1.344V361h-1.028l-.26-.637h-.056c-.305.483-.77.725-1.394.725zm.47-1.068c.343 0 .595-.1.754-.299.16-.199.247-.537.262-1.015v-.145c0-.527-.082-.905-.244-1.134-.163-.228-.427-.343-.793-.343a.787.787 0 0 0-.697.38c-.165.254-.248.622-.248 1.106 0 .483.083.846.25 1.087.167.242.406.363.717.363zm9.436-.479c0 .504-.175.888-.525 1.151-.35.264-.874.396-1.571.396-.358 0-.663-.024-.915-.073a3.457 3.457 0 0 1-.707-.213v-1.107c.249.117.53.215.841.294.313.08.587.119.824.119.487 0 .73-.14.73-.422a.352.352 0 0 0-.097-.257 1.402 1.402 0 0 0-.334-.224 8.435 8.435 0 0 0-.633-.292c-.377-.159-.655-.305-.832-.44a1.237 1.237 0 0 1-.387-.463 1.53 1.53 0 0 1-.12-.644c0-.437.168-.774.507-1.013.338-.239.818-.358 1.439-.358.592 0 1.167.129 1.727.386l-.404.967a7.437 7.437 0 0 0-.69-.26 2.167 2.167 0 0 0-.655-.1c-.396 0-.593.107-.593.32 0 .12.063.225.19.313.128.087.407.218.838.39.384.156.665.301.844.436.178.135.31.29.395.466.085.175.128.385.128.628zm3.08-2.593c-.284 0-.507.09-.668.27-.16.18-.253.436-.277.767h1.881c-.006-.33-.092-.586-.259-.766-.167-.18-.393-.27-.677-.27zm.19 4.14c-.792 0-1.41-.218-1.855-.655-.446-.436-.668-1.055-.668-1.854 0-.824.206-1.46.617-1.91.412-.45.98-.674 1.707-.674.695 0 1.235.197 1.622.593.387.395.58.942.58 1.64v.65h-3.168c.014.38.127.678.338.892.211.213.507.32.888.32.296 0 .575-.03.84-.092a4.2 4.2 0 0 0 .825-.294v1.037a3.147 3.147 0 0 1-.751.261 4.738 4.738 0 0 1-.976.086zM83.37 361l-.26-.668h-.034c-.226.284-.458.481-.697.591-.239.11-.55.165-.934.165-.471 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.765-.747-.393 0-.854.119-1.384.356l-.444-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.351.288.527.724.527 1.31V361h-.936zm-.395-2.276l-.519.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.746-.268.186-.179.279-.416.279-.712v-.404zm5.453-2.73c.182 0 .333.014.453.04l-.101 1.257a1.535 1.535 0 0 0-.396-.044c-.427 0-.76.11-1 .33-.238.22-.358.527-.358.923v2.5h-1.34v-4.913h1.015l.198.826h.066c.152-.275.358-.497.617-.666.26-.168.542-.252.846-.252zm3.34 5.094c-1.53 0-2.294-.84-2.294-2.518 0-.835.208-1.473.624-1.914.416-.44 1.012-.661 1.789-.661a3.41 3.41 0 0 1 1.529.334l-.395 1.037a6.764 6.764 0 0 0-.59-.209 1.897 1.897 0 0 0-.544-.081c-.698 0-1.046.495-1.046 1.485 0 .961.348 1.441 1.046 1.441.258 0 .496-.034.716-.103.22-.069.44-.176.66-.323v1.147a2.16 2.16 0 0 1-.658.286c-.221.053-.5.079-.837.079zm7.168-.088h-1.34v-2.87c0-.709-.264-1.063-.792-1.063-.375 0-.646.127-.813.382-.167.255-.25.668-.25 1.24V361H94.4v-6.838h1.34v1.393c0 .109-.01.363-.031.765l-.03.395h.07c.298-.48.773-.72 1.423-.72.577 0 1.015.155 1.314.465.3.311.449.756.449 1.336V361zm9.052-6.425v4.157c0 .475-.106.891-.318 1.248-.213.358-.52.632-.921.822-.401.19-.876.286-1.424.286-.826 0-1.468-.212-1.925-.635-.457-.423-.685-1.003-.685-1.738v-4.14h1.358v3.933c0 .495.1.859.299 1.09.199.232.528.347.988.347.446 0 .769-.116.97-.35.2-.232.3-.597.3-1.095v-3.925h1.358zm1.574 6.425v-6.425h1.362V361h-1.362z"></path> </g> <g> <g transform="translate(161 219)"> <use fill="#000" filter="url(#t)" xlink:href="#u"></use> <use fill="url(#c)" xlink:href="#u"></use> </g> <g filter="url(#v)" transform="translate(187 248)"> <path fill="url(#e)" d="M1.034.205h62.028c.557 0 1.009.449 1.009 1.003V73.01c0 .553-.452 1.002-1.009 1.002H1.034A1.006 1.006 0 0 1 .025 73.01V1.208C.025.654.477.205 1.034.205z" transform="translate(9.613)"></path> <path fill="#5468FF" fill-rule="nonzero" d="M18.288 35.263a.82.82 0 0 1 .824-.82.82.82 0 0 1 .823.82v.821a.82.82 0 0 1-.823.82.82.82 0 0 1-.824-.82v-.821zm5.972-2.467c0-.45.366-.813.824-.813.455 0 .823.37.823.813v3.295a.816.816 0 0 1-.823.813.822.822 0 0 1-.824-.813v-3.295zm-2.883 1.44a.825.825 0 0 1 1.647 0v1.85a.818.818 0 0 1-.823.818.825.825 0 0 1-.824-.818v-1.85zm5.972-.411c0-.451.366-.817.824-.817a.82.82 0 0 1 .823.817v2.262a.818.818 0 0 1-.823.817.82.82 0 0 1-.824-.817v-2.262zm2.883-1.84c0-.454.366-.822.824-.822.455 0 .823.368.823.823v4.095a.823.823 0 1 1-1.647 0v-4.095zm3.089-1.031c0-.45.366-.816.824-.816.455 0 .823.364.823.816v5.134c0 .45-.365.816-.823.816a.819.819 0 0 1-.824-.816v-5.134zm3.089-.613c0-.452.366-.818.824-.818a.82.82 0 0 1 .823.818v5.745a.819.819 0 0 1-.823.818.82.82 0 0 1-.824-.818V30.34zm2.883-3.694c0-.45.366-.814.824-.814.455 0 .824.368.824.814v9.443c0 .45-.366.814-.824.814a.821.821 0 0 1-.824-.814v-9.443zm3.09 2.254c0-.449.365-.813.823-.813a.82.82 0 0 1 .824.813v7.189c0 .45-.366.814-.824.814a.82.82 0 0 1-.824-.814v-7.189zm3.088.618c0-.45.366-.816.824-.816.455 0 .824.363.824.816v6.568c0 .451-.366.817-.824.817a.818.818 0 0 1-.824-.817V29.52zm2.883-3.28c0-.451.366-.817.824-.817.455 0 .824.37.824.817v9.848c0 .451-.366.817-.824.817a.822.822 0 0 1-.824-.817V26.24zm3.09 1.44a.824.824 0 0 1 1.647 0v8.403a.824.824 0 0 1-1.647 0V27.68zm2.882-3.076a.82.82 0 0 1 .824-.82.82.82 0 0 1 .824.82v11.48a.82.82 0 0 1-.824.82.82.82 0 0 1-.824-.82v-11.48zm3.09-3.083a.825.825 0 0 1 1.647 0v14.775a.825.825 0 0 1-1.647 0V21.52z" opacity=".3"></path> <path stroke="#C5C9E0" stroke-dasharray=".803" stroke-linecap="round" stroke-width=".535" d="M14.375 68.272V42.983m-3.913 22.93h59.103"></path> <path stroke="#5468FF" stroke-linecap="round" stroke-width=".963" d="M13.551 65.196c5.262 0 6.589-2.794 11.024-2.794 4.435 0 5.324 1.405 10.773 1.405 5.45 0 5.962-5.322 10.898-5.322 4.937 0 5.262 4.246 10.71 4.246 5.45 0 5.387-8.4 10.962-8.4" opacity=".3"></path> <path stroke="#5468FF" stroke-linecap="round" stroke-width=".963" d="M13.551 65.196c5.262 0 5.45-8.698 11.024-8.698 5.574 0 5.324 5.947 10.773 5.947 5.45 0 5.324-13.935 10.898-13.935 5.575 0 5.262 11.805 10.71 11.805 5.45 0 5.387-24.231 10.962-24.231" opacity=".6"></path> <g transform="translate(17.259 60.07)"> <ellipse cx="1.338" cy="1.332" fill="#5468FF" rx="1.338" ry="1.332"></ellipse> <ellipse cx="1.235" cy="1.332" fill="#FFF" rx="1" ry="1"></ellipse> </g> <g transform="translate(37.234 58.43)"> <ellipse cx="1.338" cy="1.332" fill="#5468FF" rx="1.338" ry="1.332"></ellipse> <ellipse cx="1.235" cy="1.332" fill="#FFF" rx="1" ry="1"></ellipse> </g> <g transform="translate(47.119 48.18)"> <ellipse cx="1.338" cy="1.332" fill="#5468FF" rx="1.338" ry="1.332"></ellipse> <ellipse cx="1.338" cy="1.23" fill="#FFF" rx="1" ry="1"></ellipse> </g> <g transform="translate(62.358 42.234)"> <ellipse cx="1.338" cy="1.332" fill="#5468FF" rx="1.338" ry="1.332"></ellipse> <ellipse cx="1.338" cy="1.332" fill="#FFF" rx="1" ry="1"></ellipse> </g> <g> <use fill="#000" filter="url(#w)" xlink:href="#x"></use> <use fill="url(#e)" xlink:href="#x"></use> </g> <path fill="#5468FF" fill-rule="nonzero" d="M11.593 10.731c-.964 1-2.533 1-3.497 0a2.635 2.635 0 0 1 0-3.626c.964-1 2.533-1 3.497 0s.964 2.627 0 3.626m.77-4.489a3.536 3.536 0 0 0-5.157 0c-1.424 1.489-1.424 3.903 0 5.392a3.53 3.53 0 0 0 4.7.405l1.449 1.514a.58.58 0 0 0 .845 0 .645.645 0 0 0 0-.884l-1.449-1.514c1.022-1.49.893-3.575-.388-4.913"></path> </g> <path fill="#848AB8" d="M227.645 309.456c-6.494 0-11.759 5.28-11.759 11.793 0 6.514 5.265 11.794 11.759 11.794 6.494 0 11.758-5.28 11.758-11.794 0-6.513-5.264-11.793-11.758-11.793z"></path> <path fill="#FFF" fill-rule="nonzero" d="M230.884 318.373c0-.431.342-.781.765-.781.422 0 .765.35.765.781v6.893c0 .17-.138.308-.308.308h-.915a.308.308 0 0 1-.307-.308v-6.893zm-3.061-1.995c0-.432.342-.782.765-.782s.765.35.765.782v8.888c0 .17-.137.308-.307.308h-.916a.308.308 0 0 1-.307-.308v-8.888zm-3.06 3.377c0-.432.342-.782.764-.782.423 0 .766.35.766.782v5.511c0 .17-.138.308-.308.308h-.915a.308.308 0 0 1-.308-.308v-5.511zm-3.061 1.535c0-.432.342-.782.765-.782.422 0 .765.35.765.782v3.976c0 .17-.138.308-.308.308h-.915a.308.308 0 0 1-.307-.308v-3.976z"></path> <text fill="#FFF" font-family="Hind-Bold, Hind" font-size="72" font-weight="bold" opacity=".16" transform="translate(161 219)"> <tspan x="20.82" y="80">1</tspan> </text> <g transform="translate(161 219)"> <use fill="#000" filter="url(#y)" xlink:href="#z"></use> <use fill="url(#c)" xlink:href="#z"></use> </g> <path fill="#5D6494" d="M188.761 371v-6.425h1.363V371h-1.363zm7.273 0h-1.34v-2.87c0-.354-.06-.62-.178-.797-.119-.177-.306-.266-.56-.266-.343 0-.592.126-.748.378-.155.252-.232.666-.232 1.243V371h-1.34v-4.913h1.023l.18.628h.075c.132-.225.322-.402.571-.53.25-.127.535-.19.857-.19.736 0 1.234.24 1.494.72h.12c.13-.228.325-.405.581-.531.257-.126.546-.19.868-.19.557 0 .978.143 1.264.43.285.285.428.743.428 1.372V371h-1.345v-2.87c0-.354-.059-.62-.178-.797-.118-.177-.305-.266-.56-.266-.328 0-.573.117-.736.351-.163.235-.244.607-.244 1.117V371zm7.137.088c-.577 0-1.03-.21-1.358-.629h-.07c.047.41.07.648.07.712v1.991h-1.34v-7.075h1.09l.188.637h.062c.313-.486.778-.73 1.393-.73.58 0 1.034.225 1.362.673.328.448.493 1.07.493 1.868 0 .524-.077.98-.231 1.366-.154.387-.373.682-.657.884a1.684 1.684 0 0 1-1.002.303zm-.396-4.021c-.33 0-.572.102-.725.305-.152.204-.231.54-.237 1.009v.145c0 .527.078.905.235 1.134.157.228.405.342.745.342.6 0 .9-.495.9-1.485 0-.483-.073-.846-.221-1.088-.148-.241-.38-.362-.697-.362zm6.135-1.072c.182 0 .333.013.453.04l-.101 1.256a1.535 1.535 0 0 0-.396-.044c-.428 0-.76.11-1 .33-.238.22-.358.527-.358.923v2.5h-1.34v-4.913h1.015l.198.826h.066c.152-.275.358-.497.617-.666.26-.168.541-.252.846-.252zm2.413 2.54c0 .486.08.854.24 1.103.159.249.419.373.78.373.357 0 .614-.124.77-.371.157-.248.236-.616.236-1.105 0-.487-.08-.851-.238-1.095-.158-.243-.417-.364-.778-.364-.357 0-.615.12-.773.362-.158.242-.237.607-.237 1.097zm3.397 0c0 .8-.211 1.425-.633 1.876-.422.451-1.01.677-1.762.677-.472 0-.888-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.29-.838-.29-1.353 0-.803.209-1.427.627-1.872.42-.446 1.008-.668 1.767-.668.472 0 .888.102 1.248.307.36.205.637.5.83.884.194.383.29.833.29 1.349zm2.276 2.465l-1.872-4.913h1.402l.95 2.8c.105.354.17.69.197 1.006h.026c.015-.282.08-.617.198-1.007l.945-2.8h1.402L218.372 371h-1.376zm5.985-4.052c-.284 0-.506.09-.668.27-.16.18-.253.436-.276.767h1.88c-.005-.33-.092-.586-.259-.766-.167-.18-.392-.27-.677-.27zm.19 4.14c-.792 0-1.41-.218-1.855-.655-.445-.436-.668-1.055-.668-1.854 0-.824.206-1.46.617-1.91.412-.45.981-.674 1.708-.674.694 0 1.235.197 1.621.593.387.395.58.942.58 1.64v.65h-3.168c.015.38.127.678.338.892.211.213.507.32.888.32.296 0 .576-.03.84-.092a4.2 4.2 0 0 0 .825-.294v1.037a3.147 3.147 0 0 1-.751.261 4.738 4.738 0 0 1-.976.086zm11.478-.088h-1.657l-.505-.497c-.56.39-1.193.585-1.899.585-.714 0-1.281-.164-1.7-.492-.42-.328-.629-.772-.629-1.332 0-.401.089-.743.266-1.026.177-.283.481-.547.912-.793a2.85 2.85 0 0 1-.479-.723c-.1-.23-.15-.481-.15-.754 0-.445.171-.804.513-1.076.34-.273.797-.41 1.368-.41.545 0 .981.128 1.308.381.326.253.49.593.49 1.017 0 .349-.101.668-.303.956-.203.289-.53.563-.98.824l1.248 1.217c.208-.342.388-.783.54-1.322h1.398c-.106.395-.25.781-.435 1.158-.185.376-.394.71-.629 1L234.65 371zm-4.98-1.863c0 .252.095.452.284.602.19.15.432.224.728.224.369 0 .701-.09.997-.268l-1.459-1.45c-.17.129-.304.263-.402.404a.831.831 0 0 0-.147.488zm1.579-3.116a.455.455 0 0 0-.159-.367.61.61 0 0 0-.408-.134c-.197 0-.351.047-.464.14a.49.49 0 0 0-.17.4c0 .258.14.543.418.853.252-.14.446-.279.58-.415a.657.657 0 0 0 .203-.477zM241.17 371l-.18-.628h-.07a1.414 1.414 0 0 1-.61.53 2.085 2.085 0 0 1-.902.186c-.577 0-1.012-.155-1.305-.464-.293-.309-.44-.753-.44-1.333v-3.204h1.34v2.87c0 .354.064.62.19.797.126.177.327.266.602.266.375 0 .646-.125.813-.376.167-.25.25-.665.25-1.246v-2.311h1.34V371h-1.028zm5.133.088c-.577 0-1.03-.21-1.358-.629h-.07c.047.41.07.648.07.712v1.991h-1.34v-7.075h1.09l.189.637h.061c.314-.486.778-.73 1.393-.73.58 0 1.035.225 1.363.673.328.448.492 1.07.492 1.868 0 .524-.077.98-.23 1.366-.155.387-.374.682-.658.884a1.684 1.684 0 0 1-1.002.303zm-.395-4.021c-.331 0-.573.102-.725.305-.153.204-.232.54-.238 1.009v.145c0 .527.079.905.235 1.134.157.228.405.342.745.342.6 0 .901-.495.901-1.485 0-.483-.074-.846-.222-1.088-.148-.241-.38-.362-.696-.362zM250.64 371h-1.34v-6.838h1.34V371zm2.474-2.465c0 .486.08.854.24 1.103.159.249.419.373.78.373.357 0 .614-.124.77-.371.157-.248.236-.616.236-1.105 0-.487-.08-.851-.238-1.095-.158-.243-.417-.364-.778-.364-.357 0-.615.12-.773.362-.158.242-.237.607-.237 1.097zm3.397 0c0 .8-.211 1.425-.633 1.876-.422.451-1.01.677-1.762.677-.472 0-.888-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.291-.838-.291-1.353 0-.803.21-1.427.628-1.872.42-.446 1.008-.668 1.767-.668.472 0 .888.102 1.248.307.36.205.637.5.83.884.194.383.29.833.29 1.349zm4.227 2.465l-.259-.668h-.035c-.226.284-.458.481-.697.591-.238.11-.55.165-.934.165-.471 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.765-.747-.392 0-.854.119-1.384.356l-.444-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.352.288.527.724.527 1.31V371h-.936zm-.395-2.276l-.519.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.746-.268.186-.179.279-.416.279-.712v-.404zm4.267 2.364c-.577 0-1.03-.224-1.36-.672-.33-.449-.495-1.07-.495-1.864 0-.805.168-1.433.504-1.883.335-.45.797-.674 1.386-.674.618 0 1.09.24 1.415.72h.044a5.48 5.48 0 0 1-.101-.98v-1.573h1.345V371h-1.029l-.259-.637h-.057c-.305.483-.77.725-1.393.725zm.47-1.068c.343 0 .594-.1.754-.299.16-.199.247-.537.261-1.015v-.145c0-.527-.081-.905-.244-1.134-.162-.228-.427-.343-.793-.343a.787.787 0 0 0-.696.38c-.166.254-.249.622-.249 1.106 0 .483.084.846.25 1.087.168.242.407.363.717.363zm-67.408 13.068c-.577 0-1.03-.224-1.36-.672-.33-.449-.494-1.07-.494-1.864 0-.805.168-1.433.503-1.883.335-.45.798-.674 1.386-.674.619 0 1.09.24 1.416.72h.043a5.48 5.48 0 0 1-.1-.98v-1.573h1.344V383h-1.028l-.26-.637h-.057c-.304.483-.769.725-1.393.725zm.47-1.068c.343 0 .595-.1.754-.299.16-.199.247-.537.262-1.015v-.145c0-.527-.082-.905-.244-1.134-.163-.228-.427-.343-.793-.343a.787.787 0 0 0-.697.38c-.165.254-.248.622-.248 1.106 0 .483.083.846.25 1.087.167.242.406.363.717.363zm6.79.98l-.26-.668h-.034c-.226.284-.458.481-.697.591-.239.11-.55.165-.934.165-.471 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.765-.747-.393 0-.854.119-1.384.356l-.444-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.351.288.527.724.527 1.31V383h-.936zm-.395-2.276l-.519.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.746-.268.186-.179.279-.416.279-.712v-.404zm4.78 1.296c.235 0 .516-.051.845-.154v.998c-.334.15-.745.224-1.23.224-.537 0-.927-.136-1.172-.407-.245-.27-.367-.677-.367-1.22v-2.368h-.642v-.567l.739-.448.386-1.037h.857v1.046h1.376v1.006h-1.376v2.369c0 .19.054.331.16.422.108.09.25.136.425.136zm4.958.98l-.26-.668h-.035c-.225.284-.457.481-.696.591-.239.11-.55.165-.934.165-.472 0-.843-.135-1.114-.404-.27-.27-.406-.654-.406-1.152 0-.521.182-.906.547-1.153.364-.248.914-.385 1.65-.411l.852-.027v-.215c0-.498-.255-.747-.764-.747-.393 0-.854.119-1.385.356l-.443-.905a3.994 3.994 0 0 1 1.88-.444c.66 0 1.165.143 1.517.43.351.288.527.724.527 1.31V383h-.936zm-.396-2.276l-.518.017c-.39.012-.68.082-.87.211-.19.13-.286.325-.286.589 0 .378.217.567.65.567.311 0 .56-.09.745-.268.186-.179.28-.416.28-.712v-.404zm7.12 1.296c.234 0 .515-.051.843-.154v.998c-.334.15-.744.224-1.23.224-.536 0-.927-.136-1.171-.407-.245-.27-.367-.677-.367-1.22v-2.368h-.642v-.567l.738-.448.387-1.037h.857v1.046h1.376v1.006h-1.376v2.369c0 .19.054.331.16.422.107.09.249.136.425.136zm2.904-1.485c0 .486.08.854.24 1.103.16.249.42.373.78.373.357 0 .614-.124.771-.371.157-.248.235-.616.235-1.105 0-.487-.079-.851-.237-1.095-.158-.243-.418-.364-.778-.364-.357 0-.615.12-.773.362-.159.242-.238.607-.238 1.097zm3.397 0c0 .8-.21 1.425-.633 1.876-.421.451-1.009.677-1.762.677-.471 0-.887-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.29-.838-.29-1.353 0-.803.21-1.427.628-1.872.419-.446 1.008-.668 1.767-.668.471 0 .887.102 1.248.307.36.205.637.5.83.884.194.383.29.833.29 1.349zm7.484 2.465l-.466-1.53h-2.342l-.466 1.53h-1.468l2.268-6.451h1.666l2.276 6.451h-1.468zm-.79-2.672a452.37 452.37 0 0 1-.728-2.35 6.637 6.637 0 0 1-.117-.432c-.096.375-.373 1.303-.83 2.782h1.674zm4.301 2.672h-1.34v-6.838h1.34V383zm1.817-.37a.898.898 0 0 1-.358-.287.684.684 0 0 1-.153-.424c0-.188.054-.344.162-.468a1.88 1.88 0 0 1 .47-.367 1.319 1.319 0 0 1-.613-.536 1.632 1.632 0 0 1-.226-.87c0-.536.174-.95.523-1.244.349-.293.847-.44 1.494-.44.138 0 .301.013.49.038.19.025.31.043.363.055h1.714v.681l-.77.198c.141.22.211.466.211.738 0 .527-.183.938-.551 1.233-.368.294-.878.441-1.532.441l-.241-.013-.198-.022c-.138.106-.207.223-.207.352 0 .193.246.29.739.29h.835c.539 0 .95.116 1.232.347.283.231.424.571.424 1.02 0 .574-.24 1.02-.718 1.335-.48.317-1.167.475-2.063.475-.686 0-1.21-.12-1.571-.358a1.137 1.137 0 0 1-.543-1.004c0-.296.092-.544.277-.743.184-.2.455-.341.813-.426l-.003-.001zm.073 1.064c0 .185.089.33.266.435.177.106.425.159.745.159.48 0 .857-.066 1.13-.198.272-.132.408-.312.408-.54 0-.185-.08-.313-.242-.383-.161-.07-.41-.105-.747-.105h-.694c-.246 0-.452.057-.618.173a.535.535 0 0 0-.248.46zm.488-3.999c0 .267.06.478.182.633.122.155.307.233.556.233.252 0 .437-.078.554-.233.117-.155.176-.366.176-.633 0-.591-.244-.887-.73-.887-.492 0-.738.296-.738.887zm5.181.84c0 .486.08.854.24 1.103.16.249.42.373.78.373.357 0 .614-.124.77-.371.157-.248.236-.616.236-1.105 0-.487-.08-.851-.237-1.095-.159-.243-.418-.364-.778-.364-.358 0-.616.12-.774.362-.158.242-.237.607-.237 1.097zm3.397 0c0 .8-.211 1.425-.633 1.876-.422.451-1.01.677-1.762.677-.472 0-.888-.103-1.248-.31a2.062 2.062 0 0 1-.83-.89c-.194-.387-.29-.838-.29-1.353 0-.803.209-1.427.628-1.872.419-.446 1.008-.668 1.766-.668.472 0 .888.102 1.248.307.36.205.638.5.83.884.194.383.291.833.291 1.349zM251.7 383h-1.34v-6.838h1.34V383zm1.349-6.183c0-.437.243-.655.73-.655.486 0 .729.218.729.655 0 .208-.061.37-.183.485-.121.116-.304.174-.547.174-.486 0-.73-.22-.73-.66zm1.397 6.183h-1.34v-4.913h1.34V383zm4.527 0l-.26-.668h-.035c-.225.284-.458.481-.696.591-.24.11-.55.165-.934.165-.472 0-.843-.135-1.114-.404-.271-.27-.407-.654-.407-1.152 0-.521.183-.906.547-1.153.365-.248.915-.385 1.65-.411l.853-.027v-.215c0-.498-.255-.747-.764-.747-.393 0-.855.119-1.385.356l-.444-.905a3.994 3.994 0 0 1 1.881-.444c.66 0 1.165.143 1.516.43.352.288.528.724.528 1.31V383h-.936zm-.396-2.276l-.518.017c-.39.012-.68.082-.87.211-.191.13-.286.325-.286.589 0 .378.217.567.65.567.31 0 .56-.09.745-.268.186-.179.28-.416.28-.712v-.404z"></path> </g> </g>
-                        </svg>
-                    </div>
                 </div>
+            </div>
+
+            <div class="flex px-three-five-px pt-12 pb-6">
+                <main class="min-h-full w-full">
+                    <div class="flex flex-col flex-1">
+                        <div class="p-4 border-dashed border border-proton-grey-opacity-80 rounded text-solstice-blue group m-4 flex-1">
+                            <h3 class="flex items-center justify-between flex-wrap mb-4 -mt-1 -mx-1 text-xs font-normal">
+                                <span>
+                                    <span class="inline-block mx-1 leading-loose cursor-pointer font-semibold text-eshangazi">
+                                        Message Details
+                                    </span>
+
+                                    <a href="#">
+                                        <span class="inline-block mx-1 leading-loose cursor-pointer text-eshangazi-grey">
+                                            View Items
+                                        </span>
+                                    </a>
+                                </span>
+
+                                <a href="#" @click="new_message">
+                                    <span class="inline-block mx-1 leading-loose cursor-pointer text-eshangazi-grey">
+                                        Create New
+                                    </span>
+                                </a>
+                            </h3>
+
+                            <div>
+                                <form method="POST" v-on:submit.prevent="store" v-if="creating" enctype="multipart/form-data">
+                                    @csrf
+
+                                    <div class="flex sm:flex-row flex-col -mx-2 border-red border-1">
+                                        <input autocapitalize="none"
+                                               autocomplete="off"
+                                               autocorrect="off"
+                                               class="flex-1 bg-moon-grey rounded mx-2 mb-4 py-4 px-6 text-telluric-blue shadow-none outline-none{{ $errors->has("title") ? " border border-red" : "" }}"
+                                               id="title"
+                                               placeholder="Message Title"
+                                               spellcheck="false"
+                                               type="text"
+                                               name="title"
+                                               v-model="title">
+                                    </div>
+
+                                    @if ($errors->has('title'))
+                                        <div class="text-red mb-5">
+                                            <p class="text-sm">{{ $errors->first('title') }}</p>
+                                        </div>
+                                    @endif
+
+                                    <div class="flex sm:flex-row flex-col -mx-2">
+                                        <textarea class="block w-full h-24 mb-8 bg-moon-grey rounded mx-2 mb-4 py-4 px-6 text-telluric-blue resize-none shadow-none outline-none leading-normal{{ $errors->has("description") ? " border border-red" : "" }}"
+                                              id="description"
+                                              placeholder="Message description goes here."
+                                              name="description" 
+                                              required="required"
+                                              v-model="description"></textarea>
+                                    </div>  
+
+                                    @if ($errors->has('description'))
+                                        <div class="text-red mb-5">
+                                            <p class="text-sm">{{ $errors->first('description') }}</p>
+                                        </div> 
+                                    @endif
+
+                                    <div class="flex justify-center mt-5">
+                                        <div class="block h-px flex-grow bg-telluric-blue-opacity-10"></div>
+                                    </div>
+
+                                    <div class="flex justify-center mt-8">
+                                        <button class="btn-skeuomorphic py-4 px-10 focus:outline-none focus:shadow-outline">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <div class="">
+                                    <h4 class="subtitle">There are @{{ messages.length }} messages so far...</h4>
+
+                                    <div>
+
+                                        <ul class="list-reset" v-for="(message, index) in messages" :key="message.id" v-if="messages.length">
+                                            <a href="#" class="hover:no-underline text-grey-darkest">
+                                                <li class="mb-4 pb-4 border-b">
+                                                    <div class="flex">
+                                                        <div class="flex items-center justify-center h-three-five w-three-five mr-4 flex-no-grow flex-no-shrink">
+                                                            <img src="{{ asset('img/demo.jpg') }}" class="h-auto max-h-12 w-auto">
+                                                        </div>
+
+                                                        <div>
+                                                            <h5 class="mb-2">
+                                                                <span class="text-cosmos-black text-sm font-normal">
+                                                                    @{{ message.title }}
+                                                                </span>
+                                                            </h5>
+
+                                                            <p>
+                                                                <span class="text-cosmos-black-opacity-70 text-xs ais-Snippet">
+                                                                    @{{ message.description }}
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </a>
+                                        </ul>
+
+                                        <span class="text-cosmos-black text-sm font-normal" v-else>
+                                            No data to display at the moment.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mx-3 flex sm:flex-row flex-col">
+                            <div class="p-4 border-dashed border border-proton-grey-opacity-80 rounded text-solstice-blue group m-1 h-104 flex-1">
+                                <h3 class="flex items-center justify-between flex-wrap mb-4 -mt-1 -mx-1 text-xs font-normal">
+                                    <span>
+                                        <span class="inline-block mx-1 leading-loose text-eshangazi-grey">
+                                            More messages
+                                        </span>
+                                    </span>
+                                </h3>
+
+                                <div>
+                                    <div class="">
+                                        <div class="ais-Pagination">
+                                            <ul class="ais-Pagination-list">
+                                                <li class="ais-Pagination-item ais-Pagination-item--previousPage ais-Pagination-item--disabled">
+                                                    <span aria-label="Previous" class="ais-Pagination-link"> ‹ </span>
+                                                </li>
+
+                                                <li class="ais-Pagination-item ais-Pagination-item--selected">
+                                                    <a href="#" class="ais-Pagination-link"> 1 </a>
+                                                </li>
+
+                                                <li class="ais-Pagination-item">
+                                                    <a href="#" class="ais-Pagination-link"> 2 </a>
+                                                </li>
+
+                                                <li class="ais-Pagination-item">
+                                                    <a href="#" class="ais-Pagination-link"> 3 </a>
+                                                </li>
+
+                                                <li class="ais-Pagination-item ais-Pagination-item--nextPage">
+                                                    <a aria-label="Next" href="#" class="ais-Pagination-link">›</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
         </div>
-    </div>
-
-    {{-- <div class="card-body">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">
-                Message Details
-            </h1>
-
-            <div class="btn-toolbar mb-2 mb-md-0">
-                <form action="{{ route('publish-message', $message) }}" method="POST">
-                    {{ csrf_field() }}
-                    {{ method_field('PUT')}}
-
-                    <div class="btn-group">
-                        @if($message->status == 'draft')
-                            <button type="submit" class="btn btn-sm btn-secondary">
-                                Publish Message
-                            </button>
-                        @endif
-
-                        <a href="{{ route('index-message') }}" class="btn btn-sm btn-outline-secondary">
-                            Messages List
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>    
-
-        <section class="jumbotron">
-            <h1 class="jumbotron-heading">
-                {{ $message->title }}
-            </h1>
-
-            <p class="lead text-muted">
-                {{ $message->description }}
-            </p>
-
-            <p class="card-text">
-                <small class="text-muted">
-                    Created by: 
-                    <a href="#">
-                        {{ $message->creator->name }}  
-                    </a>
-
-                    {{ $message->created_at->diffForHumans() }}
-                </small>
-            </p>
-        </section>
-
-        <section class="relation">
-            <ul class="nav nav-tabs" id="messageTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">
-                        Details
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="messageTabRelation">
-                <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-                <div class="table-responsive">
-                        @if($message->details->isEmpty())
-                            <p class="lead text-muted">
-                                No data to display at the moment.
-                            </p>                        
-                        @else
-                            <table class="table table-striped table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>Thumbnail</th>
-
-                                        <th>Title</th>
-
-                                        <th class="text-center">Actions</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    @foreach($message->details as $detail)
-                                        <tr>
-                                            <td class="align-middle">
-                                                <img src="{{ asset('img/demo.jpg') }}" height="50" alt="{{ $detail->title }}">
-                                            </td>
-
-                                            <td class="align-middle">
-                                                {{ $detail->title }}
-                                            </td>
-                                            
-                                            <td class="text-center align-middle">
-                                                <form action="{{ route('delete-message-detail', $detail) }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE')}}
-
-                                                    <div class="btn-group">
-                                                        <a href="{{ route('show-message-detail', $detail) }}" class="btn btn-sm btn-outline-secondary">
-                                                            Show
-                                                        </a>
-
-                                                        <a href="{{ route('edit-message-detail', $detail) }}" class="btn btn-sm btn-outline-secondary">
-                                                            Edit
-                                                        </a>
-
-                                                        <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
-                                                    </div>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </section>        
-    </div> --}}
-@endsection
-
-@section('scripts')
-    {{-- <script>
-        $('#messageTab a').on('click', function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-        })
-    </script>  --}}   
+    </message-view>
 @endsection

@@ -145,7 +145,8 @@ class MessageController extends Controller
     {      
         $bot = app('botman');
 
-        $members = Member::where('status', 1)->get();
+        // $members = Member::where('status', 1)->get();
+        $members = Member::get();
 
         foreach($members as $member)
         {
