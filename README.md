@@ -1,25 +1,46 @@
-<p align="center"><img height="188" width="198" src="https://botman.io/img/botman.png"></p>
-<h1 align="center">BotMan Studio</h1>
+# eShangazi [![Build Status](https://travis-ci.org/indexlabstz/eshangazi.svg?branch=master)](https://travis-ci.org/indexlabstz/eshangazi)
 
-## About BotMan Studio
+## About eShangazi
 
-While BotMan itself is framework agnostic, BotMan is also available as a bundle with the great [Laravel](https://laravel.com) PHP framework. This bundled version is called BotMan Studio and makes your chatbot development experience even better. By providing testing tools, an out of the box web driver implementation and additional tools like an enhanced CLI with driver installation, class generation and configuration support, it speeds up the development significantly.
+eShangazi is a knowledge-sharing system (ChatBot) that aims at informing, educating and advising youths about Sexual and Reproductive Health (SRH) via Facebook Messenger, Telegram, Skype, Slack, SMS and Google Hangouts.
 
-## Documentation
+This is an open source forum that was built and maintained at Laracasts.com.
 
-You can find the BotMan and BotMan Studio documentation at [http://botman.io](http://botman.io).
+### Prerequisites
+ 
+ * To run this project, you must have PHP 7 installed.
+ * You should setup a host on your web server for your local domain. 
+ For this you could also configure Laravel Homestead or Valet. 
+ * Alternatively, install the following
+ ```bash
+ * WAMP/XAMPP on windows or LAMP on Linux
+ * Composer
+ * On windows also install Git Bash to run git commands
+ ```
+  
+ ### Step 1
+ 
+ Begin by cloning this repository to your machine, and installing all Composer dependencies.
+ 
+ ```bash
+ git clone https://github.com/indexlabstz/eshangazi.git
+ cd eshangazi-web && composer install
+ ```
+ 
+ ### Step 2
+ 
+ Create a new [Facebook page](https://developers.facebook.com/docs/messenger-platform) or use one you already have to as a starting point. 
 
-## Support the development
-**Do you like this project? Support it by donating**
-
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=m%2epociot%40googlemail%2ecom&lc=CY&item_name=BotMan&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
-- Patreon: [Donate](https://www.patreon.com/botman)
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within BotMan or BotMan Studio, please send an e-mail to Marcel Pociot at m.pociot@gmail.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-BotMan is free software distributed under the terms of the MIT license.
-
+ 
+ ### Step 3
+ 
+ Visit [Dialogflow](https://dialogflow.com) to create your first agent to interact with eShangazi. 
+ 
+ ### Step 4
+ 
+ Finish the setup by creating a new app at [Heroku](http://heroku.com), integration with Facebook Messenger requires a https link.
+ You can get one for free at Heroku. You can also try other options like ngrok for quick getting started. 
+ 
+ ### Step 5
+ 
+ Next, boot up a server and visit your browser and locate your application.

@@ -57,7 +57,6 @@ class MemberController extends Controller
             if ($incomplete) {
                 $bot->reply($apiReply);
             } else {
-                $bot->reply("Registrations");
                 $this->subscribe($user, $extras, $driver);
 
                 if ($driver === 'Facebook') {
@@ -186,7 +185,7 @@ class MemberController extends Controller
         //Check if users exists
         $member = Member::where('platform_id', $platform_id)->first();
 
-        if (!member) {
+        if (!$member) {
             $member = Member::create([
                 'user_platform_id' => $user->getId(),
                 'name' => $user->getFirstName() . ' ' . $user->getLastName(),
