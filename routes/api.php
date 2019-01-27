@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
 Route::get('messages/details/{message}', 'MessageDetailController@index');
 Route::post('messages/details', 'MessageDetailController@store');
-Route::put('messages/{message}', 'MessageController@publish');
+Route::put('messages/publish/{message}', 'MessageController@publish');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

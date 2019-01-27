@@ -87,7 +87,7 @@
                         <ul class="list-reset ml-10"
                             :class="{ 'hidden' : conversation }">
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/conversations/statistics"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Conversation
