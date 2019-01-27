@@ -57,6 +57,7 @@ class MemberController extends Controller
             if ($incomplete) {
                 $bot->reply($apiReply);
             } else {
+                $bot->reply("Registrations");
                 $this->subscribe($user, $extras, $driver);
 
                 if ($driver === 'Facebook') {

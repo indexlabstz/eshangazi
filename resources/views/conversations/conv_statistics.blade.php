@@ -189,7 +189,7 @@
                                         </span>
                                     @else
                                         <ul class="list-reset">
-                                            @foreach($conversations as $conversations)
+                                            @foreach($conversations as $conversation)
                                                 <li class="mb-4 pb-4 border-b">
                                                     <div class="flex">
                                                         <div class="flex items-center justify-center h-three-five w-three-five mr-4 flex-no-grow flex-no-shrink">
