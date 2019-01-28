@@ -86,8 +86,7 @@ class MemberController extends Controller
         $apiReply = $extras['apiReply'];
 
         $bot->typesAndWaits(1);
-        $sms = "Retuned by botman .".$extras;
-        \Log::debug($sms);
+        \Log::debug("Retuned by dialogflow:", $extras);
 
         $bot->reply($apiReply);
 
