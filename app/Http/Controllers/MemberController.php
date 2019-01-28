@@ -86,9 +86,6 @@ class MemberController extends Controller
         $apiReply = $extras['apiReply'];
 
         $bot->typesAndWaits(1);
-        \Log::debug("Retuned by dialogflow:", $extras);
-
-        //$bot->reply($apiReply);
 
         if (!$this->check($user)) {
             $incomplete = $extras['apiActionIncomplete'];
@@ -96,8 +93,8 @@ class MemberController extends Controller
             if ($incomplete) {
                 $bot->reply($apiReply);
             } else {
-                \Log::debug("Iko complete na driver name ni".$driver);
-                //$this->subscribeWithNoData($user, $extras, $driver);
+                \Log::debug('Nimeingia hapa kwenye kusave');
+                $this->subscribeWithNoData($user, $extras, $driver);
 
                 if ($driver === 'Facebook') {
                     $bot->reply($apiReply);
@@ -107,8 +104,7 @@ class MemberController extends Controller
             }
             \Log::debug("User hayupo");
         } else {
-            // $bot->reply($this->features($apiReply, $driver));
-            \Log::debug("User yupo kwa database");
+            $bot->reply($this->features($apiReply, $driver));
         }
     }
 
