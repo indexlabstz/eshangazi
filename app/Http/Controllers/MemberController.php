@@ -90,23 +90,25 @@ class MemberController extends Controller
 
         $bot->reply($apiReply);
 
-        // if (!$this->check($user)) {
-        //     $incomplete = $extras['apiActionIncomplete'];
+        if (!$this->check($user)) {
+            // $incomplete = $extras['apiActionIncomplete'];
 
-        //     if ($incomplete) {
-        //         $bot->reply($apiReply);
-        //     } else {
-        //         $this->subscribeWithNoData($user, $extras, $driver);
+            // if ($incomplete) {
+            //     $bot->reply($apiReply);
+            // } else {
+            //     $this->subscribeWithNoData($user, $extras, $driver);
 
-        //         if ($driver === 'Facebook') {
-        //             $bot->reply($apiReply);
-        //         }
+            //     if ($driver === 'Facebook') {
+            //         $bot->reply($apiReply);
+            //     }
 
-        //         $bot->reply($this->features($apiReply, $driver));
-        //     }
-        // } else {
-        //     $bot->reply($this->features($apiReply, $driver));
-        // }
+            //     $bot->reply($this->features($apiReply, $driver));
+            // }
+            \Log::debug("User hayupo");
+        } else {
+            // $bot->reply($this->features($apiReply, $driver));
+            \Log::debug("User yupo kwa database");
+        }
     }
 
     /**
