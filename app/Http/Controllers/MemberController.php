@@ -93,7 +93,7 @@ class MemberController extends Controller
             if ($incomplete) {
                 $bot->reply($apiReply);
             } else {
-                \Log::debug('Nimeingia hapa kwenye kusave');
+                \Log::debug('Nimeingia hapa kwenye kusave '.$user->getInfo());
                 $this->subscribeWithNoData($user, $extras, $driver);
 
                 if ($driver === 'Facebook') {
