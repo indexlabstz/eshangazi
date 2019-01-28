@@ -79,16 +79,16 @@ class MemberController extends Controller
      */
     public function reject(BotMan $bot)
     {
-        // $user = $bot->getUser();
-        // $driver = $bot->getDriver()->getName();
-        // $extras = $bot->getMessage()->getExtras();
+        $user = $bot->getUser();
+        $driver = $bot->getDriver()->getName();
+        $extras = $bot->getMessage()->getExtras();
 
-        // $apiReply = $extras['apiReply'];
+        $apiReply = $extras['apiReply'];
 
-        // $bot->typesAndWaits(1);
-        // \Log::debug('Retuned by botman => '.$extras);
+        $bot->typesAndWaits(1);
+        \Log::debug('Retuned by botman => '.$extras);
 
-        $bot->reply('Sawa karibu sana');
+        $bot->reply($apiReply);
 
         // if (!$this->check($user)) {
         //     $incomplete = $extras['apiActionIncomplete'];
