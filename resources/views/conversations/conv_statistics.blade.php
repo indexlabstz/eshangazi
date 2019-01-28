@@ -200,13 +200,13 @@
                                                         <div>
                                                             <h5 class="mb-2">
                                                                 <span class="text-cosmos-black text-sm font-normal">
-                                                                    {{ $convesation->hits }}
+                                                                    {{ $conversation->hits }}
                                                                 </span>
                                                             </h5>
 
                                                             <p>
                                                                 <span class="text-cosmos-black-opacity-70 text-xs ais-Snippet">
-                                                                    {{ $convesation->intent }}
+                                                                    {{ $conversation->intent }}
                                                                 </span>
                                                             </p>
                                                         </div>
@@ -215,7 +215,6 @@
                                             @endforeach
                                         </ul>
                                     @endif
-
                                 </div>
                             </div>
                         </div>
