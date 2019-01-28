@@ -369,7 +369,8 @@ class MemberController extends Controller
     public function getUserGender($user, $driver)
     {
         if ($driver === 'Facebook') {
-            return $gender = $user->getInfo()["gender"];
+            $gender = $user->getInfo()["gender"] ?? null;
+            return $gender;
         }
 
         return null;
