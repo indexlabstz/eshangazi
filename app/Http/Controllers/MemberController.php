@@ -88,22 +88,23 @@ class MemberController extends Controller
         $bot->typesAndWaits(1);
         \Log::debug("Retuned by dialogflow:", $extras);
 
-        $bot->reply($apiReply);
+        //$bot->reply($apiReply);
 
         if (!$this->check($user)) {
-            // $incomplete = $extras['apiActionIncomplete'];
+            $incomplete = $extras['apiActionIncomplete'];
 
-            // if ($incomplete) {
-            //     $bot->reply($apiReply);
-            // } else {
-            //     $this->subscribeWithNoData($user, $extras, $driver);
+            if ($incomplete) {
+                $bot->reply($apiReply);
+            } else {
+                \Log::debug("Iko complete na driver name ni".$driver);
+                //$this->subscribeWithNoData($user, $extras, $driver);
 
-            //     if ($driver === 'Facebook') {
-            //         $bot->reply($apiReply);
-            //     }
+                if ($driver === 'Facebook') {
+                    $bot->reply($apiReply);
+                }
 
-            //     $bot->reply($this->features($apiReply, $driver));
-            // }
+                $bot->reply($this->features($apiReply, $driver));
+            }
             \Log::debug("User hayupo");
         } else {
             // $bot->reply($this->features($apiReply, $driver));
