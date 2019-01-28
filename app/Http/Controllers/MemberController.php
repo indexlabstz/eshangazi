@@ -88,7 +88,7 @@ class MemberController extends Controller
         $bot->typesAndWaits(1);
         \Log::debug('Retuned by botman => '.$extras);
 
-        $bot->reply($this->features($apiReply, $driver));
+        $bot->reply($apiReply);
 
         // if (!$this->check($user)) {
         //     $incomplete = $extras['apiActionIncomplete'];
