@@ -86,24 +86,27 @@ class MemberController extends Controller
         $apiReply = $extras['apiReply'];
 
         $bot->typesAndWaits(1);
+        \Log::debug('Retuned by botman => '.$extras);
 
-        if (!$this->check($user)) {
-            $incomplete = $extras['apiActionIncomplete'];
+        $bot->reply($this->features($apiReply, $driver));
 
-            if ($incomplete) {
-                $bot->reply($apiReply);
-            } else {
-                $this->subscribeWithNoData($user, $extras, $driver);
+        // if (!$this->check($user)) {
+        //     $incomplete = $extras['apiActionIncomplete'];
 
-                if ($driver === 'Facebook') {
-                    $bot->reply($apiReply);
-                }
+        //     if ($incomplete) {
+        //         $bot->reply($apiReply);
+        //     } else {
+        //         $this->subscribeWithNoData($user, $extras, $driver);
 
-                $bot->reply($this->features($apiReply, $driver));
-            }
-        } else {
-            $bot->reply($this->features($apiReply, $driver));
-        }
+        //         if ($driver === 'Facebook') {
+        //             $bot->reply($apiReply);
+        //         }
+
+        //         $bot->reply($this->features($apiReply, $driver));
+        //     }
+        // } else {
+        //     $bot->reply($this->features($apiReply, $driver));
+        // }
     }
 
     /**
