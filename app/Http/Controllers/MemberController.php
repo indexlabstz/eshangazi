@@ -93,7 +93,6 @@ class MemberController extends Controller
             if ($incomplete) {
                 $bot->reply($apiReply);
             } else {
-                \Log::debug('Huyu hapa user: '.print_r($user, true));
                 $this->subscribeWithNoData($user, $extras, $driver);
 
                 if ($driver === 'Facebook') {
@@ -102,7 +101,6 @@ class MemberController extends Controller
 
                 $bot->reply($this->features($apiReply, $driver));
             }
-            \Log::debug("User hayupo");
         } else {
             $bot->reply($this->features($apiReply, $driver));
         }
@@ -219,7 +217,7 @@ class MemberController extends Controller
     public function subscribeWithNoData($user, $extras, $driver)
     {
         $age = null;
-        $district_id = 188;
+        $district_id = null;
         $born_year = null;
         $platform_id = $this->getPlatformId($driver);
         $profile_pic = $this->getUserProfilePic($user, $driver);

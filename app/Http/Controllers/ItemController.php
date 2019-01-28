@@ -239,7 +239,7 @@ class ItemController extends Controller
             $message = OutgoingMessage::create($item->description)->withAttachment($attachment);
 
             if ($item->items->isEmpty()) {
-                if ($driver == 'Web') {
+                if ($driver === 'Web') {
                     $bot->reply($item->description);
                     $bot->reply($this->customFeaturesSms());
                 } else {
@@ -254,13 +254,13 @@ class ItemController extends Controller
                     $bot->reply($this->customFeatures($user));
                 }
             } else {
-                if ($driver == 'Facebook') {
+                if ($driver === 'Facebook') {
                     $bot->reply($message);
 
                     $bot->typesAndWaits(2);
 
                     $bot->reply($this->toFacebook($item));
-                } elseif ($driver == 'Slack' || $driver == 'Telegram') {
+                } elseif ($driver === 'Slack' || $driver === 'Telegram') {
                     $bot->reply($message);
 
                     $bot->typesAndWaits(2);
