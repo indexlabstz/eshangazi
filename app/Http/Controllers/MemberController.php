@@ -217,7 +217,7 @@ class MemberController extends Controller
     public function subscribeWithNoData($user, $extras, $driver)
     {
         $age = null;
-        $district_id = 188;
+        $district_id = null;
         $born_year = null;
         $platform_id = $this->getPlatformId($driver);
         $profile_pic = $this->getUserProfilePic($user, $driver);
@@ -367,7 +367,8 @@ class MemberController extends Controller
     public function getUserGender($user, $driver)
     {
         if ($driver === 'Facebook') {
-            return $gender = $user->getInfo()["gender"];
+            $gender = $user->getInfo()["gender"] ?? null;
+            return $gender;
         }
 
         return null;
