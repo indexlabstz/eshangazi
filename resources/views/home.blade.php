@@ -13,7 +13,7 @@
                         <h3 class="flex items-center justify-between flex-wrap mb-4 -mt-1 -mx-1 text-xs font-normal">
                             <span>
                                 <span class="inline-block mx-1 leading-loose text-eshangazi-grey">
-                                    Members created today
+                                    Members
                                 </span>
                             </span>
                         </h3>

@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $item_count = Item::count();
-        $member_count = Member::where('created_at', Carbon::now()->format('Y-m-d'))->count();
+        $member_count = Member::count();
         $question_count = Question::count();
         $conversations = Conversation::where('created_at', Carbon::now()->format('Y-m-d'))->paginate(10);
 
