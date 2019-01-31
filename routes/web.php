@@ -62,14 +62,14 @@ Route::patch('/items/upload/{item}', 'ItemController@upload')->name('upload-item
 Route::delete('/items/destroy/{item}', 'ItemController@destroy')->name('delete-item');
 Route::delete('/items/destroy/trash/{item}', 'ItemController@destroyTrashed')->name('destroy-trash-item');
 
-Route::get('/ads/index', 'AdController@index')->name('index-ad');
+Route::get('/ads', 'AdController@index')->name('index-ad');
 Route::get('/ads/create', 'AdController@create')->name('create-ad');
 Route::post('/ads/store', 'AdController@store')->name('store-ad');
 Route::get('/ads/{ad}', 'AdController@show')->name('show-ad');
 Route::get('/ads/{ad}/edit', 'AdController@edit')->name('edit-ad');
-Route::patch('/ads/{ad}/update', 'AdController@update')->name('update-ad');
+Route::patch('/ads/{ad}', 'AdController@update')->name('update-ad');
 Route::patch('/ads/{ad}/upload', 'AdController@upload')->name('upload-ad');
-Route::delete('/ads/{ad}/destroy', 'AdController@destroy')->name('destroy-ad');
+Route::delete('/ads/{ad}', 'AdController@destroy')->name('destroy-ad');
 
 Route::get('/partners', 'PartnerController@index')->name('index-partner');
 Route::get('/partners/create', 'PartnerController@create')->name('create-partner');

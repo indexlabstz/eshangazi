@@ -8,7 +8,7 @@
                  data-sidebar-scroll="">
                 <ul class="list-reset px-10 pt-12 pb-6">
                     <li class="mb-6">
-                        <a href="/doc"
+                        <a href="/home"
                            class="text-nebula-blue flex items-center no-underline hover:text-nebula-blue text-sm"
                            data-sidebar-active="true">
                             <span class="flex w-4 h-4 mr-6 items-center justify-center fill-current">
@@ -37,7 +37,7 @@
                         <ul class="list-reset ml-10"
                             :class="{ 'hidden' : feature }">
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/items"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Items
@@ -45,7 +45,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/messages"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Messages
@@ -53,7 +53,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/questions"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Questions & Answers
@@ -61,7 +61,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/centers"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Centers
@@ -95,7 +95,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/feedback"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Feedback
@@ -103,7 +103,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/platforms"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Platform
@@ -129,7 +129,7 @@
                         <ul class="list-reset ml-10"
                             :class="{ 'hidden' : business }">
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/partners"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Partners
@@ -137,7 +137,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/ads"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Ads
@@ -179,7 +179,7 @@
                         <ul class="list-reset ml-10"
                             :class="{ 'hidden' : location }">
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/countries"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Countries
@@ -187,7 +187,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/regions"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Regions
@@ -195,7 +195,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/districts"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Districts
@@ -203,7 +203,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/wards"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Wards
@@ -229,7 +229,7 @@
                         <ul class="list-reset ml-10"
                             :class="{ 'hidden' : setting }">
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/users"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Users
@@ -237,7 +237,7 @@
                             </li>
 
                             <li class="mb-4 mt-4">
-                                <a href="#"
+                                <a href="/roles"
                                    class="hover:text-nebula-blue no-underline text-nova-grey"
                                    data-sidebar-active="false">
                                     Roles

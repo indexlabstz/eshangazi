@@ -67,16 +67,23 @@
                             </li>
 
                             <li class="flex items-center h-full mx-4">
-                                <span class="border-b-2 cursor-pointer flex h-full header-item hover:text-eshangazi items-center no-underline transition-fast-out text-xs"
+                                <a href="{{ route('index-item') }}" 
+                                    class="border-b-2 cursor-pointer flex h-full header-item hover:text-eshangazi items-center no-underline transition-fast-out text-xs"
                                       data-header-item-active="false"
                                       data-header-item=""
                                       data-open-dropdown="items">
-                                    Items
-                                </span>
+                                    <span class="border-b-2 cursor-pointer flex h-full header-item hover:text-eshangazi items-center no-underline transition-fast-out text-xs"
+                                          data-header-item-active="false"
+                                          data-header-item=""
+                                          data-open-dropdown="items">
+                                        Items
+                                    </span>
+                                </a>
                             </li>
 
                             <li class="flex items-center h-full mx-4">
-                                <a href="{{ route('index-message') }}" class="border-b-2 cursor-pointer flex h-full header-item hover:text-eshangazi items-center no-underline transition-fast-out text-xs"
+                                <a href="{{ route('index-message') }}" 
+                                    class="border-b-2 cursor-pointer flex h-full header-item hover:text-eshangazi items-center no-underline transition-fast-out text-xs"
                                       data-header-item-active="false"
                                       data-header-item=""
                                       data-open-dropdown="messages">
