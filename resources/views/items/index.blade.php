@@ -18,7 +18,7 @@
                     </h2>
 
                     <p class="text-solstice-blue-opacity-60 mb-6 leading-normal">
-                        eShangazi Goals are reffered to as Items in the database, define and provide goals contents here and after that, copy the title and take it to the Dialogflow.
+                        eShangazi Goals are referred to as Items in the database, define and provide goals contents here and after that, copy the title and take it to the Dialogflow.
                     </p>
 
                     <div class="flex -m-1 xl:flex-row flex-col">
@@ -145,27 +145,7 @@
                             <div>
                                 <div class="">
                                     <div class="ais-Pagination">
-                                        <ul class="ais-Pagination-list">
-                                            <li class="ais-Pagination-item ais-Pagination-item--previousPage ais-Pagination-item--disabled">
-                                                <span aria-label="Previous" class="ais-Pagination-link"> ‹ </span>
-                                            </li>
-
-                                            <li class="ais-Pagination-item ais-Pagination-item--selected">
-                                                <a href="#" class="ais-Pagination-link"> 1 </a>
-                                            </li>
-
-                                            <li class="ais-Pagination-item">
-                                                <a href="#" class="ais-Pagination-link"> 2 </a>
-                                            </li>
-
-                                            <li class="ais-Pagination-item">
-                                                <a href="#" class="ais-Pagination-link"> 3 </a>
-                                            </li>
-
-                                            <li class="ais-Pagination-item ais-Pagination-item--nextPage">
-                                                <a aria-label="Next" href="#" class="ais-Pagination-link">›</a>
-                                            </li>
-                                        </ul>
+                                        {{ $items->links() }}
                                     </div>
                                 </div>
                             </div>

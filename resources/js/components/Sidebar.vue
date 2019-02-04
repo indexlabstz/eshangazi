@@ -272,10 +272,11 @@
                 </a>
 
                 <a class="block mx-4 py-2 text-xs text-telluric-blue hover:text-solstice-blue no-underline transition-fast-out"
-                   href="#"
+                   href="/logout"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                    rel="nofollow"
                    target="_blank">
-                    Website
+                    Logout
                 </a>
             </div>
         </div>

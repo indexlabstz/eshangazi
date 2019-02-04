@@ -6,6 +6,7 @@ use App\Member;
 use App\Message;
 use App\Conversation;
 use BotMan\BotMan\BotMan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateMessageRequest;
 use BotMan\Drivers\Facebook\FacebookDriver;
@@ -22,6 +23,8 @@ class MessageController extends Controller
 
     /**
      * Message Controller constructor.
+     *
+     * @param Message $message
      */
     public function __construct(Message $message)
     {
@@ -55,8 +58,8 @@ class MessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * 
+     * @param CreateMessageRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateMessageRequest $request)
@@ -124,8 +127,9 @@ class MessageController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  Message $message
-     * 
+     *
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Message $message)
     {

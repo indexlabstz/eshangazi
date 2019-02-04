@@ -85,9 +85,9 @@ class QuizConversation extends Conversation
                     {
                         $this->score += 1;
 
-                        $this->say("Swal." .
+                        $this->say("Swali." .
                             $this->iterations . "/" .
-                            $this->data->count(). ". ✔️ Sahihi 👍, umeshinda alama 1.");
+                            $this->data->count(). ". ✅️ Sahihi 👍, umeshinda alama 1.");
                     } else {
                         $this->say("Swal." .
                             $this->iterations . "/" .

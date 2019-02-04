@@ -119,6 +119,10 @@
                 <div class="flex h-full">
                     <sidebar v-cloak></sidebar>
 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
                     @yield('content')
                 </div>
             </div>
