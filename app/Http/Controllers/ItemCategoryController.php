@@ -209,11 +209,19 @@ class ItemCategoryController extends Controller
 
         $bot->typesAndWaits(1);
         if ($category) {
-            if ($driver == 'Facebook')
-                $bot->reply($this->toFacebook($category));
-            elseif ($driver == 'Slack' || $driver == 'Telegram')
+            if ($driver == 'Facebook'){
+                //Iterating through description paragraphs
+                $descriptions= array_values(array_filter(explode("\r\n", $category->description)));
+                foreach( $descriptions as $paragraph){
+                    if( $paragraph === end( $descriptions ) ) {
+                        $bot->reply($this->toFacebook($category, $paragraph));
+                    }else{
+                        $bot->reply($paragraph); 
+                    }
+                }
+            }elseif ($driver == 'Slack' || $driver == 'Telegram'){
                 $bot->reply($this->toSlackTelegram($category));
-            else {
+            }else {
                 //$bot->reply($category->description);
                 // $bot->reply('Unaweza jibu mojawapo kuendelea'
                 //     . $this->toWeb($category));
@@ -267,15 +275,11 @@ class ItemCategoryController extends Controller
      *
      * @return ButtonTemplate
      */
-    public function toFacebook($category)
+    public function toFacebook($category, $paragraph)
     {
-        \Log::debug('itemdescategory: '.$category->description);
-        $descriptions= explode("\r\n", $category->description);
-        $description= array_values(array_filter($descriptions));
-        \Log::debug('categoryarray', $description);
         $items = Item::where('item_category_id', $category->id)->where('item_id', NULL)->inRandomOrder()->take(3)->get();
 
-        $template_list = ButtonTemplate::create($category->description);
+        $template_list = ButtonTemplate::create($paragraph);
 
         foreach ($items as $item) {
             $template_list->addButton(
