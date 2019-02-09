@@ -270,7 +270,7 @@ class ItemCategoryController extends Controller
     public function toFacebook($category)
     {
         \Log::debug('itemdescategory: '.$category->description);
-        $descriptions= explode("\n", $category->description);
+        $descriptions= explode("\r\n", $category->description);
         \Log::debug('categoryarray', $descriptions);
         $items = Item::where('item_category_id', $category->id)->where('item_id', NULL)->inRandomOrder()->take(3)->get();
 
