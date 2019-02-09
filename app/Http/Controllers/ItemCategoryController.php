@@ -216,7 +216,8 @@ class ItemCategoryController extends Controller
                     if( $paragraph === end( $descriptions ) ) {
                         $bot->reply($this->toFacebook($category, $paragraph));
                     }else{
-                        $bot->reply($paragraph); 
+                        $bot->reply($paragraph);
+                        $bot->typesAndWaits(1); 
                     }
                 }
             }elseif ($driver == 'Slack' || $driver == 'Telegram'){
