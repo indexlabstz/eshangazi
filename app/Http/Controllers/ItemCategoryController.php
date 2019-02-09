@@ -271,7 +271,7 @@ class ItemCategoryController extends Controller
     {
         \Log::debug('itemdescategory: '.$category->description);
         $descriptions= explode("\r\n", $category->description);
-        $description= array_filter($descriptions, function($value) { return $value !== ''; });
+        $description= array_values(array_filter($descriptions));
         \Log::debug('categoryarray', $description);
         $items = Item::where('item_category_id', $category->id)->where('item_id', NULL)->inRandomOrder()->take(3)->get();
 
