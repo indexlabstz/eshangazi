@@ -216,7 +216,7 @@ class ItemCategoryController extends Controller
                     if( $paragraph === end( $descriptions ) ) {
                         $bot->reply($this->toFacebook($category, $paragraph));
                     }else{
-                        $bot->typesAndWaits(1); 
+                        //$bot->typesAndWaits(1); 
                         $bot->reply($paragraph);
                     }
                 }
