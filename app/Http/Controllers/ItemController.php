@@ -321,9 +321,9 @@ class ItemController extends Controller
     public function toFacebook($item)
     {
         $child_items = $item->items()->inRandomOrder()->take(3)->get();
-        // \Log::debug('itemdescription'.$item->description);
-        // $descriptions= expload("\n", $item->description);
-        // \Log::debug('descriptionarray', $descriptions);
+        \Log::debug('itemdescription: '.$item->description);
+        $descriptions= explode("\n", $item->description);
+        \Log::debug('descriptionarray', $descriptions);
 
         $template_list = ButtonTemplate::create($item->description);
 
