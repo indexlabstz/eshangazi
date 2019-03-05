@@ -55,7 +55,7 @@
                 axios.get(url).catch(error => {
                     flash(error.response.data, 'danger');
                 }).then(({data}) => {
-                    this.questions = data.data.slice().reverse();
+                    this.questions = data.data;
                 });
             },
 

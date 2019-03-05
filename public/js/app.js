@@ -2290,7 +2290,7 @@ __webpack_require__.r(__webpack_exports__);
         flash(error.response.data, 'danger');
       }).then(function (_ref2) {
         var data = _ref2.data;
-        _this2.questions = data.data.slice().reverse();
+        _this2.questions = data.data;
       });
     },
     store: function store() {
