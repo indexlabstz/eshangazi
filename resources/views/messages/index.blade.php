@@ -46,7 +46,7 @@
                                         </svg>
                                     </span>
 
-                                    <span class="inline-block pt-1 pb-two-px"> View on Messager </span>
+                                    <span class="inline-block pt-1 pb-two-px"> View on Messenger </span>
                                 </div>
                             </a>
                         </div>

@@ -18,6 +18,12 @@ Route::get('messages/details/{message}', 'MessageDetailController@index');
 Route::post('messages/details', 'MessageDetailController@store');
 Route::put('messages/publish/{message}', 'MessageController@publish');
 
+Route::get('question_categories', 'Api\QuestionCategoryController@index');
+
+Route::get('questions', 'Api\QuestionController@index');
+Route::post('questions', 'Api\QuestionController@store')->name('store-question');
+Route::post('questions/{question}/answer', 'Api\AnswerController@answer')->name('store-answer');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -1,132 +1,181 @@
 @extends('layouts.dashboard')
 
 @section('content')
-  <div class="w-full lg:ml-376">
-      <div class="pt-16 bg-gradient-white-moon-grey">
-          <div class="relative px-three-five-px pt-8 pb-five-px sm:pb-three-five-px md:pb-five-px">
-            <div class="absolute pin bg-no-repeat bg-right-bottom bg-height-fit sm:opacity-100 opacity-50 z-0"
-                 style="background-image:url(/svg/intro-bg.svg)"></div>
-
-              <div class="relative z-10 flex justify-between max-w-728 w-full">
-                <div class="max-w-336 w-full mr-8">
-                    <h1 class="text-5xl sm:text-3xl md:text-4xl font-semibold leading-tall md:mb-10 mb-6">
-                        Questions and Answers
-                    </h1>
-
-                    <h2 class="text-3xl sm:text-xl md:text-2xl font-semibold mb-2">
-                        QnA game for members
-                    </h2>
-
-                    <p class="text-solstice-blue-opacity-60 mb-6 leading-normal">
-                        eShangazi provide an entartaining game for members by providing questions and members can answer them. This feature give them something to do when visiting eShangazi. 
-                    </p>
-
-                    <div class="flex -m-1 xl:flex-row flex-col">
-                        <a class="inline-block btn-skeuomorphic btn-skeuomorphic-blue hover:no-underline  sm:py-2 py-4 px-6 m-1 text-center text-sm whitespace-no-wrap"
-                           href="https://dialogflow.com" target="_blank">
-                          <div class="flex items-center justify-center">
-                            <span class="flex items-center h-4 w-auto mr-2 py-two-px flex-no-grow flex-no-shrink fill-current">
-                              <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 12">
-                                  <path d="M5.83,5.29A.23.23,0,0,1,6,5.6s0,0,0,.05L2.3,11.88a.25.25,0,0,1-.47-.16l.54-4.24L.17,6.72A.26.26,0,0,1,0,6.4s0,0,0-.05L3.7.13a.25.25,0,0,1,.47.15L3.63,4.52Z"></path>
-                              </svg>
-                            </span>
-
-                            <span class="inline-block pt-1 pb-two-px"> Go to Dialogflow</span>
-                          </div>
-                        </a>
-
-                        <a class="inline-block btn-skeuomorphic hover:no-underline sm:py-2 py-4 px-6 m-1 text-center whitespace-no-wrap text-sm"
-                           href="m.me/eshangazibot" target="_blank"
-                           rel="nofollow"
-                           target="_blank">
-                            <div class="flex items-center justify-center">
-                                <span class="flex items-center h-4 w-auto mr-2 py-two-px flex-no-grow flex-no-shrink fill-current">
-                                    <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 10">
-                                        <polygon points="0 0 0 10 8 5 0 0"></polygon>
-                                    </svg>
-                                </span>
-
-                                <span class="inline-block pt-1 pb-two-px"> View on Messager </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex-no-grow flex-no-shrink sm:w-288 w-296 -mb-176 sm:block hidden">
-                    <img src="{{ asset('img/demo.jpg') }}" class="w-auto">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex px-three-five-px pt-12 pb-6">
-            <main class="min-h-full w-full">
-                <div class="flex flex-col flex-1">
-                    <div class="p-4 border-dashed border border-proton-grey-opacity-80 rounded text-solstice-blue group m-4 flex-1">
-                        <h3 class="flex items-center justify-between flex-wrap mb-4 -mt-1 -mx-1 text-xs font-normal">
-                            <span>
-                                <span class="inline-block mx-1 leading-loose cursor-pointer font-semibold text-eshangazi">
-                                    Questions and Answers
-                                </span>
-
-                                <a href="#">
-                                    <span class="inline-block mx-1 leading-loose cursor-pointer text-eshangazi-grey">
-                                        View Items
+    <question-create :user="{{ auth()->user() }}" inline-template>
+        <div class="w-full lg:ml-376">
+            <div class="flex px-three-five-px pt-12 pb-6">
+                <main class="min-h-full w-full">
+                    <div class="flex flex-col flex-1">
+                        <div class="p-4 border-dashed border border-proton-grey-opacity-80 rounded text-solstice-blue group m-4 flex-1">
+                            <h3 class="flex items-center justify-between flex-wrap mb-4 -mt-1 -mx-1 text-xs font-normal py-0 px-4">
+                                <span>
+                                    <span class="inline-block mx-1 leading-loose cursor-pointer font-semibold text-yesayasoftware">
+                                        Questions
                                     </span>
-                                </a>
-                            </span>
 
-                            <a href="{{ route('create-question') }}">
-                                <span class="inline-block mx-1 leading-loose cursor-pointer text-eshangazi-grey">
-                                    Create New
-                                </span>
-                            </a>
-                        </h3>
-
-                        <div>
-                            <div class="">
-                                <h4 class="subtitle">There are {{ $questions->count() }} questions so far...</h4>
-
-                                <div>
-                                    @if($questions->isEmpty())
-                                        <span class="text-cosmos-black text-sm font-normal">
-                                            No data to display at the moment.
+                                    <a href="#">
+                                        <span class="inline-block mx-1 leading-loose cursor-pointer text-yesayasoftware-grey">
+                                            View Questions
                                         </span>
-                                    @else
-                                        <ul class="list-reset">
-                                            @foreach($questions as $question)
-                                                <a href="{{ route('show-question', $question) }}" class="hover:no-underline text-grey-darkest">
-                                                    <li class="mb-4 pb-4 border-b">
+                                    </a>
+                                </span>
+
+                                <button @click="store" class="flex items-center align-content-center">
+                                    <span class="flex w-4 h-4 mr-6 items-center justify-center fill-current">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" class="h-full">
+                                            <path d="M8.5,17A.54.54,0,0,1,8.28,17l-8-4a.5.5,0,1,1,.44-.9L8.5,15.94l7.78-3.89a.5.5,0,0,1,.44.9l-8,4A.54.54,0,0,1,8.5,17Zm0-4A.54.54,0,0,1,8.28,13l-8-4a.5.5,0,1,1,.44-.9L8.5,11.94l7.78-3.89a.5.5,0,0,1,.44.9l-8,4A.54.54,0,0,1,8.5,13Zm0-4A.54.54,0,0,1,8.28,9l-8-4a.5.5,0,0,1,0-.9l8-4a.49.49,0,0,1,.44,0l8,4a.5.5,0,0,1,0,.9l-8,4A.54.54,0,0,1,8.5,9ZM1.62,4.5,8.5,7.94,15.38,4.5,8.5,1.06Z"></path>
+                                        </svg>
+                                    </span>
+
+                                    <span class="inline-block mx-1 leading-loose cursor-pointer text-yesayasoftware-grey">
+                                        Add New
+                                    </span>
+                                </button>
+                            </h3>
+
+                            <div>
+                                <form>
+                                    <div class="flex sm:flex-row flex-col -mx-2">
+                                        <div class="flex-1 py-0 px-4">
+                                            <input autocapitalize="none"
+                                                   autocomplete="off"
+                                                   autocorrect="off"
+                                                   class="flex-1 w-full bg-moon-grey rounded mx-2 mb-4 py-4 px-6 text-telluric-blue shadow-none outline-none"
+                                                   id="question"
+                                                   placeholder="What's the question?"
+                                                   spellcheck="false"
+                                                   type="text"
+                                                   name="question"
+                                                   v-model="form.question">
+                                        </div>
+
+                                        <div class="flex-1 py-0 px-4">
+                                            <div class="flex items-center flex-1 bg-moon-grey rounded py-4 px-6 mx-2 mb-4">
+                                                <select class="w-full bg-moon-grey text-telluric-blue appearance-none shadow-none outline-none"
+                                                        id="question_category_id"
+                                                        name="question_category_id"
+                                                        v-model="form.question_category_id">
+                                                    <option selected>Category for this question...</option>
+
+                                                    <option v-for="category in categories" :value="category.id">@{{ category.name }}</option>
+
+                                                    <option>
+                                                        Add New
+                                                    </option>
+                                                </select>
+
+                                                <div class="flex-no-grow flex-no-shrink h-1 text-solstice-blue opacity-75 fill-current">
+                                                    <svg class="block h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 8">
+                                                        <path d="M7,8a1,1,0,0,1-.71-.29l-6-6A1,1,0,0,1,1.71.29L7,5.59,12.29.29a1,1,0,1,1,1.42,1.42l-6,6A1,1,0,0,1,7,8Z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex justify-center mt-5">
+                                        <div class="block h-px flex-grow bg-telluric-blue-opacity-10"></div>
+                                    </div>
+                                </form>
+
+                                <div class="py-0 px-4 mt-5">
+                                    <h4 class="subtitle" v-cloak>There are @{{ questions.length }} questions so far...</h4>
+
+                                    <div>
+                                        <ul class="list-reset" v-if="questions.length > 0">
+                                            <a href="#" class="hover:no-underline text-grey-darkest" v-for="(question, index) in questions" @click="openAnswerForm(index)">
+                                                <li class="mb-4 pb-4 border-b">
+                                                    <div>
                                                         <div>
-                                                            <div>
-                                                                <div class="flex">
+                                                            <div class="flex items-center justify-between mb-2 -mt-1 -mx-1 text-xs font-normal">
+                                                                <div class="flex w-5/6">
                                                                     <div class="flex items-center justify-center h-three-five w-three-five mr-4 flex-no-grow flex-no-shrink">
-                                                                        <img src="{{ asset('img/demo.jpg') }}"
-                                                                             class="h-auto max-h-12 w-auto">
+                                                                        <img src="/img/sample-ad.jpg" class="h-auto max-h-12 w-auto">
                                                                     </div>
 
-                                                                    <div>
+                                                                    <div class="w-full">
                                                                         <h5 class="mb-2">
                                                                             <span class="text-cosmos-black text-sm font-normal">
-                                                                                {{ $question->question }}
+                                                                                @{{ question.question }}
                                                                             </span>
                                                                         </h5>
 
-                                                                        <p>
+                                                                        <p class="flex items-center align-content-center justify-between">
+                                                                            <span class="text-cosmos-black-opacity-70 text-xs ais-Snippet" v-if="question.answers.length > 0">
+                                                                                Answer: <span :class="correctAnswer(ans.correct)" v-for="(ans, i) in question.answers">@{{ ans.answer }}</span>
+                                                                            </span>
+
+                                                                            <span class="text-cosmos-black-opacity-70 text-xs ais-Snippet" v-else>No answers yet</span>
+
                                                                             <span class="text-cosmos-black-opacity-70 text-xs ais-Snippet">
-                                                                                {{-- {{ $question->description }} --}}
+                                                                                @{{ question.creator.name }}
                                                                             </span>
                                                                         </p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </a>
-                                            @endforeach
-                                        </ul>
-                                    @endif
 
+                                                                <div class="flex items-center align-content-center justify-end w-1/6">
+                                                                    <span class="flex w-4 h-4 mr-6 items-center justify-center fill-current" @click="closeAnswerForm(index)">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" class="h-full">
+                                                                            <path d="M8.5,17A.54.54,0,0,1,8.28,17l-8-4a.5.5,0,1,1,.44-.9L8.5,15.94l7.78-3.89a.5.5,0,0,1,.44.9l-8,4A.54.54,0,0,1,8.5,17Zm0-4A.54.54,0,0,1,8.28,13l-8-4a.5.5,0,1,1,.44-.9L8.5,11.94l7.78-3.89a.5.5,0,0,1,.44.9l-8,4A.54.54,0,0,1,8.5,13Zm0-4A.54.54,0,0,1,8.28,9l-8-4a.5.5,0,0,1,0-.9l8-4a.49.49,0,0,1,.44,0l8,4a.5.5,0,0,1,0,.9l-8,4A.54.54,0,0,1,8.5,9ZM1.62,4.5,8.5,7.94,15.38,4.5,8.5,1.06Z"></path>
+                                                                        </svg>
+                                                                    </span>
+
+                                                                    <span class="inline-block mx-1 leading-loose cursor-pointer text-yesayasoftware-grey">
+                                                                        Level @{{ question.difficulty }}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+                                                            <form :id="index" class="form mt-5" :ref="'form' + index" style="display:none">
+                                                                <div class="flex sm:flex-row flex-col -mx-2">
+                                                                    <div class="flex-1 py-0 px-4">
+                                                                        <input autocapitalize="none"
+                                                                               autocomplete="off"
+                                                                               autocorrect="off"
+                                                                               class="flex-1 w-full bg-moon-grey rounded mx-2 mb-4 py-4 px-6 text-telluric-blue shadow-none outline-none"
+                                                                               id="answer"
+                                                                               placeholder="What's the answer?"
+                                                                               spellcheck="false"
+                                                                               type="text"
+                                                                               name="answer"
+                                                                               v-model="answer.answer">
+                                                                    </div>
+
+                                                                    <div class="flex-1 py-0 px-4">
+                                                                        <div class="flex items-center flex-1 rounded py-4 px-6 mx-2 mb-1">
+                                                                            <label class="md:w-2/3 block text-grey font-bold">
+                                                                                <input class="mr-2 leading-tight" v-model="answer.correct" type="checkbox">
+
+                                                                                <span class="text-sm" >
+                                                                                    Correct?
+                                                                                </span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="flex-1 py-0 px-4">
+                                                                        <div class="flex items-center justify-end py-4 px-6 mx-2">
+                                                                            <button class="flex-no-shrink border-transparent border-4 text-teal hover:text-teal-darker text-sm py-1 px-2 rounded"
+                                                                                    type="button"
+                                                                                    @click="addAnswer(index, question.id)">
+                                                                                Add
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </a>
+                                        </ul>
+
+                                        <span class="text-cosmos-black text-sm font-normal" v-else>
+                                            No data to display at the moment.
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -136,8 +185,8 @@
                         <div class="p-4 border-dashed border border-proton-grey-opacity-80 rounded text-solstice-blue group m-1 h-104 flex-1">
                             <h3 class="flex items-center justify-between flex-wrap mb-4 -mt-1 -mx-1 text-xs font-normal">
                                 <span>
-                                    <span class="inline-block mx-1 leading-loose text-eshangazi-grey">
-                                        More Questions
+                                    <span class="inline-block mx-1 leading-loose text-yesayasoftware-grey">
+                                        More questions
                                     </span>
                                 </span>
                             </h3>
@@ -145,108 +194,14 @@
                             <div>
                                 <div class="">
                                     <div class="ais-Pagination">
-                                        <ul class="ais-Pagination-list">
-                                            <li class="ais-Pagination-item ais-Pagination-item--previousPage ais-Pagination-item--disabled">
-                                                <span aria-label="Previous" class="ais-Pagination-link"> ‹ </span>
-                                            </li>
-
-                                            <li class="ais-Pagination-item ais-Pagination-item--selected">
-                                                <a href="#" class="ais-Pagination-link"> 1 </a>
-                                            </li>
-
-                                            <li class="ais-Pagination-item">
-                                                <a href="#" class="ais-Pagination-link"> 2 </a>
-                                            </li>
-
-                                            <li class="ais-Pagination-item">
-                                                <a href="#" class="ais-Pagination-link"> 3 </a>
-                                            </li>
-
-                                            <li class="ais-Pagination-item ais-Pagination-item--nextPage">
-                                                <a aria-label="Next" href="#" class="ais-Pagination-link">›</a>
-                                            </li>
-                                        </ul>
+                                        {{--{{ $questions->links() }}--}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
-        </div>
-    </div>
-@endsection
-
-
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="card-body">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-        <h1 class="h2">
-            Questions
-        </h1>
-
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group">
-                <a href="{{ route('create-question') }}" class="btn btn-sm btn-outline-secondary">
-                    New Question
-                </a>
+                </main>
             </div>
         </div>
-    </div>    
-
-    <div class="table-responsive">
-        @if($questions->isEmpty())
-            <p class="lead text-muted">
-                No data to display at the moment.
-            </p>                   
-
-            <a href="{{ route('create-question') }}" class="btn btn-primary">
-                Click here to add new Question
-            </a>                      
-        @else
-            <table class="table table-striped table-sm">
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        
-                        <th class="text-center">Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach($questions as $question)
-                        <tr>
-                            <td class="align-middle">
-                                {{ $question->question }}
-                            </td>
-                            
-                            <td class="text-center align-middle">
-                                <form action="{{ route('delete-question', $question) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE')}}
-
-                                    <div class="btn-group">
-                                        <a href="{{ route('show-question', $question) }}" class="btn btn-sm btn-outline-secondary">
-                                            Show
-                                        </a>
-
-                                        <a href="{{ route('edit-question', $question) }}" class="btn btn-sm btn-outline-secondary">
-                                            Edit
-                                        </a>
-
-                                        <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-            {{ $questions->links() }}
-        @endif
-    </div>
-</div>
-@endsection --}}
+    </question-create>
+@endsection

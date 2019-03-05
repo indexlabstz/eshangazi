@@ -21,6 +21,13 @@ class Question extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $with = ['creator', 'answers'];
+
+    /**
      * Question belongs to a Question Category.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -33,7 +40,7 @@ class Question extends Model
     /**
      * Question may have one or more Answers.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function answers()
     {
