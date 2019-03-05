@@ -91,7 +91,7 @@
                                                             <div class="flex items-center justify-between mb-2 -mt-1 -mx-1 text-xs font-normal">
                                                                 <div class="flex w-5/6">
                                                                     <div class="flex items-center justify-center h-three-five w-three-five mr-4 flex-no-grow flex-no-shrink">
-                                                                        <img src="/img/sample-ad.jpg" class="h-auto max-h-12 w-auto">
+                                                                        <img src="/img/demo.jpg" class="h-auto max-h-12 w-auto">
                                                                     </div>
 
                                                                     <div class="w-full">
