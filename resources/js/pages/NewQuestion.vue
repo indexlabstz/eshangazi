@@ -95,6 +95,28 @@
                     return "bg-grey-light p-1 rounded mr-2";
             },
 
+            deleteAnswer(answer_id) {
+                let uri = `/api/answers/${answer_id}`;
+
+                axios.delete(uri).then(() => {
+                    this.getQuestions();
+                    this.form = {};
+
+                    flash('Your answer has been deleted.');
+                });
+            },
+
+            deleteQuestion(question_id) {
+                let uri = `/api/questions/${question_id}`;
+
+                axios.delete(uri).then(() => {
+                    this.getQuestions();
+                    this.form = {};
+
+                    flash('Your question has been deleted.');
+                });
+            },
+
             resetForm () {
                 this.form = {
                     question: '',

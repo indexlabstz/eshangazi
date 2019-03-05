@@ -21,8 +21,10 @@ Route::put('messages/publish/{message}', 'MessageController@publish');
 Route::get('question_categories', 'Api\QuestionCategoryController@index');
 
 Route::get('questions', 'Api\QuestionController@index');
-Route::post('questions', 'Api\QuestionController@store')->name('store-question');
+Route::post('questions', 'Api\QuestionController@store');
+Route::delete('questions/{question}', 'Api\QuestionController@destroy');
 Route::post('questions/{question}/answer', 'Api\AnswerController@answer')->name('store-answer');
+Route::delete('answers/{answer}', 'Api\AnswerController@destroy');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

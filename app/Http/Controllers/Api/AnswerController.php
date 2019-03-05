@@ -32,4 +32,18 @@ class AnswerController extends Controller
 
         return response($answer, 201);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Answer $answer
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Answer $answer)
+    {
+        $answer->delete();
+
+        return response("Answer deleted", 201);
+    }
 }

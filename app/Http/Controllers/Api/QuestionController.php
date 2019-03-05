@@ -49,4 +49,21 @@ class QuestionController extends Controller
         return redirect($question->path())
             ->with('flash', 'Your question created successfully.');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Question $question
+     *
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Question $question)
+    {
+        $question->answers()->delete();
+
+        $question->delete();
+
+        return response("Question deleted", 201);
+    }
 }
