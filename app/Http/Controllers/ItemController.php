@@ -161,6 +161,7 @@ class ItemController extends Controller
      * @param  Item $item
      *
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Item $item)
     {

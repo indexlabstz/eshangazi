@@ -220,7 +220,8 @@
                             <div>
                                 <div class="">
                                     <div class="ais-Pagination">
-                                        {{--{{ $questions->links() }}--}}
+
+                                        <paginator :dataSet="{{ auth()->user() }}"></paginator>
                                     </div>
                                 </div>
                             </div>

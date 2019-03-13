@@ -19,7 +19,7 @@ class FeedbackConversation extends Conversation
 
         $this->member = Member::where('user_platform_id', '=', $user_id)->first();
 
-        $this->ask('Andika maoni yako hapa', function(Answer $answer) {
+        $this->ask('Andika swali/maoni yako', function(Answer $answer) {
 
             $this->feedback = $answer->getText();
 
@@ -32,7 +32,7 @@ class FeedbackConversation extends Conversation
 
                 $this->bot->typesAndWaits(1);
 
-                $this->say($this->bot->getUser()->getFirstName() . ', asante kwa maoni yako, tutayafanyia kazi.');
+                $this->say($this->bot->getUser()->getFirstName() . ', swali/maoni yako yamepokelewa.');
             }
         });
     }

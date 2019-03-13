@@ -59,9 +59,30 @@ class BotManController extends Controller
      */
     public function feedback(BotMan $bot)
     {
-        $bot->startConversation(new FeedbackConversation());
-
         $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
+
+        if (! $member) {
+            $user = $bot->getUser();
+            $driver = $bot->getDriver()->getName();
+            $age = null;
+            $district_id = null;
+            $born_year = null;
+            $platform_id = $this->getPlatformId($driver);
+            $profile_pic = $this->getUserProfilePic($user, $driver);
+            $gender = $this->getUserGender($user, $driver);
+
+            $member = Member::create([
+                'user_platform_id' => $user->getId(),
+                'name' => $user->getFirstName() . ' ' . $user->getLastName(),
+                'avatar' => $profile_pic,
+                'born_year' => $born_year,
+                'gender' => $gender,
+                'platform_id' => $platform_id,
+                'district_id' => $district_id,
+            ]);
+        }
+
+        $bot->startConversation(new FeedbackConversation());
 
         if($member)
         {
@@ -70,6 +91,64 @@ class BotManController extends Controller
                 'member_id' => $member->id
             ]);
         }
+    }
+
+    /**
+     * Get platform id of user based on driver
+     *
+     * @param $driver
+     *
+     * @return int or null
+     */
+    public function getPlatformId($driver)
+    {
+        $platform = Platform::where('name', '=', $driver)->first();
+
+        if (!$platform)
+            $platform_id = null;
+        else
+            $platform_id = $platform->id;
+
+        return $platform_id;
+    }
+
+    /**
+     * return user profile pic based on driver
+     *
+     * @param $user
+     * @param $driver
+     *
+     * @return string
+     *
+     */
+    public function getUserProfilePic($user, $driver)
+    {
+        if ($driver === 'Facebook') {
+            return $profile_pic = $user->getInfo()["profile_pic"];
+        } elseif ($driver === 'Slack') {
+            return $profile_pic = $user->getInfo()["profile"]["image_original"];
+        }
+
+        return null;
+    }
+
+    /**
+     * return user gender based on driver
+     *
+     * @param $user
+     * @param $driver
+     *
+     * @return string
+     *
+     */
+    public function getUserGender($user, $driver)
+    {
+        if ($driver === 'Facebook') {
+            $gender = $user->getInfo()["gender"] ?? null;
+            return $gender;
+        }
+
+        return null;
     }
 
     public function listener(BotMan $bot)

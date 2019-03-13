@@ -18,7 +18,6 @@ import {TinkerComponent} from 'botman-tinker';
 Vue.component('botman-tinker', TinkerComponent);
 
 Vue.component('flash', require('./components/Flash.vue').default);
-
 Vue.component('sidebar', require('./components/Sidebar.vue').default);
 Vue.component('message-view', require('./components/MessageView.vue').default);
 Vue.component('question-create', require('./pages/NewQuestion.vue').default);

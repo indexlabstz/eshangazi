@@ -141,6 +141,7 @@ class ItemCategoryController extends Controller
      * @param  ItemCategory $item_category
      *
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(ItemCategory $item_category)
     {

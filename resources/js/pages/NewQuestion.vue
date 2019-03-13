@@ -1,5 +1,9 @@
 <script>
+    import Paginator from './../components/Paginator';
+
     export default {
+        components: { Paginator },
+
         props: ['user'],
 
         data () {
