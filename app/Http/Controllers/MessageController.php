@@ -157,15 +157,19 @@ class MessageController extends Controller
 
         //$image_message = OutgoingMessage::create($message->title)->withAttachment($message->thumbnail);
 
-        $message_transit = $message->title . "\n" . $message->description;
+        //$message_transit = $message->title . "\n" . $message->description;
 
         foreach($members as $member)
         {
-            if ($member->platform->name == 'Facebook') {
-                $bot->say($message_transit, $member->user_platform_id, FacebookDriver::class);
-            }  elseif ($member->platform->name == 'Telegram') {
-                $bot->say($message_transit, $member->user_platform_id, TelegramDriver::class);
-            }
+            $bot->say($this->message($message), $member->user_platform_id);
+//            if ($member->platform->name == 'Facebook') {
+//                $bot->say($message_transit, $member->user_platform_id, FacebookDriver::class);
+//            }  elseif ($member->platform->name == 'Telegram') {
+//                $bot->say($message_transit, $member->user_platform_id, TelegramDriver::class);
+//            }
+//              else {
+//                $bot->say($this->message($message), $member->user_platform_id);
+//            }
         }
 
         $message->update([
