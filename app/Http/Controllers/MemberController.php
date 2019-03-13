@@ -40,7 +40,7 @@ class MemberController extends Controller
      *
      * @param BotMan $bot
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function store(BotMan $bot)
     {

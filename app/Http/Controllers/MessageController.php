@@ -6,6 +6,8 @@ use App\Member;
 use App\Message;
 use App\Conversation;
 use BotMan\BotMan\BotMan;
+use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
+use BotMan\Drivers\Telegram\TelegramDriver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateMessageRequest;
@@ -147,15 +149,28 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function publish(Message $message)
-    {      
+    {
         $bot = app('botman');
 
         // $members = Member::where('status', 1)->get();
-        $members = Member::get();
+        $members = Member::all();
+
+        //$image_message = OutgoingMessage::create($message->title)->withAttachment($message->thumbnail);
+
+        $message_transit = $message->title . "\n" . $message->description;
 
         foreach($members as $member)
         {
-            $bot->say($this->message($message), $member->user_platform_id);
+            $driver = "\BotMan\Drivers\\" . $member->platform->driver_class;
+
+            if ($member->platform->name == 'Facebook') {
+                $bot->say($message_transit, $member->user_platform_id, FacebookDriver::class);
+            }  elseif ($member->platform->name == 'Telegram') {
+                $bot->say($message_transit, $member->user_platform_id, TelegramDriver::class);
+            }
+//              else {
+//                $bot->say($this->message($message), $member->user_platform_id);
+//            }
         }
 
         $message->update([
