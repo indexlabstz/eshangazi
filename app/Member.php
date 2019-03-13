@@ -22,6 +22,8 @@ class Member extends Model
         'district_id',
     ];
 
+    protected $with = ['platform'];
+
     /**
      * A Member belongs to A Platform.
      * 
