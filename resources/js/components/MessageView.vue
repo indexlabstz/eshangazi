@@ -34,7 +34,7 @@
 			store(event) {
 				event.preventDefault();
 
-				axios.post('/api/messages/details', { 
+				axios.post('/api/messages/details', {
                     title: this.title,
                     description: this.description,
                     message_id: this.message.id,
@@ -50,7 +50,7 @@
 			},
 
 			publish() {
-				axios.post('/api/messages/publish/' + this.message.id)
+				axios.put('/api/messages/publish/' + this.message.id)
 				.catch(error => {
                     console.log(error.response.data);
                 }).then(() => {
