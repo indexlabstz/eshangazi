@@ -53,7 +53,7 @@
 				axios.post('/api/messages/publish/' + this.message.id)
 				.catch(error => {
                     console.log(error.response.data);
-                }).then(({data}) => {
+                }).then(() => {
                     console.log("Successfully added");
                 }); 
 			}

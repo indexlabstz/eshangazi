@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateMessageRequest;
 use BotMan\Drivers\Facebook\FacebookDriver;
+use Symfony\Component\HttpFoundation\Response;
 use BotMan\Drivers\Facebook\Extensions\Element;
 use BotMan\Drivers\Facebook\Extensions\ElementButton;
 use BotMan\Drivers\Facebook\Extensions\GenericTemplate;
@@ -161,8 +162,10 @@ class MessageController extends Controller
             'status'        => 'publish',
             'updated_by'    => auth()->id()
         ]);
-        
-        return back();
+
+        return response()->json([
+            'response' => 'Message has been published successfully.'
+        ], Response::HTTP_CREATED);
     }
 
     /**
