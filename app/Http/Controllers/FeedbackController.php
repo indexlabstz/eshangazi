@@ -22,7 +22,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedback = Feedback::paginate(10);
+        $feedback = Feedback::orderBy('id', 'DESC')->paginate(20);
 
         return view('feedback.index', ['feedbacks' => $feedback]);
     }
