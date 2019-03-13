@@ -29,7 +29,7 @@ class MessageController extends Controller
      */
     public function __construct(Message $message)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['publish']);
 
         $this->message = $message;
     }
