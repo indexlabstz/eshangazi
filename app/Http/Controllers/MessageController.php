@@ -161,7 +161,12 @@ class MessageController extends Controller
 
         foreach($members as $member)
         {
-            $bot->say($this->message($message), $member->user_platform_id, FacebookDriver::class);
+            try {
+                $bot->say($this->message($message), $member->user_platform_id, FacebookDriver::class);
+            } catch (\Exception $exception) {
+                continue;
+            }
+
 //            if ($member->platform->name == 'Facebook') {
 //                $bot->say($message_transit, $member->user_platform_id, FacebookDriver::class);
 //            }  elseif ($member->platform->name == 'Telegram') {
