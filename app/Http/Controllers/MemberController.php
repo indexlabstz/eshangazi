@@ -436,7 +436,6 @@ class MemberController extends Controller
         }
 
         $message = $request->title . "\n" . $request->description;
-        $driver = "\BotMan\Drivers\\" . $member->platform->driver_class;
 
         if ($member->platform->name == 'Facebook') {
             if ($request->hasFile('thumbnail')) {
