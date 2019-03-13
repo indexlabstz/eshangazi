@@ -40,7 +40,7 @@ class MemberController extends Controller
      *
      * @param BotMan $bot
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function store(BotMan $bot)
     {
@@ -436,6 +436,7 @@ class MemberController extends Controller
         }
 
         $message = $request->title . "\n" . $request->description;
+        $driver = "\BotMan\Drivers\\" . $member->platform->driver_class;
 
         if ($member->platform->name == 'Facebook') {
             if ($request->hasFile('thumbnail')) {

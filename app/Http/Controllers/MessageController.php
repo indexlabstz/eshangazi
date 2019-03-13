@@ -161,16 +161,11 @@ class MessageController extends Controller
 
         foreach($members as $member)
         {
-            $driver = "\BotMan\Drivers\\" . $member->platform->driver_class;
-
             if ($member->platform->name == 'Facebook') {
                 $bot->say($message_transit, $member->user_platform_id, FacebookDriver::class);
             }  elseif ($member->platform->name == 'Telegram') {
                 $bot->say($message_transit, $member->user_platform_id, TelegramDriver::class);
             }
-//              else {
-//                $bot->say($this->message($message), $member->user_platform_id);
-//            }
         }
 
         $message->update([
