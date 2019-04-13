@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Item;
-use App\Member;
 use App\Conversation;
+use App\Item;
 use App\ItemCategory;
+use App\Member;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\Drivers\Facebook\Extensions\ButtonTemplate;
-use BotMan\Drivers\Facebook\FacebookDriver;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use BotMan\Drivers\Facebook\Extensions\Element;
 use BotMan\Drivers\Facebook\Extensions\ElementButton;
-use BotMan\Drivers\Facebook\Extensions\GenericTemplate;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class ItemCategoryController extends Controller
 {
@@ -31,21 +29,17 @@ class ItemCategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        $item_categories = ItemCategory::paginate(10);
-
-        return view('item-categories.index', [
-            'item_categories' => $item_categories
-        ]);
+        return view('item-categories.index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -55,9 +49,9 @@ class ItemCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -83,9 +77,9 @@ class ItemCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  ItemCategory $item_category
+     * @param ItemCategory $item_category
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(ItemCategory $item_category)
     {
@@ -95,9 +89,9 @@ class ItemCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  ItemCategory $item_category
+     * @param ItemCategory $item_category
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(ItemCategory $item_category)
     {
@@ -107,19 +101,19 @@ class ItemCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  ItemCategory $item_category
+     * @param Request $request
+     * @param ItemCategory $item_category
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, ItemCategory $item_category)
     {
         $thumbnail_path = null;
 
         if ($request->hasFile('thumbnail')) {
-            
-            if(Storage::disk('s3')->exists($item_category->thumbnail)) Storage::disk('s3')->delete($item_category->thumbnail);
-            
+
+            if (Storage::disk('s3')->exists($item_category->thumbnail)) Storage::disk('s3')->delete($item_category->thumbnail);
+
             $thumbnail_path = Storage::disk('s3')
                 ->putFile('public/item-category-thumbnails', $request->file('thumbnail'), 'public');
         }
@@ -138,9 +132,9 @@ class ItemCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  ItemCategory $item_category
+     * @param ItemCategory $item_category
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      * @throws \Exception
      */
     public function destroy(ItemCategory $item_category)
@@ -153,22 +147,22 @@ class ItemCategoryController extends Controller
     /**
      * Display a listing of the deleted items.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function indexDeleted()
     {
 
         $item_categories = ItemCategory::onlyTrashed()->paginate(10);
 
-        return view('item-categories.trash', ['item_categories' => $item_categories ]);
+        return view('item-categories.trash', ['item_categories' => $item_categories]);
     }
 
     /**
      * Restore trashed Item.
      *
      * @param ItemCategory $item_category
-     * 
-     * @return \Illuminate\Http\Response
+     *
+     * @return Response
      */
     public function restoreTrashed($item_category)
     {
@@ -181,13 +175,13 @@ class ItemCategoryController extends Controller
      * Permanent delete of trashed Item category.
      *
      * @param ItemCategory $item_category
-     * 
-     * @return \Illuminate\Http\Response
+     *
+     * @return Response
      */
     public function destroyTrashed($item_category)
     {
         $item_category = ItemCategory::onlyTrashed()->find($item_category);
-        if(Storage::disk('s3')->exists($item_category->thumbnail))
+        if (Storage::disk('s3')->exists($item_category->thumbnail))
             Storage::disk('s3')->delete($item_category->thumbnail);
 
         $item_category->forceDelete();
@@ -210,20 +204,20 @@ class ItemCategoryController extends Controller
 
         $bot->typesAndWaits(1);
         if ($category) {
-            if ($driver == 'Facebook'){
+            if ($driver == 'Facebook') {
                 //Iterating through description paragraphs
-                $descriptions= array_values(array_filter(explode("\r\n", $category->description)));
-                foreach( $descriptions as $paragraph){
-                    if( $paragraph === end( $descriptions ) ) {
+                $descriptions = array_values(array_filter(explode("\r\n", $category->description)));
+                foreach ($descriptions as $paragraph) {
+                    if ($paragraph === end($descriptions)) {
                         $bot->reply($this->toFacebook($category, $paragraph));
-                    }else{
+                    } else {
                         //$bot->typesAndWaits(1); 
                         $bot->reply($paragraph);
                     }
                 }
-            }elseif ($driver == 'Slack' || $driver == 'Telegram'){
+            } elseif ($driver == 'Slack' || $driver == 'Telegram') {
                 $bot->reply($this->toSlackTelegram($category));
-            }else {
+            } else {
                 //$bot->reply($category->description);
                 // $bot->reply('Unaweza jibu mojawapo kuendelea'
                 //     . $this->toWeb($category));
@@ -307,7 +301,7 @@ class ItemCategoryController extends Controller
         $count = 1;
 
         foreach ($items as $item) {
-            if($count == 1)
+            if ($count == 1)
                 $message .= $item->title;
             else
                 $message .= ', ' . $item->title;
@@ -316,7 +310,7 @@ class ItemCategoryController extends Controller
         return $message;
     }
 
-     /**
+    /**
      * Show a list of Items found for a particular item request from Web Driver.
      *
      * @param $item

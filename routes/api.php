@@ -18,6 +18,15 @@ Route::get('messages/details/{message}', 'MessageDetailController@index');
 Route::post('messages/details', 'MessageDetailController@store');
 Route::put('messages/publish/{message}', 'MessageController@publish');
 
+Route::get('categories/{category}', 'Api\ItemCategoryController@show');
+
+Route::post('categories', 'Api\ItemCategoryController@store');
+
+Route::get('categories', 'Api\ItemCategoryController@index');
+
+Route::post('items', 'Api\ItemController@store');
+Route::get('items/{item}', 'Api\ItemController@show');
+
 Route::get('question_categories', 'Api\QuestionCategoryController@index');
 
 Route::get('questions', 'Api\QuestionController@index');
