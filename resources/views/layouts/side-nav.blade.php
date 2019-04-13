@@ -88,7 +88,7 @@
 
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('index-item') }}">
+                <a class="nav-link" href="{{ route('index-item-category') }}">
                     <span data-feather="home"></span>
                     Items
                 </a>

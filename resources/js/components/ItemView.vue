@@ -55,7 +55,7 @@
             },
 
             clear() {
-                this.child.name = '';
+                this.child.title = '';
                 this.child.description = '';
                 this.child.display_title = '';
             }

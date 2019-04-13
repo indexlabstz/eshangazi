@@ -172,7 +172,7 @@
                                                         <div>
                                                             <h5 class="mb-2">
                                                             <span class="text-cosmos-black text-sm font-normal">
-                                                                @{{ item.name }}
+                                                                @{{ item.title }}
                                                             </span>
                                                             </h5>
 

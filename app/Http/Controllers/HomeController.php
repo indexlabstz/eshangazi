@@ -31,13 +31,15 @@ class HomeController extends Controller
         $item_count = Item::count();
         $member_count = Member::count();
         $question_count = Question::count();
-        $conversations = Conversation::where('created_at', Carbon::now()->format('Y-m-d'))->paginate(10);
+        $conversations = Conversation::paginate(10);
+        $conversation_count = Conversation::count();
 
         return view('home', [
             'conversations' => $conversations,
             'item_count' => $item_count,
             'member_count' => $member_count,
             'question_count' => $question_count,
+            'conversation_count' => $conversation_count,
         ]);
     }
 }

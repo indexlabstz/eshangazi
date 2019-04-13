@@ -67,7 +67,7 @@
                             </li>
 
                             <li class="flex items-center h-full mx-4">
-                                <a href="{{ route('index-item') }}" 
+                                <a href="{{ route('index-item-category') }}"
                                     class="border-b-2 cursor-pointer flex h-full header-item hover:text-eshangazi items-center no-underline transition-fast-out text-xs"
                                       data-header-item-active="false"
                                       data-header-item=""

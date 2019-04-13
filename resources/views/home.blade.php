@@ -35,7 +35,7 @@
                         </h3>
 
                         <div class="ais-Pagination">
-                            {{ $conversations->count() }}
+                            {{ $conversation_count }}
                         </div>
                     </div>
                 </div>
