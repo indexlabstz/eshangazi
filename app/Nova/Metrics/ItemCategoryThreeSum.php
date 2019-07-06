@@ -16,7 +16,7 @@ class ItemCategoryThreeSum extends Value
      */
     public function calculate(Request $request)
     {
-        return $this->sum($request, ItemCategory::where('id', '=', 3), 'count')
+        return $this->sum($request, ItemCategory::where('id', '=', 3), 'count', 'updated_at')
             ->format('0,0');
     }
 
