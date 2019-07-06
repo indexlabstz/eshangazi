@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Textarea;
 
 class ItemCategory extends Resource
 {
@@ -68,7 +68,7 @@ class ItemCategory extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Trix::make('Description')
+            Textarea::make('Description')
                 ->hideFromIndex(),
 
             Boolean::make('Published', 'status')

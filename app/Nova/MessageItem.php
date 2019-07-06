@@ -7,7 +7,7 @@ use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Textarea;
 
 class MessageItem extends Resource
 {
@@ -65,7 +65,7 @@ class MessageItem extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Trix::make('Description')
+            Textarea::make('Description')
                 ->hideFromIndex(),
 
             BelongsTo::make('Message')

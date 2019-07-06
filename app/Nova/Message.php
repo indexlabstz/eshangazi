@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Textarea;
 
 class Message extends Resource
 {
@@ -78,7 +78,7 @@ class Message extends Resource
                 ->sortable()
                 ->rules('required', 'numeric'),
 
-            Trix::make('Description')
+            Textarea::make('Description')
                 ->hideFromIndex(),
 
             HasMany::make('Message Items', 'message_details')
