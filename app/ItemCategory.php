@@ -31,6 +31,7 @@ class ItemCategory extends Model
         'thumbnail',
         'display_title',
         'status',
+        'count',
         'created_by',
         'updated_by'
     ];

@@ -22,7 +22,8 @@ class CreateItemCategoriesTable extends Migration
             $table->string('display_title')->nullable();
 
             $table->enum('status', ['draft', 'publish', 'cancel'])->default('draft');
-            
+
+            $table->integer('count')->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 

@@ -200,9 +200,10 @@ class ItemCategoryController extends Controller
         $driver = $bot->getDriver()->getName();
         $name = $extras['apiParameters'][env('APP_ACTION') . '-item-categories'];
 
-        $category = ItemCategory::where('name', '=', $name)->first();
+        $category = ItemCategory::where('name', '=', $name)->where('status', '=', 'publish')->first();
 
         $bot->typesAndWaits(1);
+
         if ($category) {
             if ($driver == 'Facebook') {
                 //Iterating through description paragraphs
@@ -218,11 +219,14 @@ class ItemCategoryController extends Controller
             } elseif ($driver == 'Slack' || $driver == 'Telegram') {
                 $bot->reply($this->toSlackTelegram($category));
             } else {
-                //$bot->reply($category->description);
-                // $bot->reply('Unaweza jibu mojawapo kuendelea'
-                //     . $this->toWeb($category));
                 $bot->reply($this->toWebb($category));
             }
+
+            $count = $category->count++;
+
+            $category->update([
+                'count' => $count
+            ]);
         } else {
             $bot->reply('Kuna tatizo la kiufundi, linafanyiwa kazi');
         }
