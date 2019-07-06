@@ -16,7 +16,8 @@ class MemberCount extends Value
      */
     public function calculate(Request $request)
     {
-        return $this->count($request, Member::class);
+        return $this->count($request, Member::class)
+            ->format('0,0');
     }
 
     /**

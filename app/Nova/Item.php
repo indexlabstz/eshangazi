@@ -71,9 +71,7 @@ class Item extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Item Category', 'category')
-                ->searchable()
-                ->prepopulate(),
+            BelongsTo::make('Item Category', 'category'),
 
             Text::make('Display Title')
                 ->hideFromIndex()
