@@ -222,11 +222,9 @@ class ItemCategoryController extends Controller
                 $bot->reply($this->toWebb($category));
             }
 
-            $count = $category->count++;
+            $count = $category->count + 1;
 
-            $category->update([
-                'count' => $count
-            ]);
+            $category->update(['count' => $count]);
         } else {
             $bot->reply('Kuna tatizo la kiufundi, linafanyiwa kazi');
         }
