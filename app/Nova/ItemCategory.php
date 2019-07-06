@@ -75,6 +75,11 @@ class ItemCategory extends Resource
                 ->trueValue('publish')
                 ->falseValue('draft'),
 
+            Text::make('Count')
+                ->hideWhenUpdating()
+                ->hideWhenCreating()
+                ->rules('required', 'max:255'),
+
             HasMany::make('Items')
         ];
     }

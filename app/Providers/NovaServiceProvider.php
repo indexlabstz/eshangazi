@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use App\Nova\Metrics\ItemCategoryCount;
+use App\Nova\Metrics\ItemCategoryOneSum;
+use App\Nova\Metrics\ItemCategoryThreeSum;
+use App\Nova\Metrics\ItemCategoryTwoSum;
 use App\Nova\Metrics\MemberCount;
 use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Gate;
@@ -57,8 +60,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new MemberCount(),
-            new ItemCategoryCount(),
+            new ItemCategoryOneSum(),
+            new ItemCategoryTwoSum(),
+            new ItemCategoryThreeSum(),
         ];
     }
 

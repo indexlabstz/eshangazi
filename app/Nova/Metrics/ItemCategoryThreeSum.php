@@ -6,7 +6,7 @@ use App\ItemCategory;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Value;
 
-class ItemCategoryCount extends Value
+class ItemCategoryThreeSum extends Value
 {
     /**
      * Calculate the value of the metric.
@@ -16,7 +16,8 @@ class ItemCategoryCount extends Value
      */
     public function calculate(Request $request)
     {
-        return $this->count($request, ItemCategory::where('id', '=', 1), 'count');
+        return $this->sum($request, ItemCategory::where('id', '=', 3), 'count')
+            ->format('0,0');
     }
 
     /**
@@ -39,7 +40,7 @@ class ItemCategoryCount extends Value
     /**
      * Determine for how many minutes the metric should be cached.
      *
-     * @return  \DateTimeInterface|\DateInterval|float|int
+     * @return void
      */
     public function cacheFor()
     {

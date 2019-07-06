@@ -11,6 +11,7 @@ use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\Drivers\Facebook\Extensions\ButtonTemplate;
 use BotMan\Drivers\Facebook\Extensions\ElementButton;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -224,7 +225,10 @@ class ItemCategoryController extends Controller
 
             $count = $category->count + 1;
 
-            $category->update(['count' => $count]);
+            $category->update([
+                'count' => $count,
+                'updated_at' => Carbon::now()
+            ]);
         } else {
             $bot->reply('Kuna tatizo la kiufundi, linafanyiwa kazi');
         }
