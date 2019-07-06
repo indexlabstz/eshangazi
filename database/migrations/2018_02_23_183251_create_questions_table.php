@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->enum('difficulty', ['easy', 'medium', 'hard']);
             
             $table->integer('question_category_id')->unsigned();
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

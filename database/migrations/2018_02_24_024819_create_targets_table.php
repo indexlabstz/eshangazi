@@ -20,7 +20,7 @@ class CreateTargetsTable extends Migration
 
             $table->integer('targetable_id');
             $table->integer('ad_id')->unsigned();
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

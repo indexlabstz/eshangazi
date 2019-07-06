@@ -26,7 +26,7 @@ class CreateCentersTable extends Migration
 
             $table->integer('ward_id')->unsigned();
             $table->integer('partner_id')->unsigned();
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

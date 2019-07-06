@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Member;
 use App\Conversation;
+use App\Platform;
 use BotMan\BotMan\BotMan;
 use App\Http\Conversations\FeedbackConversation;
 use App\Http\Conversations\QuizConversation;
 use App\Http\Conversations\SmsQuizConversation;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 class BotManController extends Controller
 {
@@ -22,7 +25,7 @@ class BotManController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function tinker()
     {

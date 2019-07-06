@@ -3,6 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Country extends Model
 {  
@@ -22,7 +26,7 @@ class Country extends Model
     /**
      * Country has many regions.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function regions()
     {
@@ -32,7 +36,7 @@ class Country extends Model
     /**
      * Country has many Targets.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return MorphMany
      */
     public function targets()
     {
@@ -42,7 +46,7 @@ class Country extends Model
     /**
      * Country created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -52,7 +56,7 @@ class Country extends Model
     /**
      * Country updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

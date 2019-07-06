@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Item extends Model
@@ -15,6 +17,8 @@ class Item extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    protected $with = ['creator'];
 
     /**
      * The attributes that are mass assignable.
@@ -35,9 +39,21 @@ class Item extends Model
     ];
 
     /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($item) {
+            $item->update(['created_by' => auth()->id()]);
+        });
+    }
+
+    /**
      * An Item belongs to an Item Category.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function category()
     {
@@ -47,7 +63,7 @@ class Item extends Model
     /**
      * An Item may belong to another parent Item.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function item()
     {
@@ -57,7 +73,7 @@ class Item extends Model
     /**
      * An Item may have a number of child items.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function items()
     {
@@ -67,7 +83,7 @@ class Item extends Model
     /**
      * An Item created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -77,7 +93,7 @@ class Item extends Model
     /**
      * An Item updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

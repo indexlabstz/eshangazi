@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ad extends Model
 {
@@ -29,7 +32,7 @@ class Ad extends Model
     /**
      * Ad belong to a partner.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function partner()
     {
@@ -39,7 +42,7 @@ class Ad extends Model
     /**
      * Ad may be displayed to one or more platforms.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsTo
      */
     public function platforms()
     {
@@ -49,7 +52,7 @@ class Ad extends Model
     /**
      * Ad may be have one or more payments.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function payments()
     {
@@ -59,7 +62,7 @@ class Ad extends Model
     /**
      * Ad has many Targets.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function targets()
     {
@@ -69,7 +72,7 @@ class Ad extends Model
     /**
      * Ad created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -79,7 +82,7 @@ class Ad extends Model
     /**
      * Ad updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

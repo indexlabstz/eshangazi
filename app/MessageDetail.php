@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MessageDetail extends Model
 {
@@ -23,7 +24,7 @@ class MessageDetail extends Model
     /**
      * A Message Detail is belong to a Message.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function message()
     {
@@ -33,7 +34,7 @@ class MessageDetail extends Model
     /**
     * Message Detail created by a user.
     * 
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    * @return BelongsTo
     */
    public function creator()
    {
@@ -43,7 +44,7 @@ class MessageDetail extends Model
    /**
     * Message Detail updated by a user.
     * 
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    * @return BelongsTo
     */
    public function updator()
    {

@@ -20,7 +20,7 @@ class CreateAnswersTable extends Migration
             $table->boolean('correct')->default(false);
 
             $table->integer('question_id')->unsigned();            
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

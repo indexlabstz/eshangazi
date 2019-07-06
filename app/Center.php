@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Center extends Model
 {    
@@ -26,9 +28,21 @@ class Center extends Model
     ];
 
     /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($center) {
+            $center->update(['created_by' => auth()->id()]);
+        });
+    }
+
+    /**
      * Center is located in a particular Ward.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function ward()
     {
@@ -38,7 +52,7 @@ class Center extends Model
     /**
      * Center belongs to a partner.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function partner()
     {
@@ -48,7 +62,7 @@ class Center extends Model
     /**
      * Center offer a number of Services.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function services()
     {
@@ -58,7 +72,7 @@ class Center extends Model
     /**
      * Center created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -68,7 +82,7 @@ class Center extends Model
     /**
      * Center updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Message extends Model
 {
@@ -25,9 +27,9 @@ class Message extends Model
     /**
      * Get the details of this message.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function details()
+    public function message_details()
     {
         return $this->hasMany(MessageDetail::class);
     }
@@ -35,7 +37,7 @@ class Message extends Model
      /**
      * Message created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -45,7 +47,7 @@ class Message extends Model
     /**
      * Message updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {
@@ -55,7 +57,7 @@ class Message extends Model
     /**
      * Message saved to the database.
      * 
-     * @return \App\Message
+     * @return Message
      */
     public function persist($message)
     {

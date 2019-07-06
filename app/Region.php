@@ -3,6 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Region extends Model
 {    
@@ -21,7 +25,7 @@ class Region extends Model
     /**
      * Region belong to a country.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function country()
     {
@@ -31,7 +35,7 @@ class Region extends Model
     /**
      * Region has many districts.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function districts()
     {
@@ -41,7 +45,7 @@ class Region extends Model
     /**
      * Region may have one or more ads.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function ads()
     {
@@ -51,7 +55,7 @@ class Region extends Model
     /**
      * Region has many Targets.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return MorphMany
      */
     public function targets()
     {
@@ -61,7 +65,7 @@ class Region extends Model
     /**
      * Region created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -71,7 +75,7 @@ class Region extends Model
     /**
      * Region updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

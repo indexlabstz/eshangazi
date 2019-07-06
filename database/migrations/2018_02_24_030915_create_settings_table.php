@@ -19,7 +19,7 @@ class CreateSettingsTable extends Migration
             $table->string('name');
             $table->string('parameter');
 
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

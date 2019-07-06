@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Ward extends Model
 {    
@@ -21,7 +24,7 @@ class Ward extends Model
     /**
      * Ward belongs to a District.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function district()
     {
@@ -31,7 +34,7 @@ class Ward extends Model
     /**
      * Ward may have one or more Centers.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function centers()
     {
@@ -41,7 +44,7 @@ class Ward extends Model
     /**
      * Ward has many Targets.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return MorphMany
      */
     public function targets()
     {
@@ -51,7 +54,7 @@ class Ward extends Model
     /**
      * A Ward can be created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -61,7 +64,7 @@ class Ward extends Model
     /**
      * A Ward can be updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

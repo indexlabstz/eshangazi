@@ -20,7 +20,7 @@ class CreateCurrenciesTable extends Migration
             $table->string('short_name');
             $table->string('symbol');
             
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

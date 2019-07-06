@@ -8,6 +8,7 @@ use App\Conversation;
 use App\ItemCategory;
 use BotMan\BotMan\BotMan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use BotMan\BotMan\Messages\Attachments\Image;
 use BotMan\BotMan\Messages\Outgoing\Question;
@@ -31,7 +32,7 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -43,7 +44,7 @@ class ItemController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -59,9 +60,9 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -92,7 +93,7 @@ class ItemController extends Controller
      *
      * @param  Item $item
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Item $item)
     {
@@ -104,7 +105,7 @@ class ItemController extends Controller
      *
      * @param  Item $item
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Item $item)
     {
@@ -122,10 +123,10 @@ class ItemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      * @param  Item $item
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Item $item)
     {
@@ -160,7 +161,7 @@ class ItemController extends Controller
      *
      * @param  Item $item
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      * @throws \Exception
      */
     public function destroy(Item $item)
@@ -173,7 +174,7 @@ class ItemController extends Controller
     /**
      * Display a listing of the deleted items.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function indexDeleted()
     {
@@ -187,7 +188,7 @@ class ItemController extends Controller
      *
      * @param Item $item
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function restoreTrashed($item)
     {
@@ -201,7 +202,7 @@ class ItemController extends Controller
      *
      * @param Item $item
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroyTrashed($item)
     {

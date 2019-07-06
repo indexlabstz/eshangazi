@@ -3,6 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class District extends Model
 {
@@ -21,7 +25,7 @@ class District extends Model
     /**
      * District belong to a region.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function region()
     {
@@ -31,7 +35,7 @@ class District extends Model
     /**
      * District has many wards.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function wards()
     {
@@ -41,7 +45,7 @@ class District extends Model
     /**
      * District has many Members.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function members()
     {
@@ -51,7 +55,7 @@ class District extends Model
     /**
      * District has many Partner.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function partners()
     {
@@ -61,7 +65,7 @@ class District extends Model
     /**
      * District has many Targets.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return MorphMany
      */
     public function targets()
     {
@@ -71,7 +75,7 @@ class District extends Model
     /**
      * District created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -81,7 +85,7 @@ class District extends Model
     /**
      * District updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {
@@ -91,7 +95,7 @@ class District extends Model
     /**
      * Get all of the centers for the district.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * @return HasManyThrough
      */
     public function centers()
     {

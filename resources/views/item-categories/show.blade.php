@@ -163,16 +163,24 @@
                                                             <img src="{{ asset('img/demo.jpg') }}" class="h-auto max-h-12 w-auto">
                                                         </div>
 
-                                                        <div>
-                                                            <h5 class="mb-2">
+                                                        <div class="w-full">
+                                                            <h5 class="flex justify-between">
                                                                 <span class="text-cosmos-black text-sm font-normal">
                                                                     @{{ item.title }}
                                                                 </span>
+
+                                                                <span class="text-cosmos-black text-sm font-normal">
+                                                                    @{{ item.creator.name }}
+                                                                </span>
                                                             </h5>
 
-                                                            <p>
+                                                            <p class="flex justify-between">
                                                                 <span class="text-cosmos-black-opacity-70 text-xs ais-Snippet">
                                                                     @{{ item.description }}
+                                                                </span>
+
+                                                                <span class="text-cosmos-black text-sm font-normal">
+                                                                    @{{ item.created_at }}
                                                                 </span>
                                                             </p>
                                                         </div>

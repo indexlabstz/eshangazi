@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ItemCategory extends Model
@@ -15,6 +17,8 @@ class ItemCategory extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    protected $with = ['creator'];
 
     /**
      * The attributes that are mass assignable.
@@ -34,7 +38,7 @@ class ItemCategory extends Model
     /**
      * An Item Category may have many Items.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function items()
     {
@@ -44,7 +48,7 @@ class ItemCategory extends Model
     /**
      * An Item Category created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -54,7 +58,7 @@ class ItemCategory extends Model
     /**
      * An Item Category updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

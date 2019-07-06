@@ -23,7 +23,7 @@ class CreateMessagesTable extends Migration
             $table->enum('gender', ['both', 'male', 'female'])->default('both');
             $table->integer('minimum_age')->default(13);
             
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Answer extends Model
 { 
@@ -20,9 +21,21 @@ class Answer extends Model
     ];
 
     /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($answer) {
+            $answer->update(['created_by' => auth()->id()]);
+        });
+    }
+
+    /**
      * An Answer belongs to a Question.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function question()
     {
@@ -32,7 +45,7 @@ class Answer extends Model
     /**
      * An Answer is created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -42,7 +55,7 @@ class Answer extends Model
     /**
      * An Answer can be updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

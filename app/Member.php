@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Member extends Model
 {
@@ -27,7 +28,7 @@ class Member extends Model
     /**
      * A Member belongs to A Platform.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function platform()
     {
@@ -37,7 +38,7 @@ class Member extends Model
     /**
      * A Member belongs to District.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function district()
     {
@@ -47,7 +48,7 @@ class Member extends Model
     /**
      * A Member may have a number of Conversations.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function conversations()
     {

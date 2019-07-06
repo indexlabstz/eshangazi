@@ -3,9 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Platform extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'driver_class',
@@ -15,9 +22,21 @@ class Platform extends Model
     ];
 
     /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($platform) {
+            $platform->update(['created_by' => auth()->id()]);
+        });
+    }
+
+    /**
      * Platform may have one or more Members.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function member()
     {
@@ -27,7 +46,7 @@ class Platform extends Model
     /**
      * Platform may have one or more Ads.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function ad()
     {
@@ -37,7 +56,7 @@ class Platform extends Model
     /**
      * An Item can be created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -47,7 +66,7 @@ class Platform extends Model
     /**
      * An Item can be updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

@@ -27,7 +27,7 @@ class CreateAdsTable extends Migration
             $table->date('ends');
 
             $table->integer('partner_id')->unsigned();
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

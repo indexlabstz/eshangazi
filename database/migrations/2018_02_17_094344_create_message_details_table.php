@@ -21,7 +21,7 @@ class CreateMessageDetailsTable extends Migration
             $table->string('thumbnail')->nullable();
 
             $table->integer('message_id')->unsigned();
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
 
             $table->timestamps();

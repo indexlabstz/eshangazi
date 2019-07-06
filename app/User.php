@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -36,7 +37,7 @@ class User extends Authenticatable
     /**
      * User owns one or more Ads.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function ads()
     {
@@ -46,17 +47,17 @@ class User extends Authenticatable
     /**
      * User create/update one or more Answers.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function answers()
     {
-        return $this->hasMany(Answers::class);
+        return $this->hasMany(Answer::class);
     }
 
     /**
      * User create/update one or more Centers.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function centers()
     {
@@ -66,7 +67,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Charges.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function charges()
     {
@@ -76,7 +77,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Countries.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function countries()
     {
@@ -86,7 +87,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Charges.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function currencies()
     {
@@ -96,17 +97,17 @@ class User extends Authenticatable
     /**
      * User create/update one or more Item Categories.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function item_categories()
     {
-        return $this->hasMany(ItemCetegory::class);
+        return $this->hasMany(ItemCategory::class);
     }
 
     /**
      * User create/update one or more Items.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function items()
     {
@@ -116,7 +117,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Messages.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function messages()
     {
@@ -126,7 +127,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Message Details.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function message_details()
     {
@@ -136,7 +137,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Partner Categories.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function partner_categories()
     {
@@ -146,7 +147,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Partners.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function partners()
     {
@@ -156,7 +157,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Payments.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function payments()
     {
@@ -166,7 +167,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Platforms.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function platforms()
     {
@@ -176,7 +177,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Question Categories.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function question_categories()
     {
@@ -186,7 +187,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Questions.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function questions()
     {
@@ -196,7 +197,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Services.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function services()
     {
@@ -206,7 +207,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Target.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function targets()
     {
@@ -216,7 +217,7 @@ class User extends Authenticatable
     /**
      * User create/update one or more Wards.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function wards()
     {
