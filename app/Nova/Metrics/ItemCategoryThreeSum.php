@@ -54,6 +54,6 @@ class ItemCategoryThreeSum extends Value
      */
     public function uriKey()
     {
-        return 'item-category-count';
+        return 'item-category-three-count';
     }
 }

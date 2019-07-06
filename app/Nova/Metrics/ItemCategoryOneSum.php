@@ -54,6 +54,6 @@ class ItemCategoryOneSum extends Value
      */
     public function uriKey()
     {
-        return 'item-category-count';
+        return 'item-category-one-count';
     }
 }
