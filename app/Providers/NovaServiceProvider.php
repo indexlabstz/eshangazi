@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use App\Nova\Metrics\ItemCategoryCount;
 use App\Nova\Metrics\MemberCount;
 use Laravel\Nova\Nova;
-use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -58,6 +58,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new MemberCount(),
+            new ItemCategoryCount(),
         ];
     }
 
