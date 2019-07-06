@@ -12,6 +12,7 @@ use BotMan\Drivers\Facebook\FacebookDriver;
 use BotMan\Drivers\Slack\SlackDriver;
 use BotMan\Drivers\Telegram\TelegramDriver;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\BotMan\Messages\Attachments\Image;
@@ -26,7 +27,7 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -40,7 +41,7 @@ class MemberController extends Controller
      *
      * @param BotMan $bot
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(BotMan $bot)
     {
@@ -284,7 +285,7 @@ class MemberController extends Controller
      */
     public function features($reply, $driver)
     {
-        $categories = ItemCategory::inRandomOrder()->take(7)->get();
+        $categories = ItemCategory::where('status', '=', 'publish')->inRandomOrder()->take(7)->get();
 
         if ($driver === 'Facebook') {
             $features = GenericTemplate::create()
