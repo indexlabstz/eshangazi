@@ -25,35 +25,24 @@ class User extends Resource
     public static $title = 'name';
 
     /**
-     * The logical group associated with the resource.
-     *
-     * @var string
-     */
-    public static $group = 'Settings';
-
-    /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
-        'id',
-        'name', 'email',
+        'id', 'name', 'email',
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable()
-                ->hideFromIndex()
-                ->hideWhenUpdating()
-                ->hideFromDetail(),
+            ID::make()->sortable(),
 
             Gravatar::make(),
 
@@ -77,7 +66,7 @@ class User extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -88,7 +77,7 @@ class User extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -99,7 +88,7 @@ class User extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -110,7 +99,7 @@ class User extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)
