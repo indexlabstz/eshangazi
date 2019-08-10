@@ -17,7 +17,6 @@ use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
 use BotMan\Drivers\Facebook\Extensions\ElementButton;
 use BotMan\Drivers\Facebook\Extensions\ButtonTemplate;
 
-
 class ItemController extends Controller
 {
     /**
