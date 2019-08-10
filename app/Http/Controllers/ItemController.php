@@ -236,7 +236,14 @@ class ItemController extends Controller
         $bot->typesAndWaits(1);
 
         if ($item) {
-            $attachment = new Image(env('AWS_URL') . '/' . $item->thumbnail);
+            $image = "";
+
+            if ($item->thumbnail)
+                $image = env('AWS_URL') . '/' . $item->thumbnail;
+            else
+                $image = "https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg";
+
+            $attachment = new Image($image);
             $message = OutgoingMessage::create($item->description)->withAttachment($attachment);
 
             if ($item->items->isEmpty()) {
