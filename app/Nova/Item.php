@@ -90,7 +90,8 @@ class Item extends Resource
                 ->rules('required', 'numeric'),
 
             BelongsTo::make('Item', 'item')
-                ->hideFromIndex()
+                ->searchable()
+                ->prepopulate()
                 ->nullable(),
 
             Textarea::make('Description')
