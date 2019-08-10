@@ -287,14 +287,23 @@ class MemberController extends Controller
     {
         $categories = ItemCategory::where('status', '=', 'publish')->inRandomOrder()->take(7)->get();
 
+
+
         if ($driver === 'Facebook') {
             $features = GenericTemplate::create()
                 ->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
             foreach ($categories as $category) {
+                $image = "";
+
+                if ($category->thumbnail)
+                    $image = env('AWS_URL') . '/' . $category->thumbnail;
+                else
+                    $image = "https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg";
+
                 $features->addElements([
                     Element::create($category->name)
                         ->subtitle($category->description)
-                        ->image(env('AWS_URL') . '/' . $category->thumbnail)
+                        ->image($image)
                         ->addButton(ElementButton::create('Fahamu Zaidi')
                             ->payload($category->name)->type('postback'))
                 ]);
