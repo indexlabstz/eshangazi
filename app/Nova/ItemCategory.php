@@ -59,7 +59,7 @@ class ItemCategory extends Resource
                 ->hideFromDetail(),
 
             Image::make('Thumbnail')
-                ->disk('eShangazi'),
+                ->disk('eShangazi', 'public'),
 
             Text::make('Name')
                 ->sortable()
