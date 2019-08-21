@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class QuestionCategory extends Model
 {
@@ -17,11 +19,23 @@ class QuestionCategory extends Model
         'created_by',
         'updated_by'
     ];
+
+    /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($question_category) {
+            $question_category->update(['created_by' => auth()->id()]);
+        });
+    }
  
     /**
      * A Question Category has many Questions.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function questions()
     {
@@ -31,7 +45,7 @@ class QuestionCategory extends Model
     /**
      * A Question Category created by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
@@ -41,7 +55,7 @@ class QuestionCategory extends Model
     /**
      * A Question Category updated by a user.
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function updator()
     {

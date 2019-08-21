@@ -23,16 +23,12 @@ class Answer extends Model
     /**
      * Boot the model.
      */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 
-        static::creating(function ($answer) {
-            $answer->created_by = auth()->id();
-        });
-
-        static::updating(function ($answer) {
-            $answer->updated_by = auth()->id();
+        static::created(function ($answer) {
+            $answer->update(['created_by' => auth()->id()]);
         });
     }
 

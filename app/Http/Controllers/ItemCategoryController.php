@@ -59,7 +59,7 @@ class ItemCategoryController extends Controller
         $thumbnail_path = null;
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail_path = Storage::disk('s3')
+            $thumbnail_path = Storage::disk('eShangazi')
                 ->putFile('public/item-category-thumbnails', $request->file('thumbnail'), 'public');
 
         }
@@ -113,9 +113,9 @@ class ItemCategoryController extends Controller
 
         if ($request->hasFile('thumbnail')) {
 
-            if (Storage::disk('s3')->exists($item_category->thumbnail)) Storage::disk('s3')->delete($item_category->thumbnail);
+            if (Storage::disk('eShangazi')->exists($item_category->thumbnail)) Storage::disk('eShangazi')->delete($item_category->thumbnail);
 
-            $thumbnail_path = Storage::disk('s3')
+            $thumbnail_path = Storage::disk('eShangazi')
                 ->putFile('public/item-category-thumbnails', $request->file('thumbnail'), 'public');
         }
 
@@ -182,8 +182,8 @@ class ItemCategoryController extends Controller
     public function destroyTrashed($item_category)
     {
         $item_category = ItemCategory::onlyTrashed()->find($item_category);
-        if (Storage::disk('s3')->exists($item_category->thumbnail))
-            Storage::disk('s3')->delete($item_category->thumbnail);
+        if (Storage::disk('eShangazi')->exists($item_category->thumbnail))
+            Storage::disk('eShangazi')->delete($item_category->thumbnail);
 
         $item_category->forceDelete();
 

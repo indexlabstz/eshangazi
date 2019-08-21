@@ -68,7 +68,7 @@ class ItemController extends Controller
         $thumbnail_path = null;
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail_path = Storage::disk('s3')
+            $thumbnail_path = Storage::disk('eShangazi')
                 ->putFile('public/item-thumbnails', $request->file('thumbnail'), 'public');
         }
 
@@ -108,7 +108,6 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-
         $items = Item::all('id', 'title');
         $item_categories = ItemCategory::all('id', 'name');
 
@@ -132,11 +131,11 @@ class ItemController extends Controller
         $thumbnail_path = null;
 
         if ($request->hasFile('thumbnail')) {
-            if (Storage::disk('s3')->exists($item->thumbnail)) {
-                Storage::disk('s3')->delete($item->thumbnail);
+            if (Storage::disk('eShangazi')->exists($item->thumbnail)) {
+                Storage::disk('eShangazi')->delete($item->thumbnail);
             }
 
-            $thumbnail_path = Storage::disk('s3')
+            $thumbnail_path = Storage::disk('eShangazi')
                 ->putFile('public/item-thumbnails', $request->file('thumbnail'), 'public');
         }
 
@@ -207,8 +206,8 @@ class ItemController extends Controller
     {
         $item = Item::onlyTrashed()->find($item);
 
-        if (Storage::disk('s3')->exists($item->thumbnail)) {
-            Storage::disk('s3')->delete($item->thumbnail);
+        if (Storage::disk('eShangazi')->exists($item->thumbnail)) {
+            Storage::disk('eShangazi')->delete($item->thumbnail);
         }
 
         $item->forceDelete();
@@ -239,7 +238,7 @@ class ItemController extends Controller
             $image = "";
 
             if ($item->thumbnail)
-                $image = env('AWS_URL') . '/' . $item->thumbnail;
+                $image = env('S3_ENDPOINT') . '/' . $item->thumbnail;
             else
                 $image = "https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg";
 

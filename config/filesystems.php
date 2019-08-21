@@ -64,6 +64,16 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'eShangazi' => [
+            'driver' => env('S3_DRIVER', 's3'),
+            'endpoint' => env('S3_ENDPOINT'),
+            'version' => env('S3_VERSION', 'latest'),
+            'key' => env('S3_KEY'),
+            'secret' => env('S3_SECRET'),
+            'region' => env('S3_REGION'),
+            'bucket' => env('S3_BUCKET')
+        ],
+
     ],
 
 ];
