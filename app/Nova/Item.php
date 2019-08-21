@@ -66,7 +66,8 @@ class Item extends Resource
                 ->hideFromDetail(),
 
             Image::make('Thumbnail')
-                ->disk('eShangazi', 'public'),
+                ->disk('eShangazi')
+                ->path('public/item-thumbnails'),
 
             Text::make('Title')
                 ->sortable()
