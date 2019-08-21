@@ -65,7 +65,8 @@ class Item extends Resource
                 ->hideWhenUpdating()
                 ->hideFromDetail(),
 
-            Image::make('Thumbnail'),
+            Image::make('Thumbnail')
+                ->disk('eShangazi'),
 
             Text::make('Title')
                 ->sortable()

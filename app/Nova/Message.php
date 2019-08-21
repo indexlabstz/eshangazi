@@ -61,7 +61,8 @@ class Message extends Resource
                 ->hideFromDetail()
                 ->hideWhenUpdating(),
 
-            Gravatar::make('Thumbnail'),
+            Gravatar::make('Thumbnail')
+                ->disk('eShangazi'),
 
             Text::make('Title')
                 ->sortable()

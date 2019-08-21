@@ -58,7 +58,8 @@ class ItemCategory extends Resource
                 ->hideWhenUpdating()
                 ->hideFromDetail(),
 
-            Image::make('Thumbnail'),
+            Image::make('Thumbnail')
+                ->disk('eShangazi'),
 
             Text::make('Name')
                 ->sortable()
