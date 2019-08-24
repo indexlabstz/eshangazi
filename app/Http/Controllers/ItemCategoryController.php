@@ -60,7 +60,7 @@ class ItemCategoryController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail_path = Storage::disk('eShangazi')
-                ->putFile('public/item-category-thumbnails', $request->file('thumbnail'), 'public');
+                ->putFile('public/item-category-thumbnails', $request->file('thumbnail'));
 
         }
 
