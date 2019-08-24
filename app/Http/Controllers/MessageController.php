@@ -243,9 +243,9 @@ class MessageController extends Controller
         $url = null;
 
         if ($message->thumbnail)
-            $url = env('AWS_URL') . '/' . $message->thumbnail;
+            $url = env('S3_URL') . '/' . $message->thumbnail;
         else
-            $url = env('APP_URL') . '/img/logo.jpg';
+            $url = env('S3_URL') . '/img/logo.jpg';
 
         $message = GenericTemplate::create()
                     ->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL)

@@ -296,7 +296,7 @@ class MemberController extends Controller
                 $image = "";
 
                 if ($category->thumbnail)
-                    $image = env('S3_ENDPOINT') . '/' . $category->thumbnail;
+                    $image = env('S3_URL') . '/' . $category->thumbnail;
                 else
                     $image = "https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg";
 

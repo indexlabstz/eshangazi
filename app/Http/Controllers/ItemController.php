@@ -238,7 +238,7 @@ class ItemController extends Controller
             $image = "";
 
             if ($item->thumbnail)
-                $image = env('S3_ENDPOINT') . '/' . $item->thumbnail;
+                $image = env('S3_URL') . '/' . $item->thumbnail;
             else
                 $image = "https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg";
 
