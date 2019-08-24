@@ -26,11 +26,18 @@ class QuestionCategory extends Resource
     public static $title = 'name';
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Game';
+
+    /**
      * Indicates if the resource should be displayed in the sidebar.
      *
      * @var bool
      */
-    public static $displayInNavigation = false;
+    public static $displayInNavigation = true;
 
     /**
      * The columns that should be searched.
@@ -52,6 +59,8 @@ class QuestionCategory extends Resource
     {
         return [
             ID::make()->sortable()
+                ->hideWhenUpdating()
+                ->hideFromDetail()
                 ->hideFromIndex(),
 
             Text::make('Name')

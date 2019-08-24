@@ -54,6 +54,8 @@ class Answer extends Resource
     {
         return [
             ID::make()->sortable()
+                ->hideWhenUpdating()
+                ->hideFromDetail()
                 ->hideFromIndex(),
 
             Text::make('Answer')
