@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\Ward;
 use App\Center;
 use App\Member;
@@ -179,12 +180,23 @@ class CenterController extends Controller
     public function showBotMan(BotMan $bot)
     {
         $extras = $bot->getMessage()->getExtras();
+        $driver = $bot->getDriver()->getName();
+        $user = $bot->getUser();
+
         $apiReply = $extras['apiReply'];
 
-        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
-
         $bot->typesAndWaits(1);
+
+        $bot->reply($user->getFirstName());
         $bot->reply($apiReply);
+
+//        $extras = $bot->getMessage()->getExtras();
+//        $apiReply = $extras['apiReply'];
+
+//        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
+
+//        $bot->typesAndWaits(1);
+//        $bot->reply($apiReply);
 
         /*$member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
 
