@@ -67,7 +67,7 @@ class CenterController extends Controller
         $thumbnail_path = null;
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail_path = Storage::disk('s3')
+            $thumbnail_path = Storage::disk('eShangazi')
                 ->putFile('public/center-thumbnails', $request->file('thumbnail'), 'public');
         }
 
@@ -131,7 +131,7 @@ class CenterController extends Controller
         $thumbnail_path = null;
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail_path = Storage::disk('s3')
+            $thumbnail_path = Storage::disk('eShangazi')
                 ->putFile('public/center-thumbnails', $request->file('thumbnail'), 'public');
         }
 
@@ -161,8 +161,8 @@ class CenterController extends Controller
      */
     public function destroy(Center $center)
     {
-        if (Storage::disk('s3')->exists($center->thumbnail))
-            Storage::disk('s3')->delete($center->thumbnail);
+        if (Storage::disk('eShangazi')->exists($center->thumbnail))
+            Storage::disk('eShangazi')->delete($center->thumbnail);
 
         $center->delete();
 
@@ -186,7 +186,7 @@ class CenterController extends Controller
         $bot->typesAndWaits(1);
         $bot->reply($apiReply);
 
-        $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
+        /*$member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
 
         if (env('APP_NAME') == 'eShangazi') {
             $template_list = GenericTemplate::create()->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
@@ -249,7 +249,7 @@ class CenterController extends Controller
                 'intent' => 'Service delivery points',
                 'member_id' => $member->id
             ]);
-        }
+        }*/
     }
 
     /**
@@ -257,7 +257,7 @@ class CenterController extends Controller
      *
      * @param $centers
      *
-     * @return \BotMan\Drivers\Facebook\Extensions\GenericTemplate
+     * @return GenericTemplate
      *
      */
     public function centers($centers)
@@ -268,9 +268,9 @@ class CenterController extends Controller
             $url = null;
 
             if ($center->thumbnail) {
-                $url = env('AWS_URL') . '/' . $center->thumbnail;
+                $url = env('S3_URL') . '/' . $center->thumbnail;
             } else {
-                $url = env('APP_URL') . '/img/logo.jpg';
+                $url = 'https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg';
             }
 
             $template_list->addElements([
@@ -292,7 +292,7 @@ class CenterController extends Controller
      *
      * @param $center
      *
-     * @return \BotMan\Drivers\Facebook\Extensions\GenericTemplate
+     * @return GenericTemplate
      *
      */
     public function services($center)
@@ -305,7 +305,7 @@ class CenterController extends Controller
             if ($service->thumbnail)
                 $url = env('AWS_URL') . '/' . $service->thumbnail;
             else
-                $url = env('APP_URL') . '/img/logo.jpg';
+                $url = 'https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg';
 
             $template_list->addElements([
                 Element::create($service->name)
