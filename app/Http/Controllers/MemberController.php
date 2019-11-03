@@ -9,7 +9,6 @@ use App\ItemCategory;
 use App\Conversation;
 use BotMan\BotMan\BotMan;
 use BotMan\Drivers\Facebook\FacebookDriver;
-use BotMan\Drivers\Slack\SlackDriver;
 use BotMan\Drivers\Telegram\TelegramDriver;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -280,7 +279,7 @@ class MemberController extends Controller
      *
      * @param $reply
      *
-     * @return Question
+     * @return Question|GenericTemplate
      *
      */
     public function features($reply, $driver)
@@ -293,8 +292,6 @@ class MemberController extends Controller
             $features = GenericTemplate::create()
                 ->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
             foreach ($categories as $category) {
-                $image = "";
-
                 if ($category->thumbnail)
                     $image = env('S3_URL') . '/' . $category->thumbnail;
                 else
@@ -378,6 +375,7 @@ class MemberController extends Controller
     {
         if ($driver === 'Facebook') {
             $gender = $user->getInfo()["gender"] ?? null;
+
             return $gender;
         }
 

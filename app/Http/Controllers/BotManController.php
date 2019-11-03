@@ -162,6 +162,6 @@ class BotManController extends Controller
 
         $bot->typesAndWaits(1);
 
-        $bot->reply(nl2br($apiReply));
+        $bot->reply($apiReply);
     }
 }

@@ -13,6 +13,8 @@ use App\Http\Controllers\MessageDetailController;
 
 $botman = resolve('botman');
 
+
+
 $dialogflow = Dialogflow::create(env('DIALOGFLOW_KEY'))->listenForAction();
 
 $botman->middleware->received($dialogflow);

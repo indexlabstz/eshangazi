@@ -6,8 +6,6 @@ use App\Member;
 use App\Message;
 use App\Conversation;
 use BotMan\BotMan\BotMan;
-use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
-use BotMan\Drivers\Telegram\TelegramDriver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateMessageRequest;
@@ -236,7 +234,7 @@ class MessageController extends Controller
      *
      * @param  Message $message
      * 
-     * @return \BotMan\Drivers\Facebook\Extensions\GenericTemplate
+     * @return GenericTemplate
      */
     public function message($message)
     {
@@ -265,7 +263,7 @@ class MessageController extends Controller
      *
      * @param  Message $message
      * 
-     * @return \BotMan\Drivers\Facebook\Extensions\GenericTemplate
+     * @return GenericTemplate
      */
     public function details($message)
     {                           
