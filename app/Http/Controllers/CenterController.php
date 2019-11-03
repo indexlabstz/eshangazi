@@ -191,7 +191,7 @@ class CenterController extends Controller
 
         $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
 
-        $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
+//        $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
 
         if (env('APP_NAME') == 'eShangazi') {
             $template_list = GenericTemplate::create()->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
@@ -265,13 +265,13 @@ class CenterController extends Controller
                 }
             }
         }
-
-        if ($member) {
-            Conversation::create([
-                'intent' => 'Service delivery points',
-                'member_id' => $member->id
-            ]);
-        }
+//
+//        if ($member) {
+//            Conversation::create([
+//                'intent' => 'Service delivery points',
+//                'member_id' => $member->id
+//            ]);
+//        }
     }
 
     /**
