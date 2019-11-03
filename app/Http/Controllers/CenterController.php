@@ -194,22 +194,23 @@ class CenterController extends Controller
 //        $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
 
         if (env('APP_NAME') == 'eShangazi') {
-            $template_list = GenericTemplate::create()->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
+//            $template_list = GenericTemplate::create()->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
 
-            $url = 'https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg';
+//            $url = 'https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg';
 
             $response = Zttp::get('http://opendata.go.tz/api/action/datastore_search?resource_id=83b7cd61-0a03-4b9a-8572-7eb4eb2f3af7&limit=5');
 
             $centers = $response->json()['result']['records'];
 
             foreach ($centers as $center) {
-                $template_list->addElements([
-                    Element::create($center['FACILITY_NAME'])
-                        ->subtitle('Kituo hiki kipo ' . $center['COUNCIL'] . ' mkoani ' . $center['REGION'])
-                        ->image($url)
-                        ->addButton(ElementButton::create('Ona Ramani')
-                            ->url('http://maps.google.com/?q=' . $center['LATITUDE'] . ',' . $center['LONGITUDE']))
-                ]);
+                $bot->reply($center['FACILITY_NAME']);
+//                $template_list->addElements([
+//                    Element::create($center['FACILITY_NAME'])
+//                        ->subtitle('Kituo hiki kipo ' . $center['COUNCIL'] . ' mkoani ' . $center['REGION'])
+//                        ->image($url)
+//                        ->addButton(ElementButton::create('Ona Ramani')
+//                            ->url('http://maps.google.com/?q=' . $center['LATITUDE'] . ',' . $center['LONGITUDE']))
+//                ]);
             }
 
             /*if ($member) {
@@ -244,8 +245,8 @@ class CenterController extends Controller
                 }
             }*/
 
-            $bot->typesAndWaits(1);
-            $bot->reply($template_list);
+//            $bot->typesAndWaits(1);
+//            $bot->reply($template_list);
         } else {
             if ($name) {
                 $center = Center::with('services')->where('name', '=', $name)->first();
