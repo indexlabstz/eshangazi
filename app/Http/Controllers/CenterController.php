@@ -198,7 +198,21 @@ class CenterController extends Controller
 
             $url = 'https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg';
 
-            if ($member) {
+            $response = Zttp::get('http://opendata.go.tz/api/action/datastore_search?resource_id=83b7cd61-0a03-4b9a-8572-7eb4eb2f3af7&limit=5');
+
+            $centers = $response->json()['result']['records'];
+
+            foreach ($centers as $center) {
+                $template_list->addElements([
+                    Element::create($center['FACILITY_NAME'])
+                        ->subtitle('Kituo hiki kipo ' . $center['COUNCIL'] . ' mkoani ' . $center['REGION'])
+                        ->image($url)
+                        ->addButton(ElementButton::create('Ona Ramani')
+                            ->url('http://maps.google.com/?q=' . $center['LATITUDE'] . ',' . $center['LONGITUDE']))
+                ]);
+            }
+
+            /*if ($member) {
                 $bot->reply($member->district_id);
                 $district = District::with('region')->where('id', $member->district_id)->first();
 
@@ -228,7 +242,7 @@ class CenterController extends Controller
                                 ->url('http://maps.google.com/?q=' . $center['LATITUDE'] . ',' . $center['LONGITUDE']))
                     ]);
                 }
-            }
+            }*/
 
             $bot->typesAndWaits(1);
             $bot->reply($template_list);
