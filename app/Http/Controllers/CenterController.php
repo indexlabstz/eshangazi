@@ -180,7 +180,7 @@ class CenterController extends Controller
     {
         $bot->reply("Vituo");
 
-        $extras = $bot->getMessage()->getExtras();
+        /*$extras = $bot->getMessage()->getExtras();
         $apiReply = $extras['apiReply'];
 
         $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
@@ -251,7 +251,7 @@ class CenterController extends Controller
                 'intent' => 'Service delivery points',
                 'member_id' => $member->id
             ]);
-        }
+        }*/
     }
 
     /**
