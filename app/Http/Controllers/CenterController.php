@@ -181,8 +181,7 @@ class CenterController extends Controller
         $extras = $bot->getMessage()->getExtras();
         $apiReply = $extras['apiReply'];
 
-        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
-
+//        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
 
         $bot->typesAndWaits(1);
         $bot->reply($apiReply);
