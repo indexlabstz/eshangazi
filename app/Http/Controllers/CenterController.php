@@ -187,18 +187,11 @@ class CenterController extends Controller
 
         $bot->typesAndWaits(1);
 
-        $bot->reply($user->getFirstName());
         $bot->reply($apiReply);
 
-//        $extras = $bot->getMessage()->getExtras();
-//        $apiReply = $extras['apiReply'];
+        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
 
-//        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
-
-//        $bot->typesAndWaits(1);
-//        $bot->reply($apiReply);
-
-        /*$member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
+        $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
 
         if (env('APP_NAME') == 'eShangazi') {
             $template_list = GenericTemplate::create()->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
@@ -261,7 +254,7 @@ class CenterController extends Controller
                 'intent' => 'Service delivery points',
                 'member_id' => $member->id
             ]);
-        }*/
+        }
     }
 
     /**
