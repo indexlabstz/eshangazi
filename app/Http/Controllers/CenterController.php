@@ -10,6 +10,7 @@ use App\District;
 use App\Conversation;
 use BotMan\BotMan\BotMan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use BotMan\Drivers\Facebook\Extensions\Element;
 use BotMan\Drivers\Facebook\Extensions\ElementButton;
@@ -29,7 +30,7 @@ class CenterController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -41,7 +42,7 @@ class CenterController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -57,9 +58,9 @@ class CenterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -89,9 +90,9 @@ class CenterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Center $center
+     * @param Center $center
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Center $center)
     {
@@ -101,9 +102,9 @@ class CenterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Center $center
+     * @param Center $center
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Center $center)
     {
@@ -120,10 +121,10 @@ class CenterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Center $center
+     * @param Request $request
+     * @param Center $center
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Center $center)
     {
@@ -153,9 +154,10 @@ class CenterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Center $center
+     * @param Center $center
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
+     * @throws \Exception
      */
     public function destroy(Center $center)
     {
@@ -170,7 +172,7 @@ class CenterController extends Controller
     /**
      * Display Generic Template .
      *
-     * @param  BotMan $bot
+     * @param BotMan $bot
      *
      * @return void
      */
@@ -187,14 +189,14 @@ class CenterController extends Controller
 
         $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
 
-        if(env('APP_NAME') == 'eShangazi') {
+        if (env('APP_NAME') == 'eShangazi') {
             $template_list = GenericTemplate::create()->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
-            $url = 'https://s3.us-east-2.amazonaws.com/eshangazi-bot/public/center-thumbnail/maps.jpg';
+            $url = 'https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg';
 
             if ($member) {
                 $district = District::with('region')->where('id', $member->district_id)->first();
 
-                $response = Zttp::get('http://opendata.go.tz/api/action/datastore_search?resource_id=1fbc4c63-9c74-4337-ba04-f52b3d6adb0e&q='. $district->region->name . '&limit=5');
+                $response = Zttp::get('http://opendata.go.tz/api/action/datastore_search?resource_id=1fbc4c63-9c74-4337-ba04-f52b3d6adb0e&q=' . $district->region->name . '&limit=5');
                 $centers = $response->json()['result']['records'];
 
                 foreach ($centers as $center) {
