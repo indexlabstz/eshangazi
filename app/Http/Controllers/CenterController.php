@@ -195,9 +195,11 @@ class CenterController extends Controller
 
         if (env('APP_NAME') == 'eShangazi') {
             $template_list = GenericTemplate::create()->addImageAspectRatio(GenericTemplate::RATIO_HORIZONTAL);
+
             $url = 'https://eshangazi.sfo2.digitaloceanspaces.com/public/item-category-thumbnails/6N9wsmAiiTlXkZicoBYMXHaZ7kGJpQb2j4YzwzMc.jpeg';
 
             if ($member) {
+                $bot->reply($member->district_id);
                 $district = District::with('region')->where('id', $member->district_id)->first();
 
                 $response = Zttp::get('http://opendata.go.tz/api/action/datastore_search?resource_id=1fbc4c63-9c74-4337-ba04-f52b3d6adb0e&q=' . $district->region->name . '&limit=5');
@@ -214,6 +216,7 @@ class CenterController extends Controller
                 }
             } else {
                 $response = Zttp::get('http://opendata.go.tz/api/action/datastore_search?resource_id=83b7cd61-0a03-4b9a-8572-7eb4eb2f3af7&limit=5');
+
                 $centers = $response->json()['result']['records'];
 
                 foreach ($centers as $center) {
