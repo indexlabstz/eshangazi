@@ -189,7 +189,7 @@ class CenterController extends Controller
 
         $bot->reply($apiReply);
 
-        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
+//        $name = $extras['apiParameters'][env('APP_ACTION') . '-centers'];
 
 //        $member = Member::where('user_platform_id', '=', $bot->getUser()->getId())->first();
 
@@ -247,25 +247,26 @@ class CenterController extends Controller
 
 //            $bot->typesAndWaits(1);
 //            $bot->reply($template_list);
-        } else {
-            if ($name) {
-                $center = Center::with('services')->where('name', '=', $name)->first();
-
-                $bot->typesAndWaits(1);
-                $bot->reply($center->description);
-            } else {
-
-                $centers = Center::inRandomOrder()->take(5)->get();
-
-                $bot->typesAndWaits(1);
-
-                if ($centers) {
-                    $bot->reply($this->centers($centers));
-                } else {
-                    $bot->reply('Kumradhi, sijaweza pata vituo kwa sasa.');
-                }
-            }
         }
+//      else {
+//            if ($name) {
+//                $center = Center::with('services')->where('name', '=', $name)->first();
+//
+//                $bot->typesAndWaits(1);
+//                $bot->reply($center->description);
+//            } else {
+//
+//                $centers = Center::inRandomOrder()->take(5)->get();
+//
+//                $bot->typesAndWaits(1);
+//
+//                if ($centers) {
+//                    $bot->reply($this->centers($centers));
+//                } else {
+//                    $bot->reply('Kumradhi, sijaweza pata vituo kwa sasa.');
+//                }
+//            }
+//        }
 //
 //        if ($member) {
 //            Conversation::create([
