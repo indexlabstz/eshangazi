@@ -15,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return Question::orderBy('id', 'DESC')->get();
+        return Question::orderBy('id', 'DESC')->paginate(150);
     }
 
     /**
