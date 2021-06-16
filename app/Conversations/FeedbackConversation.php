@@ -19,12 +19,11 @@ class FeedbackConversation extends Conversation
 
         $this->member = Member::where('user_platform_id', '=', $user_id)->first();
 
-        $this->ask('Andika swali/maoni yako', function(Answer $answer) {
+        $this->ask('Andika swali/maoni yako', function (Answer $answer) {
 
             $this->feedback = $answer->getText();
 
-            if($this->member)
-            {
+            if ($this->member) {
                 Feedback::create([
                     'feedback'  => $this->feedback,
                     'member_id' => $this->member->id

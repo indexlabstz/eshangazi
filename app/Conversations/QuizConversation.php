@@ -20,20 +20,21 @@ class QuizConversation extends Conversation
      */
     public function startConv()
     {
-        $Question = BotManQuestion::create('Karibu '.$this->bot->getUser()->getFirstName(). ' kwenye maswali na majibu')
-                ->fallback('Unable to start game')
-                ->callbackId('start_game')
-                ->addButtons([
-                    Button::create('Cheza')->value('yes'),
-                    Button::create('Baadae')->value('no')
-                ]);
+        $Question = BotManQuestion::create('Karibu ' . $this->bot->getUser()->getFirstName() . ' kwenye maswali na majibu')
+            ->fallback('Unable to start game')
+            ->callbackId('start_game')
+            ->addButtons([
+                Button::create('Cheza')->value('yes'),
+                Button::create('Baadae')->value('no')
+            ]);
+            
         return $this->ask($Question, function (Answer $answer) {
-            if($answer->getValue() === 'yes'){
+            if ($answer->getValue() === 'yes') {
                 $this->say("Bofya kwenye jibu sahihi.");
                 $this->askQuestion();
-            }else{
-                $this->say("Asante ".$this->bot->getUser()->getFirstName() .
-                                    "!, karibu ujaribu kucheza muda wowote.. 👋");
+            } else {
+                $this->say("Asante " . $this->bot->getUser()->getFirstName() .
+                    "!, karibu ujaribu kucheza muda wowote.. 👋");
                 $this->bot->typesAndWaits(2);
                 $this->bot->reply($this->customFeatures($this->bot->getUser()));
             }
@@ -45,22 +46,19 @@ class QuizConversation extends Conversation
      */
     public function askQuestion()
     {
-        if($this->iterations == 0)
+        if ($this->iterations == 0)
             $this->data = Question::with('answers')->has('answers', '>=', 2)->inRandomOrder()->take(5)->get();
 
-        if(! $this->data->isEmpty())
-        {
+        if (!$this->data->isEmpty()) {
             $question = $this->data[$this->iterations]->question;
 
             $answers = [];
 
-            foreach($this->data[$this->iterations]->answers as $answer)
-            {
+            foreach ($this->data[$this->iterations]->answers as $answer) {
                 $answers[] = $answer->answer;
 
-                if($answer->correct == 1)
+                if ($answer->correct == 1)
                     $this->correct = $answer->answer;
-
             }
 
             shuffle($answers);
@@ -69,8 +67,7 @@ class QuizConversation extends Conversation
                 ->fallback('Unable to ask question')
                 ->callbackId('ask_question');
 
-            foreach($answers as $answer)
-            {
+            foreach ($answers as $answer) {
                 $question_pass->addButtons([
                     Button::create($answer)->value($answer)
                 ]);
@@ -79,15 +76,13 @@ class QuizConversation extends Conversation
             return $this->ask($question_pass, function (Answer $answer) {
                 $this->iterations++;
 
-                if ($answer->isInteractiveMessageReply())
-                {
-                    if ($answer->getValue() === $this->correct)
-                    {
+                if ($answer->isInteractiveMessageReply()) {
+                    if ($answer->getValue() === $this->correct) {
                         $this->score += 1;
 
                         $this->say("Swali." .
                             $this->iterations . "/" .
-                            $this->data->count(). ". ✅️ Sahihi 👍, umeshinda alama 1.");
+                            $this->data->count() . ". ✅️ Sahihi 👍, umeshinda alama 1.");
                     } else {
                         $this->say("Swal." .
                             $this->iterations . "/" .
@@ -95,34 +90,29 @@ class QuizConversation extends Conversation
                             $this->correct . ", alama 0.");
                     }
 
-                    if($this->iterations < $this->data->count())
-                    {
+                    if ($this->iterations < $this->data->count()) {
                         $this->askQuestion();
-                    }
-                    else
-                    {
-                        if($this->score == $this->data->count())
-                        {
+                    } else {
+                        if ($this->score == $this->data->count()) {
                             $this->say("Hongera 👏👏 " .
                                 $this->bot->getUser()->getFirstName() .
-                                "!, umepata ".$this->score . "/"
+                                "!, umepata " . $this->score . "/"
                                 . $this->data->count() .
                                 " . Hongeraaa! 🏆🏆");
-                        }else if($this->score >= ($this->data->count()/2))
-                        {
+                        } else if ($this->score >= ($this->data->count() / 2)) {
                             $this->say("Umefanya vizuri 👏 " .
                                 $this->bot->getUser()->getFirstName() .
                                 "!, umepata " .
                                 $this->score . "/" .
                                 $this->data->count() .
                                 ". Endelea kucheza.");
-                        }else{
+                        } else {
                             $this->say($this->bot->getUser()->getFirstName() .
                                 "!, Naamini unaweza kufanya vizuri zaidi ya " .
                                 $this->score . "/" . $this->data->count() .
                                 ". Kila la heri! 👊");
                         }
-                        
+
                         $this->bot->typesAndWaits(2);
 
                         $question_conf = BotManQuestion::create($this->bot->getUser()->getFirstName() .
@@ -134,24 +124,19 @@ class QuizConversation extends Conversation
                                 Button::create("Hapana")->value("no"),
                             ]);
 
-                        $this->ask($question_conf, function(Answer $answer)
-                        {
-                            if ($answer->getValue() === 'yes')
-                            {
+                        $this->ask($question_conf, function (Answer $answer) {
+                            if ($answer->getValue() === 'yes') {
                                 $this->score = 0;
                                 $this->iterations = 0;
                                 $this->askQuestion();
-                            }
-                            else if ($answer->getValue() === 'no')
-                            {
-                                $this->say("Asante ".$this->bot->getUser()->getFirstName() .
+                            } else if ($answer->getValue() === 'no') {
+                                $this->say("Asante " . $this->bot->getUser()->getFirstName() .
                                     "!, karibu ujaribu kucheza tena muda wowote.. 👋");
                                 $this->bot->typesAndWaits(2);
                                 $this->bot->reply($this->customFeatures($this->bot->getUser()));
                             }
                         });
                     }
-                    
                 } else {
                     $question_wrong = BotManQuestion::create("Oooh❗😬😬, " .
                         $this->bot->getUser()->getFirstName() .
@@ -163,16 +148,12 @@ class QuizConversation extends Conversation
                             Button::create("Hapana")->value("no"),
                         ]);
 
-                    $this->ask($question_wrong, function(Answer $answer)
-                    {
-                        if ($answer->getValue() === 'yes')
-                        {
+                    $this->ask($question_wrong, function (Answer $answer) {
+                        if ($answer->getValue() === 'yes') {
                             $this->score = 0;
                             $this->iterations = 0;
                             $this->askQuestion();
-                        }
-                        else if ($answer->getValue() === 'no')
-                        {
+                        } else if ($answer->getValue() === 'no') {
                             $this->say("Ooh pole 🙇‍ " .
                                 $this->bot->getUser()->getFirstName() .
                                 "!, karibu ujaribu kucheza tena muda wowote.. 👋");
@@ -182,8 +163,7 @@ class QuizConversation extends Conversation
                     });
                 }
             });
-
-        }else{
+        } else {
             $this->say('Hakua maswali kwa sasa, rudi baadae...');
             $this->bot->typesAndWaits(2);
             $this->bot->reply($this->customFeatures($this->bot->getUser()));
@@ -200,7 +180,7 @@ class QuizConversation extends Conversation
         $this->startConv();
     }
 
-            /**
+    /**
      * Show a list of other items.
      *
      * @param $bot->getUser()
@@ -209,7 +189,7 @@ class QuizConversation extends Conversation
      */
     public function customFeatures($user)
     {
-        $features = BotManQuestion::create($user->getFirstName().' pia unaweza angalia vitu hivi!')
+        $features = BotManQuestion::create($user->getFirstName() . ' pia unaweza angalia vitu hivi!')
             ->fallback('Kumradhi, sijaweza kuuliza')
             ->callbackId('item')
             ->addButtons([
