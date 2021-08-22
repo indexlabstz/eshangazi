@@ -121,7 +121,7 @@
 
         <div class="mt-8 mb-2 text-center">
             <p class="text-gray-400 text-base">
-                <a href="https://t.me/eshangazibot"
+                <a href="https://m.me/eshangazibot"
                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10" target="_blank">
                     Njoo Tutete
                 </a>

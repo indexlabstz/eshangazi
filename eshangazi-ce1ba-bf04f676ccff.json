@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "eshangazi-ce1ba",
+  "private_key_id": "bf04f676ccfff63cf7f82a46a891acf2d788a835",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC+tsPxRiWJtoBb\nUqLIGENaHPednWye+K3cl8KDgTe2mlxb+Ob6rnNklNF79ZGU/YVWi6OqhvAlI/Ry\n6BTPy1bNrkpVjxA+4Vxif8AZphaPyEnVE/RJ5k7wuTdFv1CYpLXwWyV5p7/B4NAS\nQOSy7MjlIMaRlpYPOSe0sEjb/NMbUuHimXVXv4mHnFHAWcuc63nmgkzsSBkrpEs2\n8pRWtgv5QvDyWCoC/LPBhElEAqngYiuABKZVkmgWCuXvRMMgZg0WC1S1ZTZSWdE7\n4ZQFToFCH3g/YVm612ZQJ1Ye2j/xamUXhFSjrIC97IQZULTsZ8vzxECEIkiu72h+\nOxvySTbXAgMBAAECggEAEI1cRDyKVYF5cnOhnSw97DxHYW6gVsvOiy7Auxkj9L1A\n9tqLcYZijYA9Dj0p/XxjbjeAZPSBMzgDp1VtOPu09PUDjpl0F4EHu6TKz28S1jfT\n8KJiuWc7wrjQi0UngZgKEmpWvlBI3FLevDbVopHafchyc4BWVcvoHk6OhElVKTHJ\n7dWdxSWxDt3vPfvot8QmjedfZ+nELaCMvFrqLW5HXpCweXGV4tW57Q9CMBaG8A0y\n2IGCHDYS+YGHbQCu5xb08Sx30O2xBGLCj7whvfBeytaSZ8Ts6awspPxiiU+4IHZ0\nubxUd1Z/4hIwpQGoR7BASHU5pAxdFaOdoKu3OmZCAQKBgQDqG39b4uLxRUpVHwgn\nU6IXVH5wX2qpV49fJ95Mgk9bgcCbZNpJ1usQT4okZOWuL66pSC5j6wqzf7sT2Dkn\nnKb0ylCyfVWcBft0OULJxThK+BUhaXiQQMkAVXyYoibl2eRXl6i14SWKcSome/GV\nipibnJhtQ4H8sjyKbaOhNF1yoQKBgQDQjG7pFaaqxt3GFdXXP7TB5I+vNx5sQVN3\nLg9OS48o3h9cqGc46Dc6501Z1EeDftPIiEso9GxgtoOgd+VEB/vDUREAq8BNg0mH\nBkeXB3Z+hCDJaHt6sAQIT/Q2kdenIr/JzNzIAFLJ/LvDL8+VD1Uhi9n/e2e3jcUV\nUg++KEAudwKBgEPVv+uyLKxYtZdArK4oj7lO5GxPWarEEmkyNjnZMIGFcXgVmyL2\nQZqyUYcGLX9xlZy7q6WMP8ePZXf0mWse+0nHLebqZloVaa1dwjqRCSTACe9qjmLO\nQu/z1Wys37SOlJnE+j/pg2VAMUSBeZkpVdsRXyGaBBpi0yQRbO6TK9jBAoGASL5z\ngYI33KH5gbrkGGz0VB2xsOB9EC3JO20pkZnxmcPBFMT5HHSDr1w3MvpE5605ml1Q\nOjzoAOQpDbREmHJgc0S3tZAzR9Zfs2WRWzETOBZGiXqUd7sl7PBWsyI0IuyQEYgQ\nCwNx3Vr286KdudTbURRDOkaFaxVchY9WRnIr0QkCgYBeb+l5cLAABzFoujngTXF+\neLY1X7d/BRuAZZascuBR+F7Z9cmwZi63mDjkR0KuGwNLH/SmQ9eUgQPCr26CNMT1\nsD/4Ng/R6OnBRGn5rJL6iY6ToyUQyN3+1d1iHMPLcpINHDWUFKpjUpu+u8eIz0fb\nw4LuCWnMlQ/xMOeHB6s0bA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "botman-access@eshangazi-ce1ba.iam.gserviceaccount.com",
+  "client_id": "104626468230383324811",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/botman-access%40eshangazi-ce1ba.iam.gserviceaccount.com"
+}

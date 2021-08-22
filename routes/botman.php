@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
-use BotMan\BotMan\Middleware\Dialogflow;
+use BotMan\Middleware\DialogFlow\V2\DialogFlow;
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\MemberController;
@@ -13,8 +13,7 @@ use App\Http\Controllers\MessageDetailController;
 
 $botman = resolve('botman');
 
-$dialogflow = Dialogflow::create(env('DIALOGFLOW_KEY'))->listenForAction();
-
+$dialogflow = DialogFlow::create('en');
 $botman->middleware->received($dialogflow);
 
 $botman->hears(env('APP_ACTION') . '.questions', BotManController::class . '@quizConversation')->middleware($dialogflow);
