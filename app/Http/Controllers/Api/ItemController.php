@@ -17,7 +17,7 @@ class ItemController extends Controller
     public function show(Item $item): Response
     {
         $items = Item::whereItemId($item->id)
-            ->inRandomOrder()->take(5)->get();
+            ->inRandomOrder()->take(3)->get();
 
         return response()->json([
             'item' => $item,

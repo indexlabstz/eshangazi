@@ -17,7 +17,7 @@ class ItemCategoryController extends Controller
     public function index(): Response
     {
         $categories = ItemCategory::whereStatus('publish')
-            ->inRandomOrder()->take(5)->get();
+            ->inRandomOrder()->take(3)->get();
 
         return response()->json([
             'categories' => $categories
